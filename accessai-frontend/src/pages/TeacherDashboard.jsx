@@ -77,10 +77,10 @@ const ACCESSAI_COHORT_METRICS = {
       id: "int-1",
       studentName: "Aman Halkude",
       mode: "blind",
-      topic: "Python Nested Loops & Indentation",
+      topic: "Public Speaking & Speech Pacing",
       severity: "Moderate",
       struggleTime: "18 mins on Lesson 3 quiz",
-      aiRecommendation: "Offer acoustic tone cues for indentation depth and enable 0.8x speech rate."
+      aiRecommendation: "Offer acoustic speech rate cues and adjust playback to 0.85x for verbal clarity."
     },
     {
       id: "int-2",

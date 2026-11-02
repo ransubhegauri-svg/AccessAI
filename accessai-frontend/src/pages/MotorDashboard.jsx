@@ -19,167 +19,167 @@ import BackButton from "../components/BackButton";
 const MOCK_COURSES = [
   {
     id: "course-1",
-    title: "Introduction to Python",
-    description: "Learn the fundamentals of Python programming, including variables, loops, and functions with motor-adaptive code editors.",
-    video: "rfscVS0vtbw",
-    category: "programming",
-    instructor: "Dr. Angela Yu, Coding Educator",
+    title: "Effective Communication & Interpersonal Skills",
+    description: "Master essential verbal clarity, active listening techniques, assertiveness, and empathetic dialogue tailored for accessible professional environments.",
+    video: "HAnw168huqA",
+    category: "communication",
+    instructor: "Dr. Julian Treasure, Sound & Communication Expert",
     duration: "2h 15m",
     level: "Beginner",
     rating: 4.9,
-    badge: "Motor-Friendly",
+    badge: "Voice-Optimized",
     lessons: [
-      { id: "les-1-1", title: "Python Setup & Variables", content: "Write your first Python print statement. Practice assigning variables and using standard screen keyboards.", duration: "15 mins", video: "rfscVS0vtbw" },
-      { id: "les-1-2", title: "Control Flow & Conditionals", content: "Learn if-else blocks. Indentation is key in Python. AccessAI simplifies indentation with layout guides.", duration: "25 mins", video: "rfscVS0vtbw" },
-      { id: "les-1-3", title: "Loops & Iterations", content: "Understand for and while loops. Loop control is demonstrated using step-by-step dwell tracing.", duration: "30 mins", video: "rfscVS0vtbw" },
-      { id: "les-1-4", title: "Functions & Logic", content: "Define reusable blocks of code using def. Pass parameters and return values easily.", duration: "35 mins", video: "rfscVS0vtbw" }
+      { id: "les-1-1", title: "Active Listening & Mindful Presence", content: "Learn to listen not just to reply, but to understand. Practice identifying emotional undertones and summarizing speaker viewpoints before responding.", duration: "20 mins", video: "HAnw168huqA" },
+      { id: "les-1-2", title: "Verbal Clarity & Tone Modulation", content: "Control pace, pitch, and vocal timbre to convey confidence and warmth. Clear vocal modulation keeps conversations engaging and accessible.", duration: "30 mins", video: "HAnw168huqA" },
+      { id: "les-1-3", title: "Assertive Dialogue & Setting Boundaries", content: "Express your ideas, needs, and professional boundaries clearly and respectfully without aggression or passive withdrawal.", duration: "35 mins", video: "HAnw168huqA" },
+      { id: "les-1-4", title: "Storytelling & Expressive Delivery", content: "Use the classic narrative arc—situation, challenge, resolution—to structure anecdotes and professional updates memorably.", duration: "40 mins", video: "HAnw168huqA" }
     ],
     quiz: {
-      question: "Which keyword is used to define a function in Python?",
-      options: ["function", "def", "func", "define"],
-      answer: "def"
+      question: "What is the primary objective of active listening during a conversation?",
+      options: ["Waiting for your turn to speak", "Understanding the speaker's message, emotions, and intent fully", "Critiquing vocal imperfections", "Memorizing every single word verbatim"],
+      answer: "Understanding the speaker's message, emotions, and intent fully"
     }
   },
   {
     id: "course-2",
-    title: "Java Programming Basics",
-    description: "Master object-oriented programming in Java. Build robust console applications using adaptive switch selectors.",
-    video: "xk4_1vTe768",
-    category: "programming",
-    instructor: "John Baugh, Java Specialist",
-    duration: "3h 10m",
+    title: "Inclusive Leadership & Team Collaboration",
+    description: "Develop high-impact leadership capabilities: build trust, foster psychological safety, inspire diverse collaborators, and guide group consensus with empathy.",
+    video: "u4ZoJKF_VuA",
+    category: "leadership",
+    instructor: "Simon Sinek & Leadership Faculty",
+    duration: "2h 45m",
     level: "Beginner",
-    rating: 4.8,
-    badge: "Switch-Ready",
+    rating: 4.9,
+    badge: "Leadership Track",
     lessons: [
-      { id: "les-2-1", title: "Hello World & Java Syntax", content: "Write class definitions, main method entry point, and system output structures.", duration: "25 mins", video: "xk4_1vTe768" },
-      { id: "les-2-2", title: "Object-Oriented Concepts", content: "Define classes, instantiate objects, and access properties using public getters and setters.", duration: "35 mins", video: "xk4_1vTe768" },
-      { id: "les-2-3", title: "Inheritance & Polymorphism", content: "Extend parent classes to override methods. Practice typing inheritance keywords with gaze gestures.", duration: "40 mins", video: "xk4_1vTe768" },
-      { id: "les-2-4", title: "Exception Handling", content: "Use try-catch blocks to capture runtime errors and handle program crashes safely.", duration: "30 mins", video: "xk4_1vTe768" }
+      { id: "les-2-1", title: "Foundations of Empathetic Leadership", content: "True leadership begins with empathy. Explore how leading with service and deep understanding creates team loyalty and high performance.", duration: "25 mins", video: "u4ZoJKF_VuA" },
+      { id: "les-2-2", title: "Fostering Psychological Safety in Teams", content: "Encourage honest questions, admit mistakes early, and foster an environment where every team member feels safe to contribute their authentic perspective.", duration: "35 mins", video: "u4ZoJKF_VuA" },
+      { id: "les-2-3", title: "Constructive Conflict Resolution & Consensus", content: "De-escalate workplace disagreements through interest-based problem solving, turning friction into collaborative breakthroughs.", duration: "40 mins", video: "u4ZoJKF_VuA" },
+      { id: "les-2-4", title: "Empowering Delegation & Feedback Loops", content: "Delegate with clear outcomes and ownership while providing constructive, praise-oriented feedback that inspires growth.", duration: "35 mins", video: "u4ZoJKF_VuA" }
     ],
     quiz: {
-      question: "Which keyword is used to establish inheritance between classes in Java?",
-      options: ["implements", "inherits", "extends", "super"],
-      answer: "extends"
+      question: "What is the cornerstone of psychological safety in high-performing teams?",
+      options: ["Strict hierarchical authority", "Freedom to ask questions, share perspectives, and learn from mistakes without fear", "Competing for individual recognition", "Avoiding all disagreements"],
+      answer: "Freedom to ask questions, share perspectives, and learn from mistakes without fear"
     }
   },
   {
     id: "course-3",
-    title: "Database Management & SQL",
-    description: "Learn to design relational databases, write SQL queries, and manage database records with structured tables.",
-    video: "HXV3zeQKqGY",
-    category: "databases",
-    instructor: "David Vance, DB Architect",
-    duration: "2h 45m",
+    title: "Critical Thinking & Strategic Problem Solving",
+    description: "Develop cognitive analysis frameworks, deconstruct complex workplace challenges, and make sound, evidence-based strategic decisions.",
+    video: "dItUGF8GdTw",
+    category: "management",
+    instructor: "Prof. Michael Sandel, Strategic Reasoning",
+    duration: "2h 30m",
     level: "Intermediate",
-    rating: 4.7,
-    badge: "Dwell-Optimized",
+    rating: 4.8,
+    badge: "Strategic Reasoning",
     lessons: [
-      { id: "les-3-1", title: "Relational DB Foundations", duration: "20 mins", content: "Understand tables, rows, columns, and keys. Differentiate between primary keys and foreign keys.", video: "HXV3zeQKqGY" },
-      { id: "les-3-2", title: "Writing SELECT Queries", duration: "30 mins", content: "Extract columns, filter records with WHERE clauses, and sort outputs using ORDER BY statements.", video: "HXV3zeQKqGY" },
-      { id: "les-3-3", title: "SQL Joins Demystified", duration: "40 mins", content: "Combine records from multiple tables using INNER JOIN, LEFT JOIN, and RIGHT JOIN conditions.", video: "HXV3zeQKqGY" }
+      { id: "les-3-1", title: "Overcoming Cognitive Biases & Mental Models", duration: "30 mins", content: "Identify confirmation bias, anchoring, and groupthink. Learn first-principles thinking to analyze problems objectively.", video: "dItUGF8GdTw" },
+      { id: "les-3-2", title: "Root Cause Analysis & The 5-Whys Method", duration: "35 mins", content: "Drill down past superficial symptoms to uncover root systemic causes using the 5-Whys and Fishbone analytical methods.", video: "dItUGF8GdTw" },
+      { id: "les-3-3", title: "Decision Frameworks & Strategic Trade-offs", duration: "45 mins", content: "Weigh potential outcomes against constraints and risk factors to select optimal paths with measurable criteria.", video: "dItUGF8GdTw" }
     ],
     quiz: {
-      question: "Which clause is used to filter records in a SQL SELECT query?",
-      options: ["GROUP BY", "HAVING", "WHERE", "ORDER BY"],
-      answer: "WHERE"
+      question: "What is the core principle of the '5-Whys' problem-solving technique?",
+      options: ["Asking five colleagues for advice", "Iteratively asking 'Why?' to peel away symptoms and identify the underlying root cause", "Setting a 5-minute timer for brainstorming", "Selecting from 5 predefined answers"],
+      answer: "Iteratively asking 'Why?' to peel away symptoms and identify the underlying root cause"
     }
   },
   {
     id: "course-4",
-    title: "Web Development Basics",
-    description: "Build responsive websites using modern HTML, CSS, and interactive JavaScript interfaces.",
-    video: "kUMe1FH4CHE",
-    category: "development",
-    instructor: "Sarah Jenkins, Frontend Lead",
-    duration: "3h 40m",
-    level: "Advanced",
-    rating: 4.6,
-    badge: "Voice-Controlled",
+    title: "Public Speaking & Persuasive Presentation",
+    description: "Deliver captivating verbal presentations, master vocal presence and purposeful pauses, and inspire audiences with authentic persuasion.",
+    video: "i0a61wFaQD8",
+    category: "communication",
+    instructor: "Sarah Jenkins, Executive Presentation Coach",
+    duration: "2h 40m",
+    level: "Intermediate",
+    rating: 4.8,
+    badge: "Oratory Excellence",
     lessons: [
-      { id: "les-4-1", title: "HTML Page Structure", duration: "45 mins", content: "Create document skeletons, head metadata, and body containers for web pages.", video: "kUMe1FH4CHE" },
-      { id: "les-4-2", title: "Styling with CSS", duration: "50 mins", content: "Apply color schemes, fonts, and box-model padding using cascading style sheets.", video: "kUMe1FH4CHE" },
-      { id: "les-4-3", title: "JavaScript Interactivity", duration: "55 mins", content: "Add event listeners to DOM elements to trigger functions on button clicks.", video: "kUMe1FH4CHE" }
+      { id: "les-4-1", title: "Speech Structuring & The 30-Second Hook", duration: "40 mins", content: "Capture audience attention in the first 30 seconds with a provocative question, striking statistic, or compelling personal insight.", video: "i0a61wFaQD8" },
+      { id: "les-4-2", title: "Vocal Dynamics & The Power of Pauses", duration: "45 mins", content: "Use purposeful silence and deliberate pauses instead of filler words. Pacing creates suspense and allows points to resonate.", video: "i0a61wFaQD8" },
+      { id: "les-4-3", title: "Persuasive Rhetoric & Compelling Calls to Action", duration: "50 mins", content: "Synthesize ethos, pathos, and logos into an inspiring, actionable conclusion that motivates your listeners to take action.", video: "i0a61wFaQD8" }
     ],
     quiz: {
-      question: "Which HTML5 element represents the main content of a document?",
-      options: ["<content>", "<section>", "<main>", "<body>"],
-      answer: "<main>"
+      question: "Why are deliberate pauses effective in professional public speaking?",
+      options: ["They let the speaker check notes constantly", "They give listeners time to absorb key insights and eliminate verbal fillers like 'um'", "They signal that the presentation has ended abruptly", "They demonstrate hesitation"],
+      answer: "They give listeners time to absorb key insights and eliminate verbal fillers like 'um'"
     }
   },
   {
     id: "prem-course-ai",
-    title: "Advanced Neural-Adaptive AI Systems & Computer Vision",
-    description: "Master deep neural network perception, multi-modal gesture tracking, and real-time computer vision for assistive neuro-adaptive interfaces.",
+    title: "AI Literacy & Digital Leadership",
+    description: "Navigate modern AI assistants, ethical generative tools, voice intelligence, and workplace digital productivity without coding.",
     video: "DBQINq0SsAw",
-    category: "programming",
-    instructor: "Dr. Elena Rostova, AI Research Fellow",
-    duration: "3h 45m",
+    category: "digital_skills",
+    instructor: "Dr. Elena Rostova, Accessible AI Fellow",
+    duration: "3h 15m",
     level: "Advanced",
     rating: 4.95,
-    badge: "Premium Course",
+    badge: "AI Leadership",
     pointsCost: 100,
     isPremium: true,
     lessons: [
-      { id: "pai-1", title: "Neural Architectures for Accessibility", duration: "45 mins", content: "Convolutional neural networks tailored for assistive perception and keypoint extraction.", video: "DBQINq0SsAw" },
-      { id: "pai-2", title: "Real-Time Keypoint Landmark Inference", duration: "55 mins", content: "Sub-millisecond inference pipelines using WebAssembly and WebGL execution graphs.", video: "DBQINq0SsAw" },
-      { id: "pai-3", title: "Multi-Modal Sensor Integration & Latency", duration: "1h", content: "Fusing camera frames with IMU and microphone signals with minimal buffering delay.", video: "DBQINq0SsAw" },
-      { id: "pai-4", title: "Deploying Edge AI Models in Browser WebGL", duration: "1h 05m", content: "Client-side deployment, quantization to FP16, and on-device privacy guarantees.", video: "DBQINq0SsAw" }
+      { id: "pai-1", title: "Understanding Generative AI & Voice Intelligence", duration: "45 mins", content: "Demystify modern artificial intelligence, conversational agents, and multi-modal voice interfaces.", video: "DBQINq0SsAw" },
+      { id: "pai-2", title: "Prompt Crafting for Research & Communication", duration: "50 mins", content: "Formulate clear, contextual, multi-turn prompts to summarize documents, draft emails, and brainstorm solutions.", video: "DBQINq0SsAw" },
+      { id: "pai-3", title: "Ethical AI Principles & Bias Awareness", duration: "55 mins", content: "Analyze algorithmic bias, data privacy, and ethical guidelines for responsible AI adoption in institutions.", video: "DBQINq0SsAw" },
+      { id: "pai-4", title: "Assistive AI for Workplace Independence", duration: "1h", content: "Harness speech-to-text, computer vision descriptions, and cognitive assistants for streamlined workflows.", video: "DBQINq0SsAw" }
     ],
     quiz: {
-      question: "Which inference pipeline delivers minimal latency for in-browser computer vision on low-power devices?",
-      options: ["Server-side Cloud WebSockets", "Client-side WebAssembly / WebGL", "Batch MapReduce Workers", "High-frequency Long Polling"],
-      answer: "Client-side WebAssembly / WebGL"
+      question: "What is the primary role of prompt engineering when collaborating with AI assistants?",
+      options: ["Writing low-level machine code", "Crafting clear, contextual instructions to elicit optimal, accurate responses", "Configuring physical servers", "Installing device drivers"],
+      answer: "Crafting clear, contextual instructions to elicit optimal, accurate responses"
     }
   },
   {
     id: "prem-course-wcag",
-    title: "Full-Stack Accessibility Engineering & WCAG 2.2 AAA",
-    description: "Comprehensive engineering for WCAG 2.2 AAA compliance, assistive keyboard trees, ARIA live region management, and cognitive accommodations.",
+    title: "Workplace Inclusion & Universal Design Leadership",
+    description: "Champion disability inclusion, accessible communication standards, barrier-free team policies, and universal design principles.",
     video: "rfscVS0vtbw",
-    category: "development",
-    instructor: "Marcus Vance, Accessibility Architect",
-    duration: "4h 10m",
+    category: "accessibility",
+    instructor: "Marcus Vance, Universal Design Advocate",
+    duration: "3h 30m",
     level: "Advanced",
     rating: 5.0,
     badge: "Certified Masterclass",
     pointsCost: 100,
     isPremium: true,
     lessons: [
-      { id: "pwc-1", title: "Semantic Trees, Shadow DOM & Accessibility APIs", duration: "50 mins", content: "Building bulletproof semantic trees and exposing proper roles through the accessibility tree.", video: "rfscVS0vtbw" },
-      { id: "pwc-2", title: "Live Region Synchronization & Screen Reader Audio", duration: "1h", content: "Using aria-live polite and assertive channels without auditory collision.", video: "rfscVS0vtbw" },
-      { id: "pwc-3", title: "Focus Trapping, Modal Inertness & Spatial Navigation", duration: "1h 05m", content: "Implementing focus loops, restoring focus upon dismissal, and using inert HTML attributes.", video: "rfscVS0vtbw" },
-      { id: "pwc-4", title: "Automated CI/CD Accessibility Auditing & axe-core", duration: "1h 15m", content: "Integrating automated axe-core accessibility gates directly into pull request pipelines.", video: "rfscVS0vtbw" }
+      { id: "pwc-1", title: "Universal Design: Architecture for Human Diversity", duration: "50 mins", content: "Understand the core philosophy of designing systems and physical spaces usable by everyone without specialized retrofits.", video: "rfscVS0vtbw" },
+      { id: "pwc-2", title: "Multi-Modal Communication & Plain Language Standards", duration: "1h", content: "Deliver information through multi-sensory channels: auditory summaries, clear typography, and simplified prose.", video: "rfscVS0vtbw" },
+      { id: "pwc-3", title: "Inclusive Meeting Facilitation & Etiquette", duration: "1h", content: "Lead meetings with automated transcription, audio descriptions, cognitive pauses, and equal contribution formats.", video: "rfscVS0vtbw" },
+      { id: "pwc-4", title: "Advocating for Institutional Inclusion Policies", duration: "1h 15m", content: "Build compelling business cases for accessibility investments and inclusive hiring initiatives.", video: "rfscVS0vtbw" }
     ],
     quiz: {
-      question: "What is the primary function of the inert attribute on background elements when an accessible modal opens?",
-      options: ["Applies a dark backdrop filter", "Prevents screen reader virtual navigation and focus reaching background content", "Mutes all background media players", "Stops CSS transitions"],
-      answer: "Prevents screen reader virtual navigation and focus reaching background content"
+      question: "What is the foundational philosophy behind Universal Design in workplaces and education?",
+      options: ["Designing products that only work for one specific group", "Creating environments and communications usable by all people to the greatest extent possible without specialized adaptation", "Eliminating technology from workplaces", "Requiring everyone to use identical hardware"],
+      answer: "Creating environments and communications usable by all people to the greatest extent possible without specialized adaptation"
     }
   },
   {
     id: "prem-course-web3",
-    title: "Applied Cryptography & Smart Contract Security on MST",
-    description: "Develop and audit decentralized ERC-721 credential contracts, cryptographic SHA-256 merkle trees, and reentrancy-safe state architectures on MST Blockchain.",
+    title: "Strategic Negotiation & Professional Ethics",
+    description: "Master win-win negotiation frameworks, principled persuasion, emotional intelligence under pressure, and ethical corporate leadership.",
     video: "71360000000",
-    category: "programming",
-    instructor: "Dr. Angela Yu & Blockchain Core Team",
-    duration: "4h 30m",
+    category: "professional_skills",
+    instructor: "David Vance & Executive Ethics Faculty",
+    duration: "3h 45m",
     level: "Advanced",
     rating: 4.9,
     badge: "Specialist Track",
     pointsCost: 120,
     isPremium: true,
     lessons: [
-      { id: "pbc-1", title: "Cryptographic Hash Trees & Data Integrity", duration: "55 mins", content: "Merkle verification, sha256 checksums, and on-chain tamper detection.", video: "71360000000" },
-      { id: "pbc-2", title: "ERC-721 URI Storage & Gas Optimization on MST", duration: "1h 10m", content: "Storing immutable token metadata and gas-efficient storage slots.", video: "71360000000" },
-      { id: "pbc-3", title: "Preventing Nonce Desynchronization in Production", duration: "1h 05m", content: "Managing transaction nonces and mempool pending states reliably.", video: "71360000000" },
-      { id: "pbc-4", title: "Formal Verification & Reentrancy Guards", duration: "1h 20m", content: "Auditing smart contracts against reentrancy, integer anomalies, and unauthorized calls.", video: "71360000000" }
+      { id: "pbc-1", title: "Principled Negotiation: Separating People from Problems", duration: "55 mins", content: "Focus on mutual interests rather than entrenched positions. Build sustainable working agreements.", video: "71360000000" },
+      { id: "pbc-2", title: "Discovering Underlying Interests & Mutual Value", duration: "1h", content: "Identify hidden stakeholder priorities and create collaborative options where both sides achieve their core objectives.", video: "71360000000" },
+      { id: "pbc-3", title: "Emotional Intelligence & Composure Under Pressure", duration: "1h 05m", content: "Manage stress responses, practice de-escalation, and preserve professional rapport during difficult negotiations.", video: "71360000000" },
+      { id: "pbc-4", title: "Ethical Governance & Long-Term Trust Building", duration: "1h 20m", content: "Maintain integrity, transparency, and accountability as core assets for enduring leadership credibility.", video: "71360000000" }
     ],
     quiz: {
-      question: "Why is the Checks-Effects-Interactions pattern critical in smart contract state modification?",
-      options: ["Reduces EVM bytecode size", "Prevents reentrancy attacks where external calls execute before internal state updates", "Increases gas refunds", "Generates deterministic token IDs"],
-      answer: "Prevents reentrancy attacks where external calls execute before internal state updates"
+      question: "In principled negotiation, what should negotiators focus on instead of rigid positional demands?",
+      options: ["Underlying interests and options for mutual gain", "Dominating the opposing party at all costs", "Refusing all concessions", "Using intimidation tactics"],
+      answer: "Underlying interests and options for mutual gain"
     }
   }
 ];

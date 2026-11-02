@@ -1,327 +1,327 @@
 export const CAREER_PATHS = [
   {
     id: "career-web-dev",
-    title: "Full Stack Web Development Career Path",
-    track: "Accessible Frontend & Full Stack Engineering",
-    description: "Master end-to-end web software engineering: from accessible semantic markup and responsive CSS layout architectures to modern JavaScript logic, React UI components, and secure backend RESTful APIs.",
+    title: "Professional Communication & Workplace Excellence Career Path",
+    track: "Business Communication & Interpersonal Excellence",
+    description: "Master end-to-end workplace communication: active listening, assertive professional dialogue, executive presentations, inclusive team dynamics, and cross-cultural collaboration.",
     badge: "Industry Verified Track",
-    icon: "code",
+    icon: "forum",
     totalCourses: 5,
     skills: [
-      "Semantic HTML5 & WAI-ARIA Accessibility Standards",
-      "Modern Responsive CSS3 Layouts, Flexbox & Grid",
-      "JavaScript (ES6+), Asynchronous Logic & DOM Architecture",
-      "React Component Lifecycle, Hooks & State Management",
-      "RESTful API Integration, Node.js & Cloud Deployment"
+      "Active Listening & Mindful Professional Dialogue",
+      "Executive Presentation, Vocal Presence & Storytelling",
+      "Conflict De-escalation & Principled Negotiation",
+      "Inclusive Team Collaboration & Psychological Safety",
+      "Professional Writing, Plain Language & Corporate Ethics"
     ],
-    careerStatement: "Confirms completion of 5 comprehensive web development courses and demonstrated competencies in accessible full-stack software development for career-readiness and professional portfolio presentation.",
+    careerStatement: "Confirms completion of 5 comprehensive communication courses and demonstrated competencies in professional workplace communication and interpersonal excellence for career-readiness and portfolio presentation.",
     courses: [
       {
         id: "web-101",
-        title: "HTML5 Architecture & Accessible Semantics",
-        description: "Learn semantic elements, accessibility tags, document tree structure, and screen-reader compatibility.",
+        title: "Active Listening & Empathetic Dialogue",
+        description: "Master listening for intent and emotion, summarizing peer perspectives, and responding with constructive clarity.",
         duration: "2h 15m",
-        video: "qz0aGYrrlhU",
-        category: "frontend",
+        video: "HAnw168huqA",
+        category: "communication",
         quiz: {
-          question: "What is the primary accessibility benefit of using HTML5 semantic elements like <header>, <main>, and <nav>?",
+          question: "What is the primary objective of active listening in professional dialogue?",
           options: [
-            "They provide accessible screen reader landmarks and clear document structure",
-            "They automatically style pages without CSS",
-            "They speed up browser JavaScript execution",
-            "They compress image files on load"
+            "Understanding the speaker's core message and intent fully before formulating a response",
+            "Waiting for your turn to speak in a debate",
+            "Critiquing the other person's vocal pitch",
+            "Writing down every word verbatim"
           ],
-          answer: "They provide accessible screen reader landmarks and clear document structure"
+          answer: "Understanding the speaker's core message and intent fully before formulating a response"
         }
       },
       {
         id: "web-102",
-        title: "CSS3 Modern Layouts, Flexbox & Grid Systems",
-        description: "Master two-dimensional layouts, flexbox alignments, responsive media queries, and high-contrast design.",
+        title: "Verbal Clarity & Executive Voice Modulation",
+        description: "Master vocal presence, pacing, pitch, and tone control to speak with authority and empathy across professional settings.",
         duration: "2h 45m",
-        video: "1Rs2ND1ryYc",
-        category: "styling",
+        video: "i0a61wFaQD8",
+        category: "communication",
         quiz: {
-          question: "Which CSS display property creates a two-dimensional layout system with rows and columns?",
+          question: "How do purposeful pauses enhance executive verbal delivery?",
           options: [
-            "display: flex",
-            "display: grid",
-            "display: inline-block",
-            "display: table"
+            "They allow listeners to absorb key insights and eliminate verbal fillers",
+            "They indicate that the speaker forgot their notes",
+            "They shorten the length of the meeting arbitrarily",
+            "They signal immediate disagreement"
           ],
-          answer: "display: grid"
+          answer: "They allow listeners to absorb key insights and eliminate verbal fillers"
         }
       },
       {
         id: "web-103",
-        title: "JavaScript Essentials & Asynchronous Programming",
-        description: "Deep dive into ES6+ syntax, closures, event loops, promises, async/await, and accessible DOM manipulation.",
+        title: "Persuasive Presentation & Public Speaking",
+        description: "Structure compelling narratives, eliminate filler words, and deliver memorable presentations with confidence.",
         duration: "3h 30m",
-        video: "W6NZfCO5SIk",
-        category: "programming",
+        video: "i0a61wFaQD8",
+        category: "communication",
         quiz: {
-          question: "Which keyword is used inside an async function to pause execution until a Promise resolves?",
+          question: "What is the recommended approach to open a persuasive presentation?",
           options: [
-            "defer",
-            "yield",
-            "await",
-            "resolve"
+            "Capture audience attention in the first 30 seconds with a provocative question, striking fact, or story",
+            "Read the entire slide deck line by line",
+            "Apologize for taking up people's time",
+            "Skip straight to technical footnotes"
           ],
-          answer: "await"
+          answer: "Capture audience attention in the first 30 seconds with a provocative question, striking fact, or story"
         }
       },
       {
         id: "web-104",
-        title: "React Application Engineering & Custom Hooks",
-        description: "Build dynamic, accessible web apps with reusable components, state hooks, effect management, and routing.",
+        title: "Constructive Conflict Resolution & Mediation",
+        description: "De-escalate workplace disagreements through interest-based problem solving, turning friction into collaborative solutions.",
         duration: "4h 00m",
-        video: "bMknfKXIFA8",
-        category: "frameworks",
+        video: "u4ZoJKF_VuA",
+        category: "leadership",
         quiz: {
-          question: "Which React Hook is primarily used for managing local component state across renders?",
+          question: "In principled conflict mediation, what should parties focus on?",
           options: [
-            "useEffect",
-            "useMemo",
-            "useState",
-            "useRef"
+            "Underlying shared interests and mutual goals rather than rigid positions",
+            "Winning at all costs regardless of team morale",
+            "Ignoring the issue until it resolves itself",
+            "Imposing penalties on whoever spoke first"
           ],
-          answer: "useState"
+          answer: "Underlying shared interests and mutual goals rather than rigid positions"
         }
       },
       {
         id: "web-105",
-        title: "Full Stack RESTful APIs & Production Deployment",
-        description: "Integrate backend endpoints, handle JSON requests, authenticate users securely, and deploy web applications.",
+        title: "Professional Writing & Corporate Governance",
+        description: "Communicate with precision in executive memos, status updates, and multi-stakeholder correspondences.",
         duration: "3h 15m",
-        video: "Oe421EPjeBE",
-        category: "backend",
+        video: "HAnw168huqA",
+        category: "management",
         quiz: {
-          question: "Which standard HTTP method is conventionally used to update an existing record on a RESTful API server?",
+          question: "What is the primary guideline for accessible, professional corporate writing?",
           options: [
-            "GET",
-            "PUT",
-            "DELETE",
-            "HEAD"
+            "Using plain, unambiguous language with clear structure and action items",
+            "Writing in dense, multi-clause paragraphs with obscure jargon",
+            "Omitting headers and bullet points",
+            "Using all capital letters for emphasis"
           ],
-          answer: "PUT"
+          answer: "Using plain, unambiguous language with clear structure and action items"
         }
       }
     ]
   },
   {
     id: "career-python-dev",
-    title: "Python Programming Career Path",
-    track: "Python Software & Backend Engineering",
-    description: "Develop full professional fluency in Python programming: master core syntax, structured data algorithms, object-oriented software engineering, relational database management, and backend microservice APIs.",
-    badge: "Software Engineering Track",
-    icon: "terminal",
+    title: "Executive Leadership & Strategic Communication Career Path",
+    track: "Organizational Leadership & Strategic Communication",
+    description: "Develop essential leadership and strategic communication competencies: empathetic people leadership, psychological safety, consensus building, strategic problem-solving, and crisis communication.",
+    badge: "Leadership Track",
+    icon: "psychology",
     totalCourses: 5,
     skills: [
-      "Core Python 3 Syntax, Variable Types & Exception Handling",
-      "Advanced Data Structures, Hash Maps, Lists & File I/O",
-      "Object-Oriented Programming (OOP) & Inheritance Patterns",
-      "Relational Database Management & SQL Query Architecture",
-      "Microservice REST APIs with Flask, Automation & Unit Testing"
+      "Empathetic People Leadership & Vision Setting",
+      "Psychological Safety & High-Trust Team Building",
+      "Critical Thinking, Mental Models & The 5-Whys Method",
+      "Strategic Decision Trees & Stakeholder Alignment",
+      "Crisis Communication & Resilient Organizational Leadership"
     ],
-    careerStatement: "Confirms completion of 5 comprehensive Python software courses and demonstrated competencies in Python software architecture and backend engineering for career-readiness and professional portfolio presentation.",
+    careerStatement: "Confirms completion of 5 comprehensive leadership courses and demonstrated competencies in executive decision-making and strategic leadership for career-readiness and professional advancement.",
     courses: [
       {
         id: "py-101",
-        title: "Python Core Fundamentals & Variables",
-        description: "Write basic scripts, handle primitive data types, control flow structures, and user inputs.",
+        title: "Foundations of Empathetic Leadership",
+        description: "Lead with empathy and service to cultivate high-trust, resilient, and highly motivated teams.",
         duration: "2h 00m",
-        video: "rfscVS0vtbw",
-        category: "python",
+        video: "u4ZoJKF_VuA",
+        category: "leadership",
         quiz: {
-          question: "Which keyword is used to declare a function in Python?",
+          question: "What distinguishes empathetic leadership from traditional authoritarian management?",
           options: [
-            "function",
-            "def",
-            "func",
-            "fn"
+            "Prioritizing human understanding, listening, and team empowerment to drive sustainable success",
+            "Micromanaging daily minutiae without team input",
+            "Focusing solely on short-term quarterly metrics",
+            "Avoiding all decision-making responsibility"
           ],
-          answer: "def"
+          answer: "Prioritizing human understanding, listening, and team empowerment to drive sustainable success"
         }
       },
       {
         id: "py-102",
-        title: "Data Structures: Lists, Dictionaries & Tuples",
-        description: "Master memory collections, key-value mappings, list comprehensions, and data transformations.",
+        title: "Psychological Safety & High-Performing Teams",
+        description: "Create workplace environments where team members contribute authentic ideas and admit mistakes safely.",
         duration: "2h 30m",
-        video: "kqtD5dpn9C8",
-        category: "python",
+        video: "u4ZoJKF_VuA",
+        category: "leadership",
         quiz: {
-          question: "Which built-in Python collection is immutable (cannot be altered after creation)?",
+          question: "What is the cornerstone of psychological safety in teams?",
           options: [
-            "List",
-            "Dictionary",
-            "Tuple",
-            "Set"
+            "The shared belief that the team is safe for interpersonal risk-taking and learning",
+            "Uniformity of thought and zero dissent",
+            "Strict penalties for any project setback",
+            "Individual bonuses tied to solitary achievements"
           ],
-          answer: "Tuple"
+          answer: "The shared belief that the team is safe for interpersonal risk-taking and learning"
         }
       },
       {
         id: "py-103",
-        title: "Object-Oriented Programming in Python",
-        description: "Design modular code with classes, encapsulation, inheritance, polymorphism, and magic methods.",
+        title: "Critical Thinking & Cognitive Bias Awareness",
+        description: "Overcome confirmation bias and groupthink using first-principles reasoning and objective analytical frameworks.",
         duration: "3h 15m",
-        video: "JeznW_7DlB0",
-        category: "python",
+        video: "dItUGF8GdTw",
+        category: "management",
         quiz: {
-          question: "What special method acts as the class constructor / initializer in Python?",
+          question: "Why is awareness of confirmation bias vital for strategic leaders?",
           options: [
-            "__start__",
-            "__construct__",
-            "__init__",
-            "__new__"
+            "It prevents leaders from only seeking data that validates their preconceived opinions",
+            "It guarantees that every forecast will be 100% accurate",
+            "It eliminates the need to consult advisors",
+            "It speeds up decision-making by ignoring opposing viewpoints"
           ],
-          answer: "__init__"
+          answer: "It prevents leaders from only seeking data that validates their preconceived opinions"
         }
       },
       {
         id: "py-104",
-        title: "Database Management & SQLite with Python",
-        description: "Store and query structured data, write parameterized SQL statements, and manage transactions safely.",
+        title: "Root Cause Problem Solving & The 5-Whys Method",
+        description: "Deconstruct systemic challenges down to fundamental causes and architect enduring organizational solutions.",
         duration: "2h 45m",
-        video: "HXV3zeQKqGY",
-        category: "databases",
+        video: "dItUGF8GdTw",
+        category: "management",
         quiz: {
-          question: "Which SQL clause is used to filter records matching specific criteria in a SELECT query?",
+          question: "What is the core purpose of iteratively asking 'Why?' during problem analysis?",
           options: [
-            "GROUP BY",
-            "HAVING",
-            "WHERE",
-            "ORDER BY"
+            "To penetrate past superficial symptoms to uncover the root systemic driver",
+            "To assign personal blame to team members",
+            "To prolong team meetings unnecessarily",
+            "To challenge every established policy without reason"
           ],
-          answer: "WHERE"
+          answer: "To penetrate past superficial symptoms to uncover the root systemic driver"
         }
       },
       {
         id: "py-105",
-        title: "Backend Microservices & REST APIs with Flask",
-        description: "Build high-performance web APIs, route incoming HTTP requests, serialize JSON, and handle errors.",
+        title: "Strategic Decision-Making & Crisis Communication",
+        description: "Weigh complex organizational trade-offs and communicate transparently during high-stakes transitions.",
         duration: "3h 45m",
-        video: "Z1RJmh_OqeA",
-        category: "backend",
+        video: "u4ZoJKF_VuA",
+        category: "leadership",
         quiz: {
-          question: "Which Python decorator in Flask binds a view function to a specific incoming URL endpoint?",
+          question: "During an organizational crisis, what communication trait is most essential for leadership credibility?",
           options: [
-            "@app.route",
-            "@app.endpoint",
-            "@app.bind",
-            "@app.view"
+            "Timely, transparent, and empathetic communication of known facts and next steps",
+            "Staying completely silent until every detail is resolved",
+            "Blaming external circumstances",
+            "Downplaying genuine impacts to avoid uncomfortable questions"
           ],
-          answer: "@app.route"
+          answer: "Timely, transparent, and empathetic communication of known facts and next steps"
         }
       }
     ]
   },
   {
     id: "career-ai-fundamentals",
-    title: "AI Fundamentals Career Path",
-    track: "Artificial Intelligence & Assistive Technologies",
-    description: "Build practical competencies in Artificial Intelligence: understand machine learning theory, data preprocessing pipelines, deep learning neural network architectures, and inclusive assistive AI technologies.",
-    badge: "Artificial Intelligence Track",
-    icon: "psychology",
+    title: "AI Literacy & Digital Leadership Career Path",
+    track: "Artificial Intelligence Literacy & Digital Leadership",
+    description: "Build practical competencies in applied AI: navigate generative assistants, master prompt crafting, understand ethical governance, and leverage assistive technologies without coding.",
+    badge: "Digital Leadership Track",
+    icon: "smart_toy",
     totalCourses: 5,
     skills: [
-      "Machine Learning Mathematical & Conceptual Foundations",
-      "Data Wrangling, Feature Scaling & Matrix Computing with NumPy",
-      "Supervised & Unsupervised Machine Learning Algorithms",
-      "Deep Neural Networks, Multi-Layer Perceptrons & Optimization",
-      "Applied Generative AI, Large Language Models & Inclusive Tech"
+      "Conceptual AI Foundations & Everyday Assistive Tools",
+      "Context-Rich Prompt Engineering for Workplace Productivity",
+      "Ethical AI Governance, Data Privacy & Bias Mitigation",
+      "Voice Agents & Accessibility Workflow Automation",
+      "Digital Leadership & Future-Ready Technology Adoption"
     ],
-    careerStatement: "Confirms completion of 5 comprehensive AI & Machine Learning courses and demonstrated competencies in intelligent algorithms and assistive AI for career-readiness and professional portfolio presentation.",
+    careerStatement: "Confirms completion of 5 comprehensive AI literacy and digital leadership courses and demonstrated competencies in utilizing intelligent assistants and accessible technology for professional leadership.",
     courses: [
       {
         id: "ai-101",
-        title: "Introduction to Artificial Intelligence & ML Foundations",
-        description: "Learn the paradigms of AI, data representations, problem formulation, and model evaluation metrics.",
+        title: "Foundations of AI Literacy & Modern Voice Technology",
+        description: "Learn what modern AI models do, how speech-to-text operates, and how voice assistants process natural language.",
         duration: "2h 30m",
-        video: "JMUxmLgwMT8",
-        category: "ai",
+        video: "DBQINq0SsAw",
+        category: "ai_literacy",
         quiz: {
-          question: "Which branch of machine learning trains models using labeled input-output training datasets?",
+          question: "How do voice assistants and speech recognition models convert audio into usable commands?",
           options: [
-            "Supervised Learning",
-            "Unsupervised Learning",
-            "Reinforcement Learning",
-            "Clustering"
+            "By converting audio waves into phonetic representations and mapping to language intents",
+            "By recording magnetic audio tapes on physical reels",
+            "By manually transmitting recordings to human typists in real time",
+            "By converting sound directly into binary code without language models"
           ],
-          answer: "Supervised Learning"
+          answer: "By converting audio waves into phonetic representations and mapping to language intents"
         }
       },
       {
         id: "ai-102",
-        title: "Data Wrangling & Matrix Computing for AI",
-        description: "Clean raw datasets, perform vectorized numerical calculations, and prepare tensor inputs using NumPy.",
+        title: "Prompt Engineering for Workplace Productivity",
+        description: "Craft clear instructions, role prompts, and formatting constraints to summarize documents and research topics.",
         duration: "2h 45m",
-        video: "QUT1VHiLmmI",
-        category: "ai",
+        video: "DBQINq0SsAw",
+        category: "ai_literacy",
         quiz: {
-          question: "Which Python library is the foundational standard for high-performance multidimensional array computing in AI?",
+          question: "What makes an AI prompt most effective for professional tasks?",
           options: [
-            "Requests",
-            "NumPy",
-            "Flask",
-            "Jinja2"
+            "Providing clear context, a designated persona or role, and specific output format expectations",
+            "Using single-word queries with no background context",
+            "Typing in all capital letters",
+            "Repeating the same word multiple times"
           ],
-          answer: "NumPy"
+          answer: "Providing clear context, a designated persona or role, and specific output format expectations"
         }
       },
       {
         id: "ai-103",
-        title: "Supervised & Unsupervised Learning Algorithms",
-        description: "Implement regression models, decision trees, random forests, clustering techniques, and vector machines.",
+        title: "Ethical AI Governance & Bias Mitigation",
+        description: "Understand ethical concerns in artificial intelligence: dataset diversity, representation, privacy, and fairness.",
         duration: "3h 15m",
-        video: "7eh4d6sabA0",
-        category: "ai",
+        video: "DBQINq0SsAw",
+        category: "ethics",
         quiz: {
-          question: "Which classification algorithm identifies an optimal hyperplane maximizing the decision boundary margin between classes?",
+          question: "Why must organizations audit AI tools for algorithmic bias before widespread deployment?",
           options: [
-            "K-Means",
-            "Support Vector Machine (SVM)",
-            "Principal Component Analysis",
-            "Linear Regression"
+            "To ensure recommendations are fair, inclusive, and do not reinforce historical societal disparities",
+            "To slow down technological progress intentionally",
+            "To increase software subscription licensing costs",
+            "To replace human judgment entirely"
           ],
-          answer: "Support Vector Machine (SVM)"
+          answer: "To ensure recommendations are fair, inclusive, and do not reinforce historical societal disparities"
         }
       },
       {
         id: "ai-104",
-        title: "Deep Learning & Neural Network Architectures",
-        description: "Understand artificial neurons, activation functions, loss calculations, forward passes, and backpropagation.",
+        title: "Assistive Technologies & Digital Inclusion in Workplaces",
+        description: "Explore how speech recognition, computer vision descriptions, and multimodal AI empower independent work.",
         duration: "3h 45m",
-        video: "aircAruvnKk",
-        category: "ai",
+        video: "rfscVS0vtbw",
+        category: "accessibility",
         quiz: {
-          question: "What algorithmic process updates neural network weights based on the gradient of the loss function?",
+          question: "How does multimodal AI enhance accessibility for disabled professionals?",
           options: [
-            "Forward Propagation",
-            "Backpropagation",
-            "Random Sampling",
-            "Feature Pruning"
+            "By translating seamlessly between modalities: speech to text, image to audio descriptions, and gestures to text",
+            "By requiring users to strictly use a mouse and keyboard",
+            "By locking down all audio and visual outputs",
+            "By disabling screen readers"
           ],
-          answer: "Backpropagation"
+          answer: "By translating seamlessly between modalities: speech to text, image to audio descriptions, and gestures to text"
         }
       },
       {
         id: "ai-105",
-        title: "Generative AI & Inclusive Assistive Technologies",
-        description: "Explore Large Language Models, prompt engineering, accessibility agents, and computer vision gesture tracking.",
+        title: "Digital Transformation & Future-Ready Workplace Leadership",
+        description: "Lead organizations into the digital era with a human-centric approach to assistive automation and team reskilling.",
         duration: "3h 00m",
-        video: "G2fqAlgmoPo",
-        category: "ai",
+        video: "u4ZoJKF_VuA",
+        category: "leadership",
         quiz: {
-          question: "In Transformer AI architectures, what core mechanism enables the model to weigh the contextual importance of different tokens dynamically?",
+          question: "What is the defining mark of successful human-centered digital transformation?",
           options: [
-            "Self-Attention",
-            "Convolutional Pooling",
-            "Gradient Clipping",
-            "Recurrent Gates"
+            "Using technology to augment human capabilities and foster greater inclusivity and autonomy",
+            "Replacing all human team members with automated scripts",
+            "Buying expensive software without staff training",
+            "Eliminating all collaborative meetings"
           ],
-          answer: "Self-Attention"
+          answer: "Using technology to augment human capabilities and foster greater inclusivity and autonomy"
         }
       }
     ]

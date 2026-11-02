@@ -249,7 +249,7 @@ export const DEMO_COHORT_STUDENTS = [
       "inputPipeline": "Camera Hand Gestures + Rapid Text Fallback"
     },
     "learningActivity": {
-      "currentCourse": "Python for Everyone",
+      "currentCourse": "Effective Communication Skills",
       "currentTopic": "Nested Loops & Indentation",
       "difficultLesson": "Lesson 3: Multi-dimensional Matrix Iteration",
       "repeatedHelpRequestsCount": 5,
@@ -271,7 +271,7 @@ export const DEMO_COHORT_STUDENTS = [
     },
     "blockchainCerts": [
       {
-        "name": "Python for Everyone Foundation",
+        "name": "Effective Communication Foundation",
         "hash": "0xfce6...b3d7",
         "date": "Oct 2026"
       }
@@ -514,7 +514,7 @@ export const DEMO_COHORT_STUDENTS = [
       "inputPipeline": "Camera Hand Gestures + Rapid Text Fallback"
     },
     "learningActivity": {
-      "currentCourse": "Python for Everyone",
+      "currentCourse": "Effective Communication Skills",
       "currentTopic": "Nested Loops & Indentation",
       "difficultLesson": "Lesson 3: Multi-dimensional Matrix Iteration",
       "repeatedHelpRequestsCount": 3,
@@ -536,7 +536,7 @@ export const DEMO_COHORT_STUDENTS = [
     },
     "blockchainCerts": [
       {
-        "name": "Python for Everyone Foundation",
+        "name": "Effective Communication Foundation",
         "hash": "0x3a45...53da",
         "date": "Oct 2026"
       }
@@ -779,7 +779,7 @@ export const DEMO_COHORT_STUDENTS = [
       "inputPipeline": "Camera Hand Gestures + Rapid Text Fallback"
     },
     "learningActivity": {
-      "currentCourse": "Python for Everyone",
+      "currentCourse": "Effective Communication Skills",
       "currentTopic": "Nested Loops & Indentation",
       "difficultLesson": "Lesson 3: Multi-dimensional Matrix Iteration",
       "repeatedHelpRequestsCount": 5,
@@ -801,7 +801,7 @@ export const DEMO_COHORT_STUDENTS = [
     },
     "blockchainCerts": [
       {
-        "name": "Python for Everyone Foundation",
+        "name": "Effective Communication Foundation",
         "hash": "0x7104...108d",
         "date": "Oct 2026"
       }
@@ -1044,7 +1044,7 @@ export const DEMO_COHORT_STUDENTS = [
       "inputPipeline": "Camera Hand Gestures + Rapid Text Fallback"
     },
     "learningActivity": {
-      "currentCourse": "Python for Everyone",
+      "currentCourse": "Effective Communication Skills",
       "currentTopic": "Nested Loops & Indentation",
       "difficultLesson": "Lesson 3: Multi-dimensional Matrix Iteration",
       "repeatedHelpRequestsCount": 4,
@@ -1066,7 +1066,7 @@ export const DEMO_COHORT_STUDENTS = [
     },
     "blockchainCerts": [
       {
-        "name": "Python for Everyone Foundation",
+        "name": "Effective Communication Foundation",
         "hash": "0x45eb...c7b5",
         "date": "Oct 2026"
       }
@@ -1309,7 +1309,7 @@ export const DEMO_COHORT_STUDENTS = [
       "inputPipeline": "Camera Hand Gestures + Rapid Text Fallback"
     },
     "learningActivity": {
-      "currentCourse": "Python for Everyone",
+      "currentCourse": "Effective Communication Skills",
       "currentTopic": "Nested Loops & Indentation",
       "difficultLesson": "Lesson 3: Multi-dimensional Matrix Iteration",
       "repeatedHelpRequestsCount": 3,
@@ -1331,7 +1331,7 @@ export const DEMO_COHORT_STUDENTS = [
     },
     "blockchainCerts": [
       {
-        "name": "Python for Everyone Foundation",
+        "name": "Effective Communication Foundation",
         "hash": "0x2bc0...a8b8",
         "date": "Oct 2026"
       }
@@ -1574,7 +1574,7 @@ export const DEMO_COHORT_STUDENTS = [
       "inputPipeline": "Camera Hand Gestures + Rapid Text Fallback"
     },
     "learningActivity": {
-      "currentCourse": "Python for Everyone",
+      "currentCourse": "Effective Communication Skills",
       "currentTopic": "Nested Loops & Indentation",
       "difficultLesson": "Lesson 3: Multi-dimensional Matrix Iteration",
       "repeatedHelpRequestsCount": 2,
@@ -1596,7 +1596,7 @@ export const DEMO_COHORT_STUDENTS = [
     },
     "blockchainCerts": [
       {
-        "name": "Python for Everyone Foundation",
+        "name": "Effective Communication Foundation",
         "hash": "0x84da...3222",
         "date": "Oct 2026"
       }
@@ -1692,7 +1692,7 @@ export const DEMO_COHORT_STUDENTS = [
       ],
       "accessibilityFriction": {
         "issueName": "Code Indentation Visual-Only Formatting",
-        "details": "Python syntax indentation depth was not audibly distinguished by standard screen reader voice.",
+        "details": "Complex multi-speaker audio pace was not audibly distinguished by standard screen reader voice; needed acoustic voice cues.",
         "failureType": "Auditory Syntax Disambiguation Failure",
         "severity": "High",
         "struggleDuration": "22 mins on ARIA Live Regions & Alerts"
@@ -1839,7 +1839,7 @@ export const DEMO_COHORT_STUDENTS = [
       "inputPipeline": "Voice Commands (STT) + Extended Keyboard Focus Tree"
     },
     "learningActivity": {
-      "currentCourse": "Python for Everyone",
+      "currentCourse": "Effective Communication Skills",
       "currentTopic": "Nested Loops & Indentation",
       "difficultLesson": "Lesson 3: Multi-dimensional Matrix Iteration",
       "repeatedHelpRequestsCount": 5,
@@ -1861,7 +1861,7 @@ export const DEMO_COHORT_STUDENTS = [
     },
     "blockchainCerts": [
       {
-        "name": "Python for Everyone Foundation",
+        "name": "Effective Communication Foundation",
         "hash": "0xfb67...30ac",
         "date": "Oct 2026"
       }
@@ -1957,7 +1957,7 @@ export const DEMO_COHORT_STUDENTS = [
       ],
       "accessibilityFriction": {
         "issueName": "Code Indentation Visual-Only Formatting",
-        "details": "Python syntax indentation depth was not audibly distinguished by standard screen reader voice.",
+        "details": "Complex multi-speaker audio pace was not audibly distinguished by standard screen reader voice; needed acoustic voice cues.",
         "failureType": "Auditory Syntax Disambiguation Failure",
         "severity": "Critical",
         "struggleDuration": "12 mins on ARIA Live Regions & Alerts"
@@ -2104,7 +2104,7 @@ export const DEMO_COHORT_STUDENTS = [
       "inputPipeline": "Voice Commands (STT) + Extended Keyboard Focus Tree"
     },
     "learningActivity": {
-      "currentCourse": "Python for Everyone",
+      "currentCourse": "Effective Communication Skills",
       "currentTopic": "Nested Loops & Indentation",
       "difficultLesson": "Lesson 3: Multi-dimensional Matrix Iteration",
       "repeatedHelpRequestsCount": 6,
@@ -2126,7 +2126,7 @@ export const DEMO_COHORT_STUDENTS = [
     },
     "blockchainCerts": [
       {
-        "name": "Python for Everyone Foundation",
+        "name": "Effective Communication Foundation",
         "hash": "0x9861...7daa",
         "date": "Oct 2026"
       }
@@ -2222,7 +2222,7 @@ export const DEMO_COHORT_STUDENTS = [
       ],
       "accessibilityFriction": {
         "issueName": "Code Indentation Visual-Only Formatting",
-        "details": "Python syntax indentation depth was not audibly distinguished by standard screen reader voice.",
+        "details": "Complex multi-speaker audio pace was not audibly distinguished by standard screen reader voice; needed acoustic voice cues.",
         "failureType": "Auditory Syntax Disambiguation Failure",
         "severity": "High",
         "struggleDuration": "22 mins on ARIA Live Regions & Alerts"
@@ -2369,7 +2369,7 @@ export const DEMO_COHORT_STUDENTS = [
       "inputPipeline": "Voice Commands (STT) + Extended Keyboard Focus Tree"
     },
     "learningActivity": {
-      "currentCourse": "Python for Everyone",
+      "currentCourse": "Effective Communication Skills",
       "currentTopic": "Nested Loops & Indentation",
       "difficultLesson": "Lesson 3: Multi-dimensional Matrix Iteration",
       "repeatedHelpRequestsCount": 6,
@@ -2391,7 +2391,7 @@ export const DEMO_COHORT_STUDENTS = [
     },
     "blockchainCerts": [
       {
-        "name": "Python for Everyone Foundation",
+        "name": "Effective Communication Foundation",
         "hash": "0x9db0...97ea",
         "date": "Oct 2026"
       }
@@ -2487,7 +2487,7 @@ export const DEMO_COHORT_STUDENTS = [
       ],
       "accessibilityFriction": {
         "issueName": "Code Indentation Visual-Only Formatting",
-        "details": "Python syntax indentation depth was not audibly distinguished by standard screen reader voice.",
+        "details": "Complex multi-speaker audio pace was not audibly distinguished by standard screen reader voice; needed acoustic voice cues.",
         "failureType": "Auditory Syntax Disambiguation Failure",
         "severity": "High",
         "struggleDuration": "17 mins on ARIA Live Regions & Alerts"
@@ -2634,7 +2634,7 @@ export const DEMO_COHORT_STUDENTS = [
       "inputPipeline": "Voice Commands (STT) + Extended Keyboard Focus Tree"
     },
     "learningActivity": {
-      "currentCourse": "Python for Everyone",
+      "currentCourse": "Effective Communication Skills",
       "currentTopic": "Nested Loops & Indentation",
       "difficultLesson": "Lesson 3: Multi-dimensional Matrix Iteration",
       "repeatedHelpRequestsCount": 6,
@@ -2656,7 +2656,7 @@ export const DEMO_COHORT_STUDENTS = [
     },
     "blockchainCerts": [
       {
-        "name": "Python for Everyone Foundation",
+        "name": "Effective Communication Foundation",
         "hash": "0xf893...8156",
         "date": "Oct 2026"
       }
@@ -2752,7 +2752,7 @@ export const DEMO_COHORT_STUDENTS = [
       ],
       "accessibilityFriction": {
         "issueName": "Code Indentation Visual-Only Formatting",
-        "details": "Python syntax indentation depth was not audibly distinguished by standard screen reader voice.",
+        "details": "Complex multi-speaker audio pace was not audibly distinguished by standard screen reader voice; needed acoustic voice cues.",
         "failureType": "Auditory Syntax Disambiguation Failure",
         "severity": "High",
         "struggleDuration": "34 mins on ARIA Live Regions & Alerts"
@@ -2899,7 +2899,7 @@ export const DEMO_COHORT_STUDENTS = [
       "inputPipeline": "Voice Commands (STT) + Extended Keyboard Focus Tree"
     },
     "learningActivity": {
-      "currentCourse": "Python for Everyone",
+      "currentCourse": "Effective Communication Skills",
       "currentTopic": "Nested Loops & Indentation",
       "difficultLesson": "Lesson 3: Multi-dimensional Matrix Iteration",
       "repeatedHelpRequestsCount": 4,
@@ -2921,7 +2921,7 @@ export const DEMO_COHORT_STUDENTS = [
     },
     "blockchainCerts": [
       {
-        "name": "Python for Everyone Foundation",
+        "name": "Effective Communication Foundation",
         "hash": "0x8872...94da",
         "date": "Oct 2026"
       }
@@ -3017,7 +3017,7 @@ export const DEMO_COHORT_STUDENTS = [
       ],
       "accessibilityFriction": {
         "issueName": "Code Indentation Visual-Only Formatting",
-        "details": "Python syntax indentation depth was not audibly distinguished by standard screen reader voice.",
+        "details": "Complex multi-speaker audio pace was not audibly distinguished by standard screen reader voice; needed acoustic voice cues.",
         "failureType": "Auditory Syntax Disambiguation Failure",
         "severity": "High",
         "struggleDuration": "20 mins on ARIA Live Regions & Alerts"
@@ -3164,7 +3164,7 @@ export const DEMO_COHORT_STUDENTS = [
       "inputPipeline": "Voice Commands (STT) + Extended Keyboard Focus Tree"
     },
     "learningActivity": {
-      "currentCourse": "Python for Everyone",
+      "currentCourse": "Effective Communication Skills",
       "currentTopic": "Nested Loops & Indentation",
       "difficultLesson": "Lesson 3: Multi-dimensional Matrix Iteration",
       "repeatedHelpRequestsCount": 5,
@@ -3186,7 +3186,7 @@ export const DEMO_COHORT_STUDENTS = [
     },
     "blockchainCerts": [
       {
-        "name": "Python for Everyone Foundation",
+        "name": "Effective Communication Foundation",
         "hash": "0x4e65...84ef",
         "date": "Oct 2026"
       }
@@ -3229,7 +3229,7 @@ export const DEMO_COHORT_STUDENTS = [
       ],
       "accessibilityFriction": {
         "issueName": "Code Syntax Typing Speed Bottleneck",
-        "details": "On-screen virtual keyboard input took 12 minutes to type a 4-line Python function; timeout reached.",
+        "details": "Virtual keyboard dwell input took 10 minutes to formulate long communication response; needed dwell pacing adjustment.",
         "failureType": "Code Input Velocity Bottleneck",
         "severity": "High",
         "struggleDuration": "28 mins on Binary Search Tree Rotations"
@@ -3429,7 +3429,7 @@ export const DEMO_COHORT_STUDENTS = [
       "inputPipeline": "Dual-Switch Step with Auto-Dwell Trigger"
     },
     "learningActivity": {
-      "currentCourse": "Python for Everyone",
+      "currentCourse": "Effective Communication Skills",
       "currentTopic": "Nested Loops & Indentation",
       "difficultLesson": "Lesson 3: Multi-dimensional Matrix Iteration",
       "repeatedHelpRequestsCount": 4,
@@ -3451,7 +3451,7 @@ export const DEMO_COHORT_STUDENTS = [
     },
     "blockchainCerts": [
       {
-        "name": "Python for Everyone Foundation",
+        "name": "Effective Communication Foundation",
         "hash": "0xb075...c7fd",
         "date": "Oct 2026"
       }
@@ -3494,7 +3494,7 @@ export const DEMO_COHORT_STUDENTS = [
       ],
       "accessibilityFriction": {
         "issueName": "Code Syntax Typing Speed Bottleneck",
-        "details": "On-screen virtual keyboard input took 12 minutes to type a 4-line Python function; timeout reached.",
+        "details": "Virtual keyboard dwell input took 10 minutes to formulate long communication response; needed dwell pacing adjustment.",
         "failureType": "Code Input Velocity Bottleneck",
         "severity": "High",
         "struggleDuration": "26 mins on Binary Search Tree Rotations"
@@ -3694,7 +3694,7 @@ export const DEMO_COHORT_STUDENTS = [
       "inputPipeline": "Head-Tracking Pointer with Auto-Dwell Trigger"
     },
     "learningActivity": {
-      "currentCourse": "Python for Everyone",
+      "currentCourse": "Effective Communication Skills",
       "currentTopic": "Nested Loops & Indentation",
       "difficultLesson": "Lesson 3: Multi-dimensional Matrix Iteration",
       "repeatedHelpRequestsCount": 6,
@@ -3716,7 +3716,7 @@ export const DEMO_COHORT_STUDENTS = [
     },
     "blockchainCerts": [
       {
-        "name": "Python for Everyone Foundation",
+        "name": "Effective Communication Foundation",
         "hash": "0x5bbe...c303",
         "date": "Oct 2026"
       }
@@ -3759,7 +3759,7 @@ export const DEMO_COHORT_STUDENTS = [
       ],
       "accessibilityFriction": {
         "issueName": "Code Syntax Typing Speed Bottleneck",
-        "details": "On-screen virtual keyboard input took 12 minutes to type a 4-line Python function; timeout reached.",
+        "details": "Virtual keyboard dwell input took 10 minutes to formulate long communication response; needed dwell pacing adjustment.",
         "failureType": "Code Input Velocity Bottleneck",
         "severity": "High",
         "struggleDuration": "19 mins on Binary Search Tree Rotations"
@@ -3959,7 +3959,7 @@ export const DEMO_COHORT_STUDENTS = [
       "inputPipeline": "Eyegaze Switch with Auto-Dwell Trigger"
     },
     "learningActivity": {
-      "currentCourse": "Python for Everyone",
+      "currentCourse": "Effective Communication Skills",
       "currentTopic": "Nested Loops & Indentation",
       "difficultLesson": "Lesson 3: Multi-dimensional Matrix Iteration",
       "repeatedHelpRequestsCount": 2,
@@ -3981,7 +3981,7 @@ export const DEMO_COHORT_STUDENTS = [
     },
     "blockchainCerts": [
       {
-        "name": "Python for Everyone Foundation",
+        "name": "Effective Communication Foundation",
         "hash": "0x48ab...b5cc",
         "date": "Oct 2026"
       }
@@ -4024,7 +4024,7 @@ export const DEMO_COHORT_STUDENTS = [
       ],
       "accessibilityFriction": {
         "issueName": "Code Syntax Typing Speed Bottleneck",
-        "details": "On-screen virtual keyboard input took 12 minutes to type a 4-line Python function; timeout reached.",
+        "details": "Virtual keyboard dwell input took 10 minutes to formulate long communication response; needed dwell pacing adjustment.",
         "failureType": "Code Input Velocity Bottleneck",
         "severity": "Critical",
         "struggleDuration": "15 mins on Binary Search Tree Rotations"
@@ -4224,7 +4224,7 @@ export const DEMO_COHORT_STUDENTS = [
       "inputPipeline": "Dual-Switch Step with Auto-Dwell Trigger"
     },
     "learningActivity": {
-      "currentCourse": "Python for Everyone",
+      "currentCourse": "Effective Communication Skills",
       "currentTopic": "Nested Loops & Indentation",
       "difficultLesson": "Lesson 3: Multi-dimensional Matrix Iteration",
       "repeatedHelpRequestsCount": 3,
@@ -4246,7 +4246,7 @@ export const DEMO_COHORT_STUDENTS = [
     },
     "blockchainCerts": [
       {
-        "name": "Python for Everyone Foundation",
+        "name": "Effective Communication Foundation",
         "hash": "0x502a...dc6b",
         "date": "Oct 2026"
       }
@@ -4289,7 +4289,7 @@ export const DEMO_COHORT_STUDENTS = [
       ],
       "accessibilityFriction": {
         "issueName": "Code Syntax Typing Speed Bottleneck",
-        "details": "On-screen virtual keyboard input took 12 minutes to type a 4-line Python function; timeout reached.",
+        "details": "Virtual keyboard dwell input took 10 minutes to formulate long communication response; needed dwell pacing adjustment.",
         "failureType": "Code Input Velocity Bottleneck",
         "severity": "Moderate",
         "struggleDuration": "20 mins on Binary Search Tree Rotations"
@@ -4489,7 +4489,7 @@ export const DEMO_COHORT_STUDENTS = [
       "inputPipeline": "Dual-Switch Step with Auto-Dwell Trigger"
     },
     "learningActivity": {
-      "currentCourse": "Python for Everyone",
+      "currentCourse": "Effective Communication Skills",
       "currentTopic": "Nested Loops & Indentation",
       "difficultLesson": "Lesson 3: Multi-dimensional Matrix Iteration",
       "repeatedHelpRequestsCount": 5,
@@ -4511,7 +4511,7 @@ export const DEMO_COHORT_STUDENTS = [
     },
     "blockchainCerts": [
       {
-        "name": "Python for Everyone Foundation",
+        "name": "Effective Communication Foundation",
         "hash": "0x7d40...6001",
         "date": "Oct 2026"
       }
@@ -4554,7 +4554,7 @@ export const DEMO_COHORT_STUDENTS = [
       ],
       "accessibilityFriction": {
         "issueName": "Code Syntax Typing Speed Bottleneck",
-        "details": "On-screen virtual keyboard input took 12 minutes to type a 4-line Python function; timeout reached.",
+        "details": "Virtual keyboard dwell input took 10 minutes to formulate long communication response; needed dwell pacing adjustment.",
         "failureType": "Code Input Velocity Bottleneck",
         "severity": "Moderate",
         "struggleDuration": "29 mins on Binary Search Tree Rotations"
@@ -4754,7 +4754,7 @@ export const DEMO_COHORT_STUDENTS = [
       "inputPipeline": "Eyegaze Switch with Auto-Dwell Trigger"
     },
     "learningActivity": {
-      "currentCourse": "Python for Everyone",
+      "currentCourse": "Effective Communication Skills",
       "currentTopic": "Nested Loops & Indentation",
       "difficultLesson": "Lesson 3: Multi-dimensional Matrix Iteration",
       "repeatedHelpRequestsCount": 5,
@@ -4776,7 +4776,7 @@ export const DEMO_COHORT_STUDENTS = [
     },
     "blockchainCerts": [
       {
-        "name": "Python for Everyone Foundation",
+        "name": "Effective Communication Foundation",
         "hash": "0x384b...6ebb",
         "date": "Oct 2026"
       }
@@ -4810,7 +4810,7 @@ let _memoryInterventions = [
     studentId: "demo-blind-002",
     studentName: "Aman Halkude",
     mode: "blind",
-    topic: "Python Nested Loops & Indentation",
+    topic: "Public Speaking & Speech Pacing",
     recommendation: "Enabled acoustic pitch tone cues (pitch rises with indentation depth) and set speech rate to 0.85x.",
     timestamp: "Today at 08:30 AM",
     syncedToMeko: true
@@ -4873,7 +4873,7 @@ export function resetDemoCohortData() {
       studentId: "demo-blind-002",
       studentName: "Aman Halkude",
       mode: "blind",
-      topic: "Python Nested Loops & Indentation",
+      topic: "Public Speaking & Speech Pacing",
       recommendation: "Enabled acoustic pitch tone cues (pitch rises with indentation depth) and set speech rate to 0.85x.",
       timestamp: "Today at 08:30 AM",
       syncedToMeko: true
@@ -4920,7 +4920,7 @@ export function computeCohortAnalytics(students = null) {
       auditoryReliance: "100%",
       commonIssues: [
         "Unlabeled SVG diagrams lacking semantic hierarchy",
-        "Python indentation depth visual-only representation",
+        "Complex verbal tone inflection visual-only representation",
         "Speech-to-text recognition errors in background noise",
         "Dynamic DOM mutations missing aria-live assertions"
       ]

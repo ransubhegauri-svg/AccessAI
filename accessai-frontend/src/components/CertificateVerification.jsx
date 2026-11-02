@@ -215,9 +215,9 @@ export default function CertificateVerification() {
   const completedSpecializationsList =
     result?.metadata?.completed_major_certs ||
     result?.metadata?.specializations || [
-      "Full Stack Web Development Career Specialization",
-      "Python Software & Backend Engineering",
-      "Machine Learning & Assistive Artificial Intelligence",
+      "Professional Communication & Workplace Excellence",
+      "Executive Leadership & Strategic Communication",
+      "AI Literacy & Digital Leadership",
       "American Sign Language & Accessible Media Standards",
       "Database Architecture & Cryptographic Blockchain Verification",
     ];
