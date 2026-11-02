@@ -275,6 +275,9 @@ export const MekoService = {
    * Check connection status to live Meko MCP server
    */
   async checkMekoStatus() {
+    if (MEKO_CONFIG.USE_MOCK) {
+      return { status: "local_cache", note: "Running in offline/local mode" };
+    }
     try {
       const res = await API.get("/api/meko/status");
       return res.data;
@@ -380,6 +383,9 @@ export const MekoService = {
    * Feature 3: Live Decisons Recall for Check T
    */
   async fetchLiveDecisions() {
+    if (MEKO_CONFIG.USE_MOCK) {
+      return BUILD_DATAPACK_DECISIONS;
+    }
     try {
       const res = await API.get("/api/meko/decisions");
       return res.data?.results || [];
@@ -397,6 +403,16 @@ export const MekoService = {
    * Retrieves 90 demo students (30 Deaf, 30 Blind, 30 Motor)
    */
   async getDemoStudents(mode = "all", search = "") {
+    if (MEKO_CONFIG.USE_MOCK) {
+      const { getActiveDemoCohort } = await import("../data/simulatedCohortData");
+      let list = getActiveDemoCohort();
+      if (mode && mode !== "all") list = list.filter(s => s.mode === mode);
+      if (search) {
+        const q = search.toLowerCase();
+        list = list.filter(s => s.name.toLowerCase().includes(q) || s.email.toLowerCase().includes(q) || s.learningActivity?.currentTopic?.toLowerCase().includes(q));
+      }
+      return list;
+    }
     try {
       const res = await API.get(`/api/meko/demo/students?mode=${mode}&search=${encodeURIComponent(search)}`);
       return res.data?.students || [];
@@ -417,6 +433,10 @@ export const MekoService = {
    * Retrieves aggregated cognitive analytics across the 90 demo students
    */
   async getDemoAnalytics() {
+    if (MEKO_CONFIG.USE_MOCK) {
+      const { computeCohortAnalytics } = await import("../data/simulatedCohortData");
+      return computeCohortAnalytics();
+    }
     try {
       const res = await API.get("/api/meko/demo/analytics");
       return res.data;
@@ -432,6 +452,10 @@ export const MekoService = {
    */
   async sendDemoIntervention(item, customRecommendation = null) {
     const recommendation = customRecommendation || item.aiRecommendation || "Personalized accommodation guidance applied.";
+    if (MEKO_CONFIG.USE_MOCK) {
+      const { recordDemoIntervention } = await import("../data/simulatedCohortData");
+      return { entry: recordDemoIntervention(item, recommendation) };
+    }
     try {
       const res = await API.post("/api/meko/demo/intervene", {
         studentId: item.studentId || item.id,

@@ -65,12 +65,11 @@ export class TeacherTranscriber {
       };
 
       rec.onerror = (e) => {
-        console.warn("[TeacherTranscriber] Recognition error event:", e.error);
-        if (e.error === "no-speech") {
-          // Normal pause during speaking - do not treat as fatal error
+        if (e.error === "no-speech" || e.error === "aborted") {
+          // Normal pause during speaking or intentional abort - do not treat as error
           return;
         }
-        if (e.error === "aborted") return;
+        console.warn("[TeacherTranscriber] Recognition error event:", e.error);
 
         this.lastError = e.error;
         this.errorCount++;

@@ -10,7 +10,7 @@
  * - Sign language & accessible keyboard chat
  */
 
-import { supabase } from "./supabase";
+import { supabase, isSupabaseConfigured } from "./supabase";
 import { Peer } from "peerjs";
 
 const STORAGE_PREFIX = "accessai_meeting_msg_";
@@ -118,7 +118,7 @@ export class MeetingChannel {
 
     // 3. Supabase Realtime broadcast channel
     try {
-      if (supabase && supabase.channel) {
+      if (supabase && supabase.channel && isSupabaseConfigured()) {
         this.supabaseChannel = supabase
           .channel(`meeting:${this.meetingId}`)
           .on("broadcast", { event: "message" }, (payload) => {
@@ -184,6 +184,12 @@ export class MeetingChannel {
     if (!hasRTC) return;
 
     try {
+      if (this.peer && !this.peer.destroyed) {
+        try { this.peer.destroy(); } catch (e) {}
+      }
+      if (window['__peer_' + this.peerId]) {
+        try { window['__peer_' + this.peerId].destroy(); } catch (e) {}
+      }
       const peer = new Peer(this.peerId, {
         host: "0.peerjs.com",
         secure: true,
@@ -401,7 +407,7 @@ export class MeetingChannel {
       }
     }
 
-    if (this.supabaseChannel) {
+    if (this.supabaseChannel && isSupabaseConfigured()) {
       try {
         this.supabaseChannel.send({
           type: "broadcast",
