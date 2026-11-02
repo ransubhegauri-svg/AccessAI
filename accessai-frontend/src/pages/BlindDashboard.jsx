@@ -46,29 +46,30 @@ function useVoiceCommands(commands, active) {
   useEffect(() => {
     const unregister = registerContext(contextIdRef.current, (spokenText) => {
       setTranscript(spokenText);
-      let text = spokenText.toLowerCase().trim();
+      const originalText = spokenText.toLowerCase().trim();
       
+      let text = originalText;
       const fillers = ["take me to", "navigate to", "go to", "open", "show", "my", "the"];
       fillers.forEach(f => {
         text = text.replace(new RegExp(`\\b${f}\\b`, "g"), "").trim();
       });
 
-      let matched = false;
-      for (const [pattern, handler] of Object.entries(commandsRef.current)) {
-        if (text.includes(pattern)) {
+      // Sort patterns by length descending so multi-word commands match first
+      const sortedEntries = Object.entries(commandsRef.current || {}).sort((a, b) => b[0].length - a[0].length);
+
+      // Check original spoken text first
+      for (const [pattern, handler] of sortedEntries) {
+        if (originalText.includes(pattern)) {
           handler(spokenText);
-          matched = true;
-          break;
+          return;
         }
       }
-      
-      if (!matched) {
-        const originalText = spokenText.toLowerCase().trim();
-        for (const [pattern, handler] of Object.entries(commandsRef.current)) {
-          if (originalText.includes(pattern)) {
-            handler(spokenText);
-            break;
-          }
+
+      // Check normalized text without fillers
+      for (const [pattern, handler] of sortedEntries) {
+        if (text.includes(pattern)) {
+          handler(spokenText);
+          return;
         }
       }
     }, active);
@@ -110,6 +111,11 @@ export default function BlindDashboard() {
   const [activeCoursePlay, setActiveCoursePlay] = useState(null); // Course Player
   const [currentLessonIdx, setCurrentLessonIdx] = useState(0);
 
+  const activeCoursePlayRef = useRef(activeCoursePlay);
+  const currentLessonIdxRef = useRef(currentLessonIdx);
+  useEffect(() => { activeCoursePlayRef.current = activeCoursePlay; }, [activeCoursePlay]);
+  useEffect(() => { currentLessonIdxRef.current = currentLessonIdx; }, [currentLessonIdx]);
+
   const isOverview = activeTab === "home" && !selectedCourse && !activeCoursePlay;
 
   const handleBackClick = () => {
@@ -136,11 +142,7 @@ export default function BlindDashboard() {
   };
 
   const handleLaunchCourse = (course) => {
-    setSelectedCourse(course);
-    setActiveCoursePlay(course);
-    setCurrentLessonIdx(0);
-    setActiveTab("courses");
-    speak(`Starting course ${course.title}. Loading audio lessons.`);
+    handleStartCourse(course, 0);
   };
 
   // Lists & Filters
@@ -495,6 +497,169 @@ export default function BlindDashboard() {
     }
   };
 
+  // ── Voice Course Playback & Reading Handlers ──
+  const handleStartCourse = useCallback((courseToPlay, lessonIdx = 0) => {
+    if (!courseToPlay) return;
+
+    // Auto-enroll course so it can be played immediately
+    const uId = user?.uid || "blind_student";
+    setPurchasedIds(prev => {
+      if (!prev.includes(courseToPlay.id)) {
+        const updated = [...prev, courseToPlay.id];
+        try { localStorage.setItem(`accessai_purchased_courses_blind_${uId}`, JSON.stringify(updated)); } catch {}
+        return updated;
+      }
+      return prev;
+    });
+
+    setSelectedCourse(null);
+    setActiveCoursePlay(courseToPlay);
+    setCurrentLessonIdx(lessonIdx);
+    setActiveTab("courses");
+
+    const lesson = courseToPlay.lessons?.[lessonIdx] || courseToPlay.lessons?.[0];
+    if (!lesson) {
+      speak(`Starting ${courseToPlay.title}. ${courseToPlay.description}`, true);
+      return;
+    }
+
+    const exercise = lesson.practicalExercise;
+    const exerciseText = exercise 
+      ? `Hands-on practical exercise: ${exercise.title}. ${exercise.instruction}. Say 'do exercise' to complete it.`
+      : "";
+
+    const textToRead = `Starting ${courseToPlay.title}. Lesson ${lessonIdx + 1}: ${lesson.title}. ${lesson.content}. ${exerciseText} Say 'next lesson' to advance, 'previous lesson' to go back, 'repeat' to re-read, or 'stop' to pause reading.`;
+
+    speak(textToRead, true);
+  }, [user?.uid, speak]);
+
+  const handleReadCurrentLesson = useCallback((prefix = "") => {
+    const course = activeCoursePlayRef.current;
+    const lIdx = currentLessonIdxRef.current;
+    if (!course) {
+      if (courses.length > 0) {
+        speak("No course is currently playing. Say 'start course 1' to start reading Digital Independence With Screen Readers.", true);
+      }
+      return;
+    }
+    const lesson = course.lessons?.[lIdx];
+    if (!lesson) return;
+
+    const exercise = lesson.practicalExercise;
+    const isDone = exerciseDone[lesson.id];
+    const exerciseText = exercise
+      ? `Hands-on practical exercise: ${exercise.title}. ${exercise.instruction}. ${isDone ? "This exercise is completed." : "Say 'do exercise' to complete it."}`
+      : "";
+
+    const textToRead = `${prefix ? prefix + " " : ""}Lesson ${lIdx + 1}: ${lesson.title}. ${lesson.content}. ${exerciseText} Say 'next lesson' to advance, 'previous lesson' to go back, or 'stop' to pause.`;
+    speak(textToRead, true);
+  }, [courses, exerciseDone, speak]);
+
+  const handleNextLesson = useCallback(() => {
+    const course = activeCoursePlayRef.current;
+    const lIdx = currentLessonIdxRef.current;
+    if (!course) {
+      speak("No active course. Say 'start course 1' to start reading.", true);
+      return;
+    }
+    const totalLessons = course.lessons?.length || 0;
+    if (lIdx < totalLessons - 1) {
+      const nextIdx = lIdx + 1;
+      setCurrentLessonIdx(nextIdx);
+      const nextP = Math.min(80, Math.round(((nextIdx + 1) / totalLessons) * 80));
+      updateProgress(course.id, nextP, course.lessons[lIdx]?.id);
+
+      const nextLesson = course.lessons[nextIdx];
+      const exercise = nextLesson.practicalExercise;
+      const exerciseText = exercise
+        ? `Hands-on practical exercise: ${exercise.title}. ${exercise.instruction}. Say 'do exercise' to complete it.`
+        : "";
+
+      const textToRead = `Advancing to Lesson ${nextIdx + 1}: ${nextLesson.title}. ${nextLesson.content}. ${exerciseText} Say 'next lesson' or 'previous lesson'.`;
+      speak(textToRead, true);
+    } else {
+      const nextP = 100;
+      updateProgress(course.id, nextP, course.lessons[lIdx]?.id);
+      if (course.quiz) {
+        const opts = course.quiz.options?.map((o, i) => `Option ${i + 1}: ${o}`).join(". ");
+        speak(`You have reached the final lesson of ${course.title}. Now proceeding to the knowledge check quiz. Question: ${course.quiz.question}. ${opts}. Say option 1, option 2, option 3, or option 4 to submit your answer.`, true);
+      } else {
+        speak(`Congratulations! You have completed all lessons for ${course.title}. Say 'go back' to return to the catalog.`, true);
+      }
+    }
+  }, [updateProgress, speak]);
+
+  const handlePreviousLesson = useCallback(() => {
+    const course = activeCoursePlayRef.current;
+    const lIdx = currentLessonIdxRef.current;
+    if (!course) return;
+    if (lIdx > 0) {
+      const prevIdx = lIdx - 1;
+      setCurrentLessonIdx(prevIdx);
+      const prevLesson = course.lessons[prevIdx];
+      const textToRead = `Moving back to Lesson ${prevIdx + 1}: ${prevLesson.title}. ${prevLesson.content}. Say 'next lesson' or 'repeat'.`;
+      speak(textToRead, true);
+    } else {
+      speak(`You are already at Lesson 1 of ${course.title}. Say 'stop' to pause, or 'go back' to return to catalog.`, true);
+    }
+  }, [speak]);
+
+  const handleGoBack = useCallback(() => {
+    stop();
+    if (activeCoursePlayRef.current) {
+      setActiveCoursePlay(null);
+      speak("Stopped reading. Returned to course catalog. Say 'start course 1' or any course number to resume anytime.", true);
+      return;
+    }
+    if (selectedCourse) {
+      setSelectedCourse(null);
+      speak("Closed course details. Returned to catalog.", true);
+      return;
+    }
+    if (activeTab !== "home") {
+      navigateTo("home", "Navigated back to Home Dashboard.");
+      return;
+    }
+    speak("Already on Home Dashboard. Say 'courses' to explore courses or 'start course 1' to start reading.", true);
+  }, [selectedCourse, activeTab, navigateTo, stop, speak]);
+
+  const handleRunExerciseByVoice = useCallback(() => {
+    const course = activeCoursePlayRef.current;
+    const lIdx = currentLessonIdxRef.current;
+    if (!course) {
+      speak("No active course. Say 'start course 1' to begin.", true);
+      return;
+    }
+    const currentLesson = course.lessons?.[lIdx];
+    if (!currentLesson?.practicalExercise) {
+      speak("No practical exercise in this lesson. Say 'next lesson' to continue.", true);
+      return;
+    }
+    const lessonId = currentLesson.id;
+    const uId = user?.uid || "blind_student";
+    setExerciseDone(prev => {
+      const updated = { ...prev, [lessonId]: true };
+      try { localStorage.setItem(`accessai_exercises_done_blind_${uId}`, JSON.stringify(updated)); } catch {}
+      return updated;
+    });
+    const nextP = Math.min(80, Math.round(((lIdx + 1) / course.lessons.length) * 80));
+    updateProgress(course.id, nextP, lessonId);
+    speak(`Practical exercise verified! ${currentLesson.practicalExercise.successMessage}. Say 'next lesson' to continue or 'repeat' to review.`, true);
+  }, [user?.uid, updateProgress, speak]);
+
+  const handleSelectQuizOptionByVoice = useCallback((optIndex) => {
+    const course = activeCoursePlayRef.current;
+    if (!course || !course.quiz) {
+      speak("Quiz is not active.", true);
+      return;
+    }
+    const option = course.quiz.options?.[optIndex];
+    if (option) {
+      speak(`Selected option ${optIndex + 1}: ${option}. Checking answer.`, true);
+      handleTopicQuizSubmit(option);
+    }
+  }, [handleTopicQuizSubmit, speak]);
+
   // AI Tutor operations
   const handleSendMessage = () => {
     if (!chatInput.trim()) return;
@@ -537,23 +702,160 @@ export default function BlindDashboard() {
     return matchesSearch && matchesCategory && matchesDifficulty;
   });
 
-  // Global voice commands (low vision/blind friendly navigation)
+  // Global voice commands (low vision/blind friendly navigation & audio course reader)
   const { listening, transcript } = useVoiceCommands({
-    "course 1": () => { if (courses[0]) { setSelectedCourse(courses[0]); speak(`Opening details for ${courses[0].title}.`); } },
-    "course 2": () => { if (courses[1]) { setSelectedCourse(courses[1]); speak(`Opening details for ${courses[1].title}.`); } },
-    "course 3": () => { if (courses[2]) { setSelectedCourse(courses[2]); speak(`Opening details for ${courses[2].title}.`); } },
-    "course 4": () => { if (courses[3]) { setSelectedCourse(courses[3]); speak(`Opening details for ${courses[3].title}.`); } },
-    "course 5": () => { if (courses[4]) { setSelectedCourse(courses[4]); speak(`Opening details for ${courses[4].title}.`); } },
+    // Start course by voice (immediately plays and reads the course content out loud)
+    "start course 1": () => handleStartCourse(courses[0], 0),
+    "open course 1": () => handleStartCourse(courses[0], 0),
+    "play course 1": () => handleStartCourse(courses[0], 0),
+    "read course 1": () => handleStartCourse(courses[0], 0),
+    "course 1": () => handleStartCourse(courses[0], 0),
+
+    "start course 2": () => handleStartCourse(courses[1], 0),
+    "open course 2": () => handleStartCourse(courses[1], 0),
+    "play course 2": () => handleStartCourse(courses[1], 0),
+    "read course 2": () => handleStartCourse(courses[1], 0),
+    "course 2": () => handleStartCourse(courses[1], 0),
+
+    "start course 3": () => handleStartCourse(courses[2], 0),
+    "open course 3": () => handleStartCourse(courses[2], 0),
+    "play course 3": () => handleStartCourse(courses[2], 0),
+    "read course 3": () => handleStartCourse(courses[2], 0),
+    "course 3": () => handleStartCourse(courses[2], 0),
+
+    "start course 4": () => handleStartCourse(courses[3], 0),
+    "open course 4": () => handleStartCourse(courses[3], 0),
+    "play course 4": () => handleStartCourse(courses[3], 0),
+    "read course 4": () => handleStartCourse(courses[3], 0),
+    "course 4": () => handleStartCourse(courses[3], 0),
+
+    "start course 5": () => handleStartCourse(courses[4], 0),
+    "open course 5": () => handleStartCourse(courses[4], 0),
+    "play course 5": () => handleStartCourse(courses[4], 0),
+    "read course 5": () => handleStartCourse(courses[4], 0),
+    "course 5": () => handleStartCourse(courses[4], 0),
+
+    // Start / resume reading
+    "start learning": () => {
+      if (activeCoursePlayRef.current) handleReadCurrentLesson("Resuming.");
+      else if (courses.length > 0) handleStartCourse(courses[0], 0);
+    },
+    "start reading": () => {
+      if (activeCoursePlayRef.current) handleReadCurrentLesson();
+      else if (courses.length > 0) handleStartCourse(courses[0], 0);
+    },
+    "start course": () => {
+      if (activeCoursePlayRef.current) handleReadCurrentLesson();
+      else if (courses.length > 0) handleStartCourse(courses[0], 0);
+    },
+    "begin course": () => {
+      if (activeCoursePlayRef.current) handleReadCurrentLesson();
+      else if (courses.length > 0) handleStartCourse(courses[0], 0);
+    },
+    "begin learning": () => {
+      if (activeCoursePlayRef.current) handleReadCurrentLesson();
+      else if (courses.length > 0) handleStartCourse(courses[0], 0);
+    },
+    "start": () => {
+      if (activeCoursePlayRef.current) handleReadCurrentLesson("Resuming.");
+      else if (courses.length > 0) handleStartCourse(courses[0], 0);
+    },
+
+    // Stop / pause commands
+    "stop reading": () => { stop(); speak("Paused reading. Say 'resume' or 'repeat' to continue.", true); },
+    "stop audio": () => { stop(); speak("Paused audio.", true); },
+    "stop talking": () => stop(),
+    "pause reading": () => { stop(); speak("Paused reading. Say 'resume' or 'repeat' to continue.", true); },
+    "pause": () => { stop(); speak("Paused reading. Say 'resume' or 'repeat' to continue.", true); },
+    "be quiet": () => stop(),
+    "shut up": () => stop(),
+    "silence": () => stop(),
+    "halt": () => stop(),
+    "stop": () => stop(),
+
+    // Go back / exit commands
+    "go back": () => handleGoBack(),
+    "back to catalog": () => handleGoBack(),
+    "back to courses": () => handleGoBack(),
+    "back to library": () => handleGoBack(),
+    "close player": () => handleGoBack(),
+    "exit player": () => handleGoBack(),
+    "return to catalog": () => handleGoBack(),
+    "return": () => handleGoBack(),
+    "exit": () => handleGoBack(),
+    "back": () => handleGoBack(),
+
+    // Lesson navigation commands
+    "next lesson": () => handleNextLesson(),
+    "next topic": () => handleNextLesson(),
+    "next": () => handleNextLesson(),
+    "continue": () => {
+      if (activeCoursePlayRef.current) handleNextLesson();
+      else if (courses.length > 0) handleStartCourse(courses[0], 0);
+    },
+    "forward": () => handleNextLesson(),
+    "previous lesson": () => handlePreviousLesson(),
+    "last lesson": () => handlePreviousLesson(),
+    "previous": () => handlePreviousLesson(),
+    "repeat lesson": () => handleReadCurrentLesson("Repeating:"),
+    "repeat audio": () => handleReadCurrentLesson("Repeating:"),
+    "repeat": () => handleReadCurrentLesson("Repeating:"),
+    "read again": () => handleReadCurrentLesson(),
+    "read aloud": () => handleReadCurrentLesson(),
+    "read lesson": () => handleReadCurrentLesson(),
+    "read": () => handleReadCurrentLesson(),
+    "resume": () => handleReadCurrentLesson("Resuming:"),
+
+    // Exercise & Quiz commands
+    "do exercise": () => handleRunExerciseByVoice(),
+    "complete exercise": () => handleRunExerciseByVoice(),
+    "run exercise": () => handleRunExerciseByVoice(),
+    "practical exercise": () => handleRunExerciseByVoice(),
+    "exercise": () => handleRunExerciseByVoice(),
+    "practice": () => handleRunExerciseByVoice(),
+    "take quiz": () => {
+      const course = activeCoursePlayRef.current;
+      if (course?.quiz) {
+        const opts = course.quiz.options?.map((o, i) => `Option ${i + 1}: ${o}`).join(". ");
+        speak(`Knowledge Check Quiz. Question: ${course.quiz.question}. ${opts}. Say option 1, option 2, option 3, or option 4.`, true);
+      } else {
+        speak("No quiz is available for this course.", true);
+      }
+    },
+    "quiz question": () => {
+      const course = activeCoursePlayRef.current;
+      if (course?.quiz) {
+        const opts = course.quiz.options?.map((o, i) => `Option ${i + 1}: ${o}`).join(". ");
+        speak(`Quiz Question: ${course.quiz.question}. ${opts}. Say option 1, option 2, option 3, or option 4.`, true);
+      }
+    },
+    "quiz": () => {
+      const course = activeCoursePlayRef.current;
+      if (course?.quiz) {
+        const opts = course.quiz.options?.map((o, i) => `Option ${i + 1}: ${o}`).join(". ");
+        speak(`Knowledge Check Quiz. Question: ${course.quiz.question}. ${opts}. Say option 1, option 2, option 3, or option 4.`, true);
+      }
+    },
+    "option 1": () => handleSelectQuizOptionByVoice(0),
+    "option 2": () => handleSelectQuizOptionByVoice(1),
+    "option 3": () => handleSelectQuizOptionByVoice(2),
+    "option 4": () => handleSelectQuizOptionByVoice(3),
+    "answer 1": () => handleSelectQuizOptionByVoice(0),
+    "answer 2": () => handleSelectQuizOptionByVoice(1),
+    "answer 3": () => handleSelectQuizOptionByVoice(2),
+    "answer 4": () => handleSelectQuizOptionByVoice(3),
+
+    // Catalog & section navigation
     "list courses": () => {
       const list = courses.map((c, i) => `Course ${i + 1}: ${c.title}`).join(". ");
-      speak(`Here are the courses: ${list}. Say open course 1 to start.`, true);
+      speak(`Here are the 5 practical courses: ${list}. Say 'start course 1' or any course number to begin listening.`, true);
     },
-    "degree": () => navigateTo("degree-offer", "Navigated to Academic Honors Degree Pathway Offer. Complete 5 major certificates to earn your Bachelor of Accessible Leadership, Communication and Applied AI degree diploma with 500 bonus points."),
+    "degree": () => navigateTo("degree-offer", "Navigated to Academic Honors Degree Pathway Offer. Complete 5 practical certifications to earn your Bachelor of Assistive Digital Operations and Accessible Media degree with 500 bonus points."),
     "honors degree": () => navigateTo("degree-offer", "Navigated to Academic Honors Degree Pathway Offer."),
     "degree offer": () => navigateTo("degree-offer", "Navigated to Academic Honors Degree Pathway Offer."),
     "graduation": () => navigateTo("degree-offer", "Navigated to Academic Honors Degree Pathway Offer."),
     "degree progress": () => {
-      speak("Checking Academic Honors Degree progress. You need 5 major certificates to earn your Bachelor of Accessible Leadership, Communication and Applied AI degree diploma with First Class Honors and 500 MST Points.");
+      speak("Checking Academic Honors Degree progress. You need 5 practical major certificates to graduate with First Class Honors and 500 MST Points.");
     },
     "career": () => navigateTo("career-paths", "Navigated to Career Certificate Programs. 3 career tracks available."),
     "career paths": () => navigateTo("career-paths", "Navigated to Career Certificate Programs. 3 career tracks: Professional Communication, Executive Leadership, and AI Literacy."),
@@ -564,13 +866,17 @@ export default function BlindDashboard() {
     },
     "home": () => navigateTo("home", "Navigated to Home Dashboard."),
     "course": () => navigateTo("courses", "Navigated to Courses Library."),
+    "courses": () => navigateTo("courses", "Navigated to Courses Library."),
     "library": () => navigateTo("courses", "Navigated to Courses Library."),
     "learning": () => navigateTo("my-learning", "Navigated to Enrolled Courses."),
+    "my learning": () => navigateTo("my-learning", "Navigated to Enrolled Courses."),
     "tutor": () => navigateTo("ai-tutor", "Navigated to Audio AI Tutor."),
+    "ai tutor": () => navigateTo("ai-tutor", "Navigated to Audio AI Tutor."),
     "activity": () => navigateTo("activity", "Navigated to Activity Dashboard."),
     "certificate": () => navigateTo("profile", "Navigated to Profile and certificates page."),
     "profile": () => navigateTo("profile", "Navigated to Profile and certificates page."),
     "setting": () => navigateTo("settings", "Navigated to Accessibility settings."),
+    "settings": () => navigateTo("settings", "Navigated to Accessibility settings."),
     "points": () => {
       if (rewardPoints !== undefined && rewardPoints !== null) {
         speak(`You have ${rewardPoints} reward points earned on MST Blockchain.`);
@@ -605,9 +911,8 @@ export default function BlindDashboard() {
       connect();
     },
     "sign out": () => { speak("Signing out. Redirecting to landing page."); setTimeout(logout, 1200); },
-    "stop": () => stop(),
-    "help": () => speak("Commands: home, courses, learning, tutor, activity, settings, points, verify certificate, connect wallet, list courses, open course 1, stop, sign out.")
-  }, voiceActive && !speaking);
+    "help": () => speak("Available voice commands: 'start course 1' through 'start course 5', 'next lesson', 'previous lesson', 'do exercise', 'quiz', 'option 1' through 'option 4', 'repeat', 'stop', 'go back', 'courses', 'home', and 'help'.")
+  }, voiceActive);
 
   // Initial Greeting & Idle Prompt Logic
   useEffect(() => {
@@ -894,7 +1199,7 @@ export default function BlindDashboard() {
                       </div>
                       <div>
                         <button
-                          onClick={() => { setActiveCoursePlay(course); setCurrentLessonIdx(0); speak(`Loading audio course player for ${course.title}.`); }}
+                          onClick={() => handleStartCourse(course, 0)}
                           onFocus={() => speak(`Resume learning course ${course.title} button.`)}
                           className="w-full py-1.5 bg-[#fbbf24] text-black font-black text-xs rounded-xl"
                         >
@@ -1054,11 +1359,7 @@ export default function BlindDashboard() {
 
                       {!isOwned ? (
                         <button
-                          onClick={() => {
-                            handleBuyCourse(course.id);
-                            setActiveCoursePlay(course);
-                            setCurrentLessonIdx(0);
-                          }}
+                          onClick={() => handleStartCourse(course, 0)}
                           onFocus={() => speak(`Enroll and start learning ${course.title} button.`)}
                           className="px-5 py-3 bg-[#fbbf24] text-black rounded-xl text-xs font-black flex-1 sm:flex-none text-center hover:brightness-105"
                         >
@@ -1066,11 +1367,7 @@ export default function BlindDashboard() {
                         </button>
                       ) : (
                         <button
-                          onClick={() => {
-                            setActiveCoursePlay(course);
-                            setCurrentLessonIdx(0);
-                            speak(`Opening course player for ${course.title}. Progress is ${pct} percent.`, true);
-                          }}
+                          onClick={() => handleStartCourse(course, 0)}
                           onFocus={() => speak(`Continue learning ${course.title} button. Current progress ${pct} percent.`)}
                           className={`px-5 py-3 rounded-xl text-xs font-black flex-1 sm:flex-none text-center transition-all ${
                             pct === 100
@@ -1224,14 +1521,7 @@ export default function BlindDashboard() {
             </div>
 
             <button
-              onClick={() => {
-                if (!purchasedIds.includes(selectedCourse.id)) {
-                  handleBuyCourse(selectedCourse.id);
-                }
-                setActiveCoursePlay(selectedCourse);
-                setCurrentLessonIdx(0);
-                setSelectedCourse(null);
-              }}
+              onClick={() => handleStartCourse(selectedCourse, 0)}
               onFocus={() => speak("Enroll and launch player button.")}
               className="w-full py-4 bg-[#fbbf24] text-black font-black rounded-xl text-center text-sm"
             >
@@ -1245,10 +1535,7 @@ export default function BlindDashboard() {
           <div className="flex flex-col gap-6 animate-fadeIn max-w-4xl mx-auto w-full">
             <div className="flex justify-between items-center border-b border-[#fbbf24] pb-4">
               <button
-                onClick={() => {
-                  setActiveCoursePlay(null);
-                  speak("Exited course player. Returned to course library.");
-                }}
+                onClick={handleGoBack}
                 onFocus={() => speak("Close course player and return to dashboard button.")}
                 className={`px-4 py-2 font-bold text-xs rounded-lg border ${
                   isLight 
@@ -1379,7 +1666,7 @@ export default function BlindDashboard() {
               {/* Navigation Controls */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <button
-                  onClick={() => speak(activeCoursePlay.lessons[currentLessonIdx].content, true)}
+                  onClick={() => handleReadCurrentLesson("Repeating:")}
                   onFocus={() => speak("Repeat audio narration button.")}
                   className={`py-3 border rounded-xl text-xs font-bold transition-all ${
                     isLight 
@@ -1393,11 +1680,7 @@ export default function BlindDashboard() {
                 </button>
                 <button
                   disabled={currentLessonIdx === 0}
-                  onClick={() => {
-                    const prevIdx = currentLessonIdx - 1;
-                    setCurrentLessonIdx(prevIdx);
-                    speak(`Navigated to Lesson ${prevIdx + 1}: ${activeCoursePlay.lessons[prevIdx].title}.`, true);
-                  }}
+                  onClick={handlePreviousLesson}
                   onFocus={() => speak("Previous lesson button.")}
                   className={`py-3 border rounded-xl text-xs font-bold transition-all ${
                     isLight 
@@ -1411,13 +1694,7 @@ export default function BlindDashboard() {
                 </button>
                 <button
                   disabled={currentLessonIdx === activeCoursePlay.lessons.length - 1}
-                  onClick={() => {
-                    const nextIdx = currentLessonIdx + 1;
-                    setCurrentLessonIdx(nextIdx);
-                    const nextP = Math.min(80, Math.round(((nextIdx + 1) / activeCoursePlay.lessons.length) * 80));
-                    updateProgress(activeCoursePlay.id, nextP, activeCoursePlay.lessons[currentLessonIdx].id);
-                    speak(`Navigated to Lesson ${nextIdx + 1}: ${activeCoursePlay.lessons[nextIdx].title}.`, true);
-                  }}
+                  onClick={handleNextLesson}
                   onFocus={() => speak("Next lesson button.")}
                   className="py-3 bg-[#fbbf24] text-black font-black text-xs rounded-xl disabled:opacity-30"
                 >

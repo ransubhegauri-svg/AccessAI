@@ -499,3 +499,4 @@ export const BLIND_CAREER_OPPORTUNITIES = [
     tip: "ℹ️ Note: AccessAI provides skill development; actual client contracts and employment depend on individual applications and employer requirements."
   }
 ];
+

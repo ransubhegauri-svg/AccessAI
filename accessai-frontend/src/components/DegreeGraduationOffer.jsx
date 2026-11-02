@@ -4,6 +4,50 @@ import { getEffectiveStudentName } from "../utils/studentSession";
 import { useWallet } from "../context/WalletContext";
 import { useAuth } from "../context/AuthContext";
 
+const BLIND_SPECIALIZATIONS = [
+  {
+    id: "prog-screen-readers",
+    title: "Digital Independence With Screen Readers",
+    badge: "Assistive Tech Mastery",
+    icon: "visibility",
+    category: "Assistive Technology",
+    description: "Navigate computers, websites, documents, and online services independently using assistive technologies and screen readers.",
+  },
+  {
+    id: "prog-office-skills",
+    title: "Digital Office and Computer Skills",
+    badge: "Office Productivity",
+    icon: "work",
+    category: "Workplace Productivity",
+    description: "Develop practical computer skills for office work, administrative tasks, spreadsheets, and remote communication.",
+  },
+  {
+    id: "prog-ai-writing",
+    title: "Content Writing With AI",
+    badge: "AI Content Specialist",
+    icon: "edit_note",
+    category: "AI Productivity",
+    description: "Master AI tools to assist with writing articles, product descriptions, editing, research, and accessible content creation.",
+  },
+  {
+    id: "prog-accessibility-testing",
+    title: "Digital Accessibility Testing",
+    badge: "QA & Compliance",
+    icon: "accessibility_new",
+    category: "Accessibility QA",
+    description: "Identify digital accessibility barriers, keyboard traps, screen reader issues, and communicate actionable bug reports.",
+  },
+  {
+    id: "prog-audio-editing",
+    title: "Audio Editing and Podcast Production",
+    badge: "Audio Engineering",
+    icon: "mic",
+    category: "Digital Media",
+    description: "Record spoken-word content, edit vocal audio tracks, adjust loudness, and publish accessible podcast episodes.",
+  },
+];
+
+
 export default function DegreeGraduationOffer({
   mode = "general",
   speak = null,
@@ -40,6 +84,8 @@ export default function DegreeGraduationOffer({
   });
 
   const studentName = getEffectiveStudentName(user, mode);
+  const isBlindMode = mode === "blind";
+  const effectiveDegreeTitle = isBlindMode ? "Bachelor of Assistive Digital Operations & Accessible Media" : (degreeData.degreeTitle || "Bachelor of Accessible Leadership, Communication & Applied AI");
   const activeWallet = walletAccount || localStorage.getItem("accessai_wallet_address");
 
   // Fetch degree progress from backend
@@ -88,7 +134,7 @@ export default function DegreeGraduationOffer({
   useEffect(() => {
     if (speak && mode === "blind") {
       speak(
-        "Academic Honors Degree Pathway Offer. Complete any 5 major certificates to earn your Bachelor of Accessible Leadership, Communication and Applied AI with First Class Honors, plus 500 bonus MST reward points anchored on MST Blockchain.",
+        "Academic Honors Degree Pathway Offer. Complete any 5 practical certifications to earn your Bachelor of Assistive Digital Operations and Accessible Media with First Class Honors, plus 500 bonus MST reward points anchored on MST Blockchain.",
         true
       );
     }
@@ -231,7 +277,7 @@ export default function DegreeGraduationOffer({
           </div>
 
           <h2 className={`text-2xl md:text-3xl font-extrabold font-headline leading-tight mt-2 ${textTitleClass}`}>
-            {degreeData.degreeTitle}
+            {effectiveDegreeTitle}
           </h2>
 
           <div className="flex items-center gap-2 text-xs md:text-sm font-semibold text-amber-700">
@@ -330,7 +376,9 @@ export default function DegreeGraduationOffer({
         </h3>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-          {(degreeData.specializations?.length > 0
+          {(isBlindMode
+            ? BLIND_SPECIALIZATIONS
+            : degreeData.specializations?.length > 0
             ? degreeData.specializations
             : [
                 {
