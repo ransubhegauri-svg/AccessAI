@@ -290,3 +290,4 @@ class SignLanguageEngine:
     def clear_sentence(self):
         """Resets the accumulated sentence buffer."""
         self.sentence_buffer.clear()
+
