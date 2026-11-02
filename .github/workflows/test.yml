@@ -1,4 +1,4 @@
-name: Voice Agent CI
+name: Assistive AI Backend CI
 
 on:
   push:
@@ -23,6 +23,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run Voice Engine & Barge-In Tests
+      - name: Run Voice Agent & Barge-In Tests
         run: |
           python test_voice_agent.py
+
+      - name: Run Deaf/Mute Sign Language Tests
+        run: |
+          python test_sign_engine.py
