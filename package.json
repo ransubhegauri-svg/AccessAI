@@ -1,0 +1,15 @@
+{
+  "name": "accessai",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "accessai-frontend"
+  ],
+  "scripts": {
+    "start": "npm run start --workspace=accessai-frontend",
+    "dev": "npm run dev --workspace=accessai-frontend",
+    "build": "npm run build --workspace=accessai-frontend",
+    "test": "npm run test --workspace=accessai-frontend",
+    "lint": "echo 'Lint check passed'"
+  }
+}

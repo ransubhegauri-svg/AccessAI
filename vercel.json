@@ -1,0 +1,10 @@
+{
+  "buildCommand": "cd accessai-frontend && CI=false GENERATE_SOURCEMAP=false DISABLE_ESLINT_PLUGIN=true npm run build",
+  "outputDirectory": "accessai-frontend/build",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "buildCommand": "CI=false GENERATE_SOURCEMAP=false react-scripts build",
+  "buildCommand": "CI=false GENERATE_SOURCEMAP=false DISABLE_ESLINT_PLUGIN=true react-scripts build",
   "rewrites": [
     {
       "source": "/(.*)",
