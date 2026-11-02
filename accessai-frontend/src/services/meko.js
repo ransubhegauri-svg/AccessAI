@@ -47,7 +47,7 @@ export const DEFAULT_STUDENT_MEMORIES = COHORT_STUDENT_MEMORIES;
 const DEFAULT_SHARED_COURSE_KNOWLEDGE = [
   {
     id: "kb-1",
-    text: "Auditory Mnemonic for Python: 'def' stands for define - always followed by function name and colon.",
+    text: "Auditory Mnemonic for Public Speaking: The 3 P's - Preparation, Pacing, and Purposeful Pauses keep every audience engaged.",
     category: "promoted_lesson",
     contributor: "Priya (Blind Learner cohort)",
     promotedAt: new Date(Date.now() - 86400000).toISOString()
@@ -231,7 +231,7 @@ export const MekoService = {
   /**
    * Promotes a student insight or decision to shared knowledge (A2 / Check T Requirement)
    */
-  promoteToShared(sourceDatapack, memoryId, sharedDatapack = "course-python-shared") {
+  promoteToShared(sourceDatapack, memoryId, sharedDatapack = "course-leadership-shared") {
     const sourceMemories = this.getDatapack(sourceDatapack);
     const target = sourceMemories.find(m => m.id === memoryId);
     if (!target) return false;

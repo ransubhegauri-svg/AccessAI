@@ -304,7 +304,7 @@ function parseTokenURI(tokenURI) {
 
 /**
  * Universal verification function:
- * Accepts Certificate ID (e.g. "CERT-PYTHON-001"), Certificate Hash (0x...), or Token ID (#1 or 1).
+ * Accepts Certificate ID (e.g. "CERT-COMM-001"), Certificate Hash (0x...), or Token ID (#1 or 1).
  */
 export async function verifyCertificateOnChain(query) {
   const contract = getReadOnlyContract();

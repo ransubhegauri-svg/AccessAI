@@ -109,7 +109,7 @@ export const CAREER_PATHS = [
     ]
   },
   {
-    id: "career-python-dev",
+    id: "career-leadership-dev",
     title: "Executive Leadership & Strategic Communication Career Path",
     track: "Organizational Leadership & Strategic Communication",
     description: "Develop essential leadership and strategic communication competencies: empathetic people leadership, psychological safety, consensus building, strategic problem-solving, and crisis communication.",

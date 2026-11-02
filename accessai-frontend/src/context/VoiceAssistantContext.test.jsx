@@ -156,18 +156,18 @@ describe("Interruption phrase detection", () => {
   });
 
   test("isSelfEcho detects echo within threshold and ignores afterward", () => {
-    const spoken = "Opening details for Introduction to Python.";
+    const spoken = "Opening details for Effective Communication.";
     const now = Date.now();
 
     // Echo within 1.2s
-    expect(isSelfEcho("Opening details for Introduction to Python", spoken, now)).toBe(true);
-    expect(isSelfEcho("Introduction to Python", spoken, now)).toBe(true);
+    expect(isSelfEcho("Opening details for Effective Communication", spoken, now)).toBe(true);
+    expect(isSelfEcho("Effective Communication", spoken, now)).toBe(true);
 
     // Unrelated text within 1.2s is not echo
     expect(isSelfEcho("go home", spoken, now)).toBe(false);
 
     // Echo after 1.5s is not blocked
-    expect(isSelfEcho("Introduction to Python", spoken, now - 1500)).toBe(false);
+    expect(isSelfEcho("Effective Communication", spoken, now - 1500)).toBe(false);
   });
 });
 

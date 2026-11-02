@@ -207,7 +207,7 @@ export default function CertificateVerification() {
   const degreeTitleAttr =
     result?.metadata?.attributes?.find(a => a.trait_type === "Degree Title")?.value ||
     result?.metadata?.degree_title ||
-    "Bachelor of Accessible Software Engineering & Applied AI";
+    "Bachelor of Accessible Leadership, Communication & Applied AI";
   const honorsClassificationAttr =
     result?.metadata?.attributes?.find(a => a.trait_type === "Honors Classification")?.value ||
     result?.metadata?.honors ||
@@ -219,7 +219,7 @@ export default function CertificateVerification() {
       "Executive Leadership & Strategic Communication",
       "AI Literacy & Digital Leadership",
       "American Sign Language & Accessible Media Standards",
-      "Database Architecture & Cryptographic Blockchain Verification",
+      "Workplace Ethics & Professional Governance",
     ];
   const careerPathAttr = result?.metadata?.attributes?.find(a => a.trait_type === "Career Path")?.value || courseNameAttr;
   const skillsAttr = result?.metadata?.attributes?.find(a => a.trait_type === "Skills Acquired")?.value;

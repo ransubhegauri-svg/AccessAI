@@ -3,7 +3,7 @@ import MekoService from "../services/meko";
 
 export default function MekoContextInspector({
   studentDatapackId = "student-voice-memory",
-  sharedDatapackId = "course-python-shared",
+  sharedDatapackId = "course-leadership-shared",
   buildDatapackId = "accessai-build",
   mekoEnabled = true,
   onToggleMeko

@@ -69,7 +69,7 @@ export default function CareerLearningPaths({
   useEffect(() => {
     if (speak && mode === "blind") {
       speak(
-        "Career Certificate Program. Select from Web Development, Python Programming, or AI Fundamentals learning paths. Each path requires completing 5 courses and quizzes to earn a verified on-chain Career Readiness Certificate.",
+        "Career Certificate Program. Select from Professional Communication, Executive Leadership, or AI Literacy learning paths. Each path requires completing 5 courses and quizzes to earn a verified on-chain Career Readiness Certificate.",
         true
       );
     }

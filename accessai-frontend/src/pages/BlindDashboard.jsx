@@ -589,14 +589,14 @@ export default function BlindDashboard() {
     setTimeout(() => {
       let reply = "Understood. The audio tutor parses code syntax structures to give step-by-step programming advice.";
       const query = chatInput.toLowerCase();
-      if (query.includes("python") || query.includes("code") || query.includes("programming")) {
-        reply = "Python is highly readable and great for vocal learners. Def is used to declare a function.";
-      } else if (query.includes("java") || query.includes("oop")) {
-        reply = "Java is class-based and object-oriented. Extends is the keyword used to establish class inheritance.";
-      } else if (query.includes("dbms") || query.includes("sql") || query.includes("database")) {
-        reply = "Database Management Systems (DBMS) organize data. Use WHERE clauses in SELECT queries to filter rows.";
+      if (query.includes("communication") || query.includes("speak") || query.includes("listening")) {
+        reply = "Effective communication is grounded in active listening, purposeful pauses, and vocal empathy.";
+      } else if (query.includes("leadership") || query.includes("team") || query.includes("lead")) {
+        reply = "Inclusive leadership builds psychological safety so all team members feel empowered to share authentic ideas.";
+      } else if (query.includes("critical thinking") || query.includes("problem") || query.includes("why")) {
+        reply = "The 5-Whys root cause analysis technique peels away symptoms to uncover fundamental systemic drivers.";
       } else if (query.includes("quiz")) {
-        reply = "Auditory quiz generated: Which keyword is used to define a function in Python? Options: function, def, func, or define.";
+        reply = "Auditory quiz generated: What is the primary objective of active listening? Options: waiting to talk, understanding the speaker's intent fully, or critiquing vocal tone.";
       }
       setChatMessages(prev => [...prev, { sender: "ai", text: reply }]);
       speak(reply, true);
@@ -619,23 +619,23 @@ export default function BlindDashboard() {
 
   // Global voice commands (low vision/blind friendly navigation)
   const { listening, transcript } = useVoiceCommands({
-    "course 1": () => { setSelectedCourse(courses[0]); speak("Opening details for Introduction to Python."); },
-    "course 2": () => { setSelectedCourse(courses[1]); speak("Opening details for Java Programming Basics."); },
-    "course 3": () => { setSelectedCourse(courses[2]); speak("Opening details for Database Management and SQL."); },
-    "course 4": () => { setSelectedCourse(courses[3]); speak("Opening details for Web Development Basics."); },
+    "course 1": () => { setSelectedCourse(courses[0]); speak("Opening details for Effective Communication and Interpersonal Skills."); },
+    "course 2": () => { setSelectedCourse(courses[1]); speak("Opening details for Inclusive Leadership and Team Collaboration."); },
+    "course 3": () => { setSelectedCourse(courses[2]); speak("Opening details for Critical Thinking and Strategic Problem Solving."); },
+    "course 4": () => { setSelectedCourse(courses[3]); speak("Opening details for Public Speaking and Persuasive Presentation."); },
     "list courses": () => {
       const list = courses.map((c, i) => `Course ${i + 1}: ${c.title}`).join(". ");
       speak(`Here are the courses: ${list}. Say open course 1 to start.`, true);
     },
-    "degree": () => navigateTo("degree-offer", "Navigated to Academic Honors Degree Pathway Offer. Complete 5 major certificates to earn your Bachelor of Accessible Software Engineering and Applied AI degree diploma with 500 bonus points."),
+    "degree": () => navigateTo("degree-offer", "Navigated to Academic Honors Degree Pathway Offer. Complete 5 major certificates to earn your Bachelor of Accessible Leadership, Communication and Applied AI degree diploma with 500 bonus points."),
     "honors degree": () => navigateTo("degree-offer", "Navigated to Academic Honors Degree Pathway Offer."),
     "degree offer": () => navigateTo("degree-offer", "Navigated to Academic Honors Degree Pathway Offer."),
     "graduation": () => navigateTo("degree-offer", "Navigated to Academic Honors Degree Pathway Offer."),
     "degree progress": () => {
-      speak("Checking Academic Honors Degree progress. You need 5 major certificates to earn your Bachelor of Accessible Software Engineering and Applied AI degree diploma with First Class Honors and 500 MST Points.");
+      speak("Checking Academic Honors Degree progress. You need 5 major certificates to earn your Bachelor of Accessible Leadership, Communication and Applied AI degree diploma with First Class Honors and 500 MST Points.");
     },
     "career": () => navigateTo("career-paths", "Navigated to Career Certificate Programs. 3 career tracks available."),
-    "career paths": () => navigateTo("career-paths", "Navigated to Career Certificate Programs. 3 career tracks: Web Development, Python Programming, and AI Fundamentals."),
+    "career paths": () => navigateTo("career-paths", "Navigated to Career Certificate Programs. 3 career tracks: Professional Communication, Executive Leadership, and AI Literacy."),
     "career track": () => navigateTo("career-paths", "Navigated to Career Certificate Programs."),
     "career program": () => navigateTo("career-paths", "Navigated to Career Certificate Programs."),
     "career progress": () => {
@@ -1046,9 +1046,9 @@ export default function BlindDashboard() {
             <div className={`grid grid-cols-1 sm:grid-cols-4 gap-3 p-3 rounded-xl border-2 ${cardClass}`}>
               {[
                 { id: "all", label: "📚 All Classes" },
-                { id: "programming", label: "💻 Python & Java" },
-                { id: "databases", label: "🗄️ Database & SQL" },
-                { id: "development", label: "🌐 Web Dev Basics" }
+                { id: "communication", label: "🗣️ Communication Skills" },
+                { id: "leadership", label: "🤝 Inclusive Leadership" },
+                { id: "management", label: "💡 Critical Thinking & Strategy" }
               ].map(cat => (
                 <button
                   key={cat.id}
@@ -1373,11 +1373,11 @@ export default function BlindDashboard() {
               <div className="flex-1 flex flex-col justify-between gap-4 overflow-hidden">
                 <div className={`grid grid-cols-1 sm:grid-cols-2 gap-2 pb-2 border-b ${isLight ? "border-slate-200" : isDark ? "border-white/10" : "border-[#fbbf24]/50"}`}>
                   <button
-                    onClick={() => handleQuickQuestion("Explain Python def keyword and functions")}
-                    onFocus={() => speak("Ask prompt about Python functions button.")}
+                    onClick={() => handleQuickQuestion("Explain Active Listening and mindful presence techniques")}
+                    onFocus={() => speak("Ask prompt about Active Listening techniques button.")}
                     className={`p-3 rounded-xl text-xs text-left font-bold ${innerCardClass} ${isLight || isDark ? "text-slate-800" : "text-[#fbbf24]"}`}
                   >
-                    Prompt: Python def keyword?
+                    Prompt: Active Listening skills?
                   </button>
                   <button
                     onClick={() => handleQuickQuestion("Generate auditory programming quiz")}
@@ -1511,7 +1511,7 @@ export default function BlindDashboard() {
                 {[
                   { title: "Quick Learner", desc: "First purchase completed", icon: "verified" },
                   { title: "Weekly Master", desc: "Maintained a 7-day streak", icon: "local_fire_department" },
-                  { title: "Python Master", desc: "Python quiz 100%", icon: "school" }
+                  { title: "Leadership Master", desc: "Leadership quiz 100%", icon: "psychology" }
                 ].map((badge, idx) => (
                   <div 
                     key={idx} 

@@ -1658,7 +1658,7 @@ export default function TeacherDashboard() {
       </div>
 
       {/* ── Meko Context Inspector ── */}
-      <MekoContextInspector studentDatapackId="student-voice-memory" sharedDatapackId="course-python-shared" buildDatapackId="accessai-build" />
+      <MekoContextInspector studentDatapackId="student-voice-memory" sharedDatapackId="course-leadership-shared" buildDatapackId="accessai-build" />
 
       {/* ── Student Profile Drawer ── */}
       {selectedStudent && (

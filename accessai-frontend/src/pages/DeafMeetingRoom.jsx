@@ -1484,7 +1484,7 @@ export default function DeafMeetingRoom() {
       {/* ── Meko Context Inspector ── */}
       <MekoContextInspector 
         studentDatapackId="student-deaf-memory" 
-        sharedDatapackId="course-python-shared" 
+        sharedDatapackId="course-leadership-shared" 
         buildDatapackId="accessai-build" 
       />
     </div>

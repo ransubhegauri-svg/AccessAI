@@ -29,7 +29,7 @@ export default function DegreeGraduationOffer({
     completedCount: 0,
     completionPercentage: 0,
     isEligible: false,
-    degreeTitle: "Bachelor of Accessible Software Engineering & Applied AI",
+    degreeTitle: "Bachelor of Accessible Leadership, Communication & Applied AI",
     honorsClassification: "First Class Honors with Distinction",
     graduationBonusPoints: 500,
     offerHeadline: "🎓 Academic Degree Pathway: Complete 5 Major Certificates to Graduate with Honors!",
@@ -88,7 +88,7 @@ export default function DegreeGraduationOffer({
   useEffect(() => {
     if (speak && mode === "blind") {
       speak(
-        "Academic Honors Degree Pathway Offer. Complete any 5 major certificates to earn your Bachelor of Accessible Software Engineering and Applied AI with First Class Honors, plus 500 bonus MST reward points anchored on MST Blockchain.",
+        "Academic Honors Degree Pathway Offer. Complete any 5 major certificates to earn your Bachelor of Accessible Leadership, Communication and Applied AI with First Class Honors, plus 500 bonus MST reward points anchored on MST Blockchain.",
         true
       );
     }
@@ -100,7 +100,7 @@ export default function DegreeGraduationOffer({
       setLoading(true);
       const uId = user?.uid || `demo-uid-${mode}`;
       // Simulate 5 completed courses in localStorage and trigger progress recalculation
-      const mockCompletions = ["web-101", "py-101", "ai-101", "course-1", "databases-101"];
+      const mockCompletions = ["web-101", "lead-101", "ai-101", "course-1", "course-2"];
       localStorage.setItem(
         `accessai_career_completions_${uId}`,
         JSON.stringify(mockCompletions)
@@ -166,7 +166,7 @@ export default function DegreeGraduationOffer({
 
         if (speak) {
           speak(
-            `Congratulations ${studentName}! Your Bachelor of Accessible Software Engineering and Applied AI degree diploma has been officially minted on MST Blockchain with 500 bonus points!`,
+            `Congratulations ${studentName}! Your Bachelor of Accessible Leadership, Communication and Applied AI degree diploma has been officially minted on MST Blockchain with 500 bonus points!`,
             true
           );
         }
@@ -334,7 +334,7 @@ export default function DegreeGraduationOffer({
             ? degreeData.specializations
             : [
                 {
-                  id: "prog-web-dev",
+                  id: "prog-comm-excellence",
                   title: "Professional Communication & Workplace Excellence",
                   badge: "Communication Mastery",
                   icon: "forum",
@@ -343,7 +343,7 @@ export default function DegreeGraduationOffer({
                   isCompleted: completedCount >= 1,
                 },
                 {
-                  id: "prog-python-dev",
+                  id: "prog-leadership-dev",
                   title: "Executive Leadership & Strategic Communication",
                   badge: "Leadership Mastery",
                   icon: "psychology",
@@ -370,12 +370,12 @@ export default function DegreeGraduationOffer({
                   isCompleted: completedCount >= 4,
                 },
                 {
-                  id: "prog-db-systems",
-                  title: "Database Architecture & Cryptographic Blockchain Verification",
-                  badge: "Data & Ledger Systems",
-                  icon: "database",
-                  category: "Decentralized Systems",
-                  description: "Relational schemas, SQL optimization, and ERC-721 ledger immutability on MST.",
+                  id: "prog-ethics-governance",
+                  title: "Workplace Ethics & Professional Governance",
+                  badge: "Corporate Governance",
+                  icon: "gavel",
+                  category: "Ethics & Governance",
+                  description: "Principled negotiation, corporate ethics, compliance standards, and stakeholder trust.",
                   isCompleted: completedCount >= 5,
                 },
               ]

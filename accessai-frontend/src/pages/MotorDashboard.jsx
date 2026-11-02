@@ -861,16 +861,14 @@ export default function MotorDashboard() {
     setTimeout(() => {
       let responseText = "Understood. The motor adaptive framework translates complex wrist triggers into binary switch scanning sequences.";
       const query = chatInput.toLowerCase();
-      if (query.includes("python") || query.includes("code") || query.includes("programming")) {
-        responseText = "Python is highly readable and great for motor-adaptive coding. AccessAI supports coding exercises optimized for switch scanning.";
-      } else if (query.includes("java") || query.includes("oop")) {
-        responseText = "Java is a class-based, object-oriented language. Try using our voice dictation tools to write boilerplate Java classes.";
-      } else if (query.includes("dbms") || query.includes("sql") || query.includes("database")) {
-        responseText = "Database Management Systems (DBMS) organize table schemas. Write SELECT queries using switch keys or eye-gaze selections.";
+      if (query.includes("communication") || query.includes("speak") || query.includes("listening")) {
+        responseText = "Effective communication is grounded in active listening, purposeful pauses, and vocal empathy.";
+      } else if (query.includes("leadership") || query.includes("team") || query.includes("lead")) {
+        responseText = "Inclusive leadership builds psychological safety so all team members feel empowered to share authentic ideas.";
       } else if (query.includes("calibration") || query.includes("eye")) {
         responseText = "Eye-tracking is configured with a 1.4 second dwell. You can shorten this dwell duration in your Accessibility Settings tab.";
       } else if (query.includes("quiz")) {
-        responseText = "Let's begin the quiz. Question: Which keyword defines a function in Python? Options: function, def, var, or func.";
+        responseText = "Let's begin the quiz. Question: What is the primary objective of active listening? Options: waiting to talk, understanding the speaker's intent fully, or critiquing vocal tone.";
       }
       setChatMessages(prev => [...prev, { sender: "ai", text: responseText }]);
       speak(responseText);
@@ -1526,9 +1524,9 @@ export default function MotorDashboard() {
             <div className={`grid grid-cols-2 md:grid-cols-4 gap-3 ${innerCardClass} p-4 rounded-2xl`}>
               {[
                 { id: "all", label: "📚 All Classes" },
-                { id: "programming", label: "💻 Python & Java" },
-                { id: "databases", label: "🗄️ Database & SQL" },
-                { id: "development", label: "🌐 Web Dev Basics" }
+                { id: "communication", label: "🗣️ Communication Skills" },
+                { id: "leadership", label: "🤝 Inclusive Leadership" },
+                { id: "management", label: "💡 Critical Thinking & Strategy" }
               ].map(cat => (
                 <DwellButton
                   key={cat.id}
@@ -1869,11 +1867,11 @@ export default function MotorDashboard() {
                     onClick={() => handleQuickQuestion("Explain Eye Calibration setting")}
                   />
                   <DwellButton
-                    label="Explain Python function definition syntax"
+                    label="Explain Active Listening and mindful presence"
                     color="indigo"
                     dwellEnabled={dwellEnabled}
                     dwell={dwell}
-                    onClick={() => handleQuickQuestion("Explain Python function syntax")}
+                    onClick={() => handleQuickQuestion("Explain Active Listening techniques")}
                   />
                 </div>
 
@@ -2005,8 +2003,8 @@ export default function MotorDashboard() {
                   <h4 className="text-xs font-bold text-slate-400 uppercase">Focus categories</h4>
                   <div className="flex flex-col gap-3">
                     {[
-                      { topic: "Python Basics", pct: 95, color: "bg-cyan-500" },
-                      { topic: "Java OOP & Classes", pct: 40, color: "bg-indigo-500" }
+                      { topic: "Effective Communication", pct: 95, color: "bg-cyan-500" },
+                      { topic: "Inclusive Leadership", pct: 85, color: "bg-indigo-500" }
                     ].map((item, idx) => (
                       <div key={idx} className="flex flex-col gap-1.5 text-xs">
                         <div className="flex justify-between">
@@ -2024,7 +2022,7 @@ export default function MotorDashboard() {
                 <div className="bg-gradient-to-tr from-cyan-955/20 to-slate-900/40 border border-cyan-500/10 p-6 rounded-2xl">
                   <h4 className="text-xs font-bold text-cyan-400 uppercase">AI Recommendation</h4>
                   <p className="text-xs text-slate-400 leading-relaxed mt-2">
-                    Reviewing Python syntax and structures using Dwell timer builds coding recall 15% faster.
+                    Reviewing communication frameworks and vocal modulation using Dwell timer builds conversational recall 15% faster.
                   </p>
                 </div>
               </div>
@@ -2037,7 +2035,7 @@ export default function MotorDashboard() {
                 {[
                   { title: "Switch Mastery", desc: "Completed 10 cycles", icon: "verified" },
                   { title: "Dwell Champion", desc: "No manual clicks used", icon: "local_fire_department" },
-                  { title: "Python Master", desc: "Python quiz 100%", icon: "school" },
+                  { title: "Leadership Master", desc: "Leadership quiz 100%", icon: "psychology" },
                   { title: "Verbal Communicator", desc: "Spoke 20+ voice queries", icon: "forum" }
                 ].map((badge, idx) => (
                   <div key={idx} className="bg-slate-900/40 border border-white/5 p-6 rounded-2xl flex flex-col items-center gap-3 text-center">
