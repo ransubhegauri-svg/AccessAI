@@ -31,12 +31,11 @@ Autonomous, low-latency Multi-Modal Accessibility microservice built specificall
 ## 🏗️ Architecture
 
 ```
-accessai-backend/
-├── app.py                      # Multi-Modal Flask REST API microservice
-├── config.py                   # Port, latency targets, and locale settings
-├── gesture_controller.py       # Standalone MediaPipe gesture controller CLI & DOM bridge
-├── requirements.txt            # Python dependencies
-├── README.md
+accessai-platform/
+├── app.py                      # Multi-Modal Assistive AI REST microservice
+├── config.py                   # Service configurations & latency targets
+├── gesture_controller.py       # MediaPipe gesture controller CLI & DOM bridge
+├── requirements.txt            # Python microservice dependencies
 ├── mobility_engine/            # ♿ Motor & Mobility Assistive Package
 │   ├── __init__.py             # Exports TremorFilter, HeadPointerMapper, DwellTimer, SwitchScanner, MekoMotorProfile
 │   ├── head_tracker_filter.py  # Adaptive EMA tremor filter & screen pointer projection
@@ -55,6 +54,18 @@ accessai-backend/
 │   ├── indic_transliterate.py  # Trilingual phonetics & name normalizer
 │   ├── intent_router.py        # Accessibility mode and command parser
 │   └── meko_voice_memory.py    # Meko auditory rate calibration
+├── backend/                    # 🚀 Core Platform Backend (Firebase, Career Paths, Degrees, Certificates)
+│   ├── app.py                  # Core backend REST API
+│   ├── database/db.py          # Firebase Firestore database client
+│   ├── routes/                 # Auth, Courses, Degrees, Certificates, Rewards, Blockchain
+│   └── services/               # Certificate Generator, Blockchain Service, Rewards
+├── blockchain/                 # ⛓️ MST Blockchain Immutability Suite
+│   ├── contracts/              # AccessAILearning.sol smart contract
+│   ├── hardhat.config.ts       # MST Testnet RPC & deployment configuration
+│   └── scripts/deploy.ts       # On-chain contract deployment scripts
+├── accessai-frontend/          # 💻 Full React Multi-Modal Assistive UI
+│   ├── public/models/          # 3D Sign Language AI Avatar (sign-avatar.glb)
+│   └── src/pages/              # Blind, Deaf, Motor, Dyslexia, ADHD, Teacher dashboards
 ├── test_mobility_engine.py     # Motor & mobility unit/API test suite (20 tests)
 ├── test_sign_engine.py         # Sign language & meeting test suite (14 tests)
 └── test_voice_agent.py         # Voice agent test suite (12 tests)

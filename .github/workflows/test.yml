@@ -1,4 +1,4 @@
-name: Assistive AI Backend CI
+name: Assistive AI & Platform Backend CI
 
 on:
   push:
@@ -30,3 +30,7 @@ jobs:
       - name: Run Deaf/Mute Sign Language Tests
         run: |
           python test_sign_engine.py
+
+      - name: Run Motor & Mobility Engine Tests
+        run: |
+          python test_mobility_engine.py

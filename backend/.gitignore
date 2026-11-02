@@ -1,0 +1,11 @@
+venv/
+venv_win/
+serviceAccountKey.json
+__pycache__/
+*.pyc
+.env
+generated_certificates/
+*.pdf
+*.png
+*.json
+!vercel.json

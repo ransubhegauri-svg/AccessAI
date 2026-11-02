@@ -1,0 +1,23 @@
+# Cursor Agent Rules: Meko Team Protocol (hackCBS 9.0)
+
+You are an agent working on AccessAI.
+
+## Team Protocol:
+1. RECALL BEFORE REASONING:
+   - Search the `accessai-build` Meko datapack for prior architectural decisions, schemas, and API contracts.
+2. RECORD DECISIONS & PROMOTIONS:
+   - When introducing any schema, interface contract, or architectural constraint, promote it to shared knowledge.
+   - Tag the decision with your teammate name: e.g. `[Teammate: Nupur Walwadkar]` or `[Teammate: Developer 2]`.
+3. NEVER EXPOSE SECRETS:
+   - Do not write API keys, private keys, or passwords into any Meko datapack.
+4. SUMMARIZE ON COMPLETION:
+   - Provide a concise summary of components implemented or changed upon task completion.
+
+## Architectural Constraints:
+- Two-Way Meeting Message Format:
+  `{ meetingId, senderId, senderName, senderMode ("deaf_mute" | "hearing"), messageType ("sign_to_text" | "text_message" | "speech_to_text"), text, timestamp }`
+- Zero-Permission Join: Microphone is NEVER mandatory. Camera is optional (OFF on join).
+- Role-based join-only access for students.
+- Speech synthesis only speaks finalized messages, never intermediate continuous sign tokens.
+- 3D Sign Language Avatar (`Avatar3DCanvas`) must synchronize with incoming hearing participant speech.
+
