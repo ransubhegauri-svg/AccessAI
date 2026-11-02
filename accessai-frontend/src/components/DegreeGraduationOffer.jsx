@@ -6,7 +6,7 @@ import { useAuth } from "../context/AuthContext";
 
 const BLIND_SPECIALIZATIONS = [
   {
-    id: "prog-screen-readers",
+    id: "blind-course-1",
     title: "Digital Independence With Screen Readers",
     badge: "Assistive Tech Mastery",
     icon: "visibility",
@@ -14,7 +14,7 @@ const BLIND_SPECIALIZATIONS = [
     description: "Navigate computers, websites, documents, and online services independently using assistive technologies and screen readers.",
   },
   {
-    id: "prog-office-skills",
+    id: "blind-course-2",
     title: "Digital Office and Computer Skills",
     badge: "Office Productivity",
     icon: "work",
@@ -22,7 +22,7 @@ const BLIND_SPECIALIZATIONS = [
     description: "Develop practical computer skills for office work, administrative tasks, spreadsheets, and remote communication.",
   },
   {
-    id: "prog-ai-writing",
+    id: "blind-course-3",
     title: "Content Writing With AI",
     badge: "AI Content Specialist",
     icon: "edit_note",
@@ -30,7 +30,7 @@ const BLIND_SPECIALIZATIONS = [
     description: "Master AI tools to assist with writing articles, product descriptions, editing, research, and accessible content creation.",
   },
   {
-    id: "prog-accessibility-testing",
+    id: "blind-course-4",
     title: "Digital Accessibility Testing",
     badge: "QA & Compliance",
     icon: "accessibility_new",
@@ -38,7 +38,7 @@ const BLIND_SPECIALIZATIONS = [
     description: "Identify digital accessibility barriers, keyboard traps, screen reader issues, and communicate actionable bug reports.",
   },
   {
-    id: "prog-audio-editing",
+    id: "blind-course-5",
     title: "Audio Editing and Podcast Production",
     badge: "Audio Engineering",
     icon: "mic",
@@ -432,6 +432,12 @@ export default function DegreeGraduationOffer({
             return (
               <div
                 key={spec.id || idx}
+                tabIndex={0}
+                onFocus={() => {
+                  if (speak && isBlindMode) {
+                    speak(`Specialization ${idx + 1}: ${spec.title}. Status: ${isDone ? "Earned" : "In Progress"}. ${spec.description}`);
+                  }
+                }}
                 className={`p-4 rounded-2xl border transition-all ${
                   isDone
                     ? "bg-emerald-50/70 border-emerald-300 text-emerald-950 shadow-xs"
@@ -472,6 +478,30 @@ export default function DegreeGraduationOffer({
                   <span className="font-medium text-on-surface-variant">{spec.category}</span>
                   <span className="font-bold text-primary">{spec.badge}</span>
                 </div>
+
+                {onNavigateToCourse && (
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      if (speak) speak(`Opening course: ${spec.title}`, true);
+                      onNavigateToCourse(spec.id);
+                    }}
+                    onFocus={() => {
+                      if (speak) speak(`Course: ${spec.title}. Status: ${isDone ? "Earned" : "In Progress"}. Click or press Enter to launch.`);
+                    }}
+                    className={`mt-3 w-full py-2 px-3 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
+                      isDone
+                        ? "bg-emerald-600 hover:bg-emerald-700 text-white"
+                        : "bg-[#fbbf24] hover:brightness-105 text-black font-black"
+                    }`}
+                  >
+                    <span className="material-symbols-outlined !text-sm">
+                      {isDone ? "replay" : "play_arrow"}
+                    </span>
+                    <span>{isDone ? "Review Course" : "Start Course"}</span>
+                  </button>
+                )}
               </div>
             );
           })}

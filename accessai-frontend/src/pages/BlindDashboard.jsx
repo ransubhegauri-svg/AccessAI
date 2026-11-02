@@ -1038,7 +1038,7 @@ export default function BlindDashboard() {
       </aside>
 
       {/* ── MAIN AUDITORY AND VISUAL AREA ── */}
-      <main className="flex-1 h-screen max-h-screen overflow-y-auto lg:overflow-y-hidden p-4 relative flex flex-col gap-3">
+      <main className="flex-1 min-w-0 h-screen max-h-screen overflow-y-auto p-4 md:p-6 relative flex flex-col gap-4 pb-28">
         
         {/* Status indicator banner */}
         <div className={`flex justify-between items-center p-2.5 px-4 rounded-xl border ${
@@ -1223,6 +1223,12 @@ export default function BlindDashboard() {
               cardClass={cardClass}
               innerCardClass={innerCardClass}
               textTitleClass={textTitleClass}
+              onNavigateToCourse={(courseId) => {
+                const targetCourse = courses.find(c => c.id === courseId) || courses[0];
+                if (targetCourse) {
+                  handleStartCourse(targetCourse, 0);
+                }
+              }}
             />
           </div>
         )}
@@ -1266,6 +1272,12 @@ export default function BlindDashboard() {
               cardClass={cardClass}
               innerCardClass={innerCardClass}
               textTitleClass={textTitleClass}
+              onNavigateToCourse={(courseId) => {
+                const targetCourse = courses.find(c => c.id === courseId) || courses[0];
+                if (targetCourse) {
+                  handleStartCourse(targetCourse, 0);
+                }
+              }}
             />
 
             {/* Keyboard-accessible categories */}
