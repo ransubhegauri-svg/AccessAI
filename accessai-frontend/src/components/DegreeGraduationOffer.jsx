@@ -47,6 +47,49 @@ const BLIND_SPECIALIZATIONS = [
   },
 ];
 
+const DEAF_SPECIALIZATIONS = [
+  {
+    id: "deaf-course-1",
+    title: "Graphic Design with Canva",
+    badge: "Visual Design Mastery",
+    icon: "palette",
+    category: "Graphic Design",
+    description: "Visual branding, typography hierarchy, marketing flyers, social media sets, and accessible colour contrast.",
+  },
+  {
+    id: "deaf-course-2",
+    title: "Digital Office and Computer Skills",
+    badge: "Office Administration",
+    icon: "work",
+    category: "Office Productivity",
+    description: "Spreadsheets, business documents, professional email, cloud collaboration, and asynchronous coordination.",
+  },
+  {
+    id: "deaf-course-3",
+    title: "Video Editing and Captioning",
+    badge: "Accessible Media Production",
+    icon: "closed_caption",
+    category: "Accessible Media",
+    description: "Timeline video editing, caption synchronization, SRT subtitle generation, and transcription QA.",
+  },
+  {
+    id: "deaf-course-4",
+    title: "Content Writing with AI",
+    badge: "AI Content Specialist",
+    icon: "edit_note",
+    category: "Content & Copywriting",
+    description: "Clear business writing, social media captions, product copywriting, and ethical AI fact-checking.",
+  },
+  {
+    id: "deaf-course-5",
+    title: "Digital Marketing and Social Media",
+    badge: "Digital Strategy Mastery",
+    icon: "trending_up",
+    category: "Digital Marketing",
+    description: "Content calendars, campaign planning, audience engagement metrics, and multi-channel promotion.",
+  },
+];
+
 
 export default function DegreeGraduationOffer({
   mode = "general",
@@ -85,7 +128,12 @@ export default function DegreeGraduationOffer({
 
   const studentName = getEffectiveStudentName(user, mode);
   const isBlindMode = mode === "blind";
-  const effectiveDegreeTitle = isBlindMode ? "Bachelor of Assistive Digital Operations & Accessible Media" : (degreeData.degreeTitle || "Bachelor of Accessible Leadership, Communication & Applied AI");
+  const isDeafMode = mode === "deaf";
+  const effectiveDegreeTitle = isBlindMode
+    ? "Bachelor of Assistive Digital Operations & Accessible Media"
+    : isDeafMode
+    ? "Bachelor of Visual Design, Digital Operations & Accessible Media"
+    : (degreeData.degreeTitle || "Bachelor of Accessible Leadership, Communication & Applied AI");
   const activeWallet = walletAccount || localStorage.getItem("accessai_wallet_address");
 
   // Fetch degree progress from backend
@@ -378,6 +426,8 @@ export default function DegreeGraduationOffer({
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
           {(isBlindMode
             ? BLIND_SPECIALIZATIONS
+            : isDeafMode
+            ? DEAF_SPECIALIZATIONS
             : degreeData.specializations?.length > 0
             ? degreeData.specializations
             : [
