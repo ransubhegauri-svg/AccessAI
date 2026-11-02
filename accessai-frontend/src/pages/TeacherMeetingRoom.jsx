@@ -357,25 +357,25 @@ export default function TeacherMeetingRoom() {
   const latestStudentMsg = messages.filter((m) => m.senderId !== (user?.uid || user?.id || "teacher-host")).slice(-1)[0];
 
   return (
-    <div className="min-h-screen bg-[#070d1e] text-slate-100 font-sans flex flex-col">
+    <div className="min-h-screen bg-[#F9FBFE] text-slate-900 font-sans flex flex-col select-none selection:bg-blue-500/20">
       {/* ── Top Navigation Bar ── */}
-      <header className="h-16 px-6 bg-[#0d162e] border-b border-slate-800 flex items-center justify-between shrink-0">
+      <header className="h-16 px-6 bg-white/95 border-b border-[#E2EDF8] flex items-center justify-between shrink-0 shadow-2xs backdrop-blur-md">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center">
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#0866F5] to-sky-400 flex items-center justify-center text-white shadow-md shadow-blue-500/20">
             <span className="material-symbols-outlined !text-xl">cast_for_education</span>
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <h1 className="text-sm font-bold text-white tracking-wide">
+              <h1 className="text-sm md:text-base font-extrabold text-[#10265C] tracking-tight">
                 Teacher Video Studio
               </h1>
-              <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-[10px] font-bold uppercase tracking-wider flex items-center gap-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-[10px] font-bold uppercase tracking-wider flex items-center gap-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                 Live Broadcast
               </span>
             </div>
-            <p className="text-[11px] text-slate-400 font-mono">
-              Room ID: <span className="text-sky-400">{meetingId}</span> • Host: {teacherName}
+            <p className="text-[11px] text-slate-500 font-mono">
+              Room ID: <span className="text-[#0866F5] font-semibold">{meetingId}</span> • Host: {teacherName}
             </p>
           </div>
         </div>
@@ -383,7 +383,7 @@ export default function TeacherMeetingRoom() {
         <div className="flex items-center gap-3">
           <button
             onClick={handleCopyInviteLink}
-            className="px-3.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-200 border border-slate-700 flex items-center gap-1.5 transition-all cursor-pointer"
+            className="px-3.5 py-1.5 rounded-xl bg-white hover:bg-slate-50 text-xs font-semibold text-slate-700 border border-slate-200 shadow-2xs flex items-center gap-1.5 transition-all cursor-pointer"
             title="Copy accessible link for Deaf/Mute students"
           >
             <span className="material-symbols-outlined !text-base">
@@ -394,7 +394,7 @@ export default function TeacherMeetingRoom() {
 
           <button
             onClick={handleEndMeeting}
-            className="px-4 py-1.5 rounded-xl bg-rose-600 hover:bg-rose-500 text-xs font-bold text-white transition-all shadow-sm flex items-center gap-1.5 cursor-pointer"
+            className="px-4 py-1.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-xs font-bold text-rose-600 border border-rose-200 shadow-2xs transition-all flex items-center gap-1.5 cursor-pointer"
           >
             <span className="material-symbols-outlined !text-base">call_end</span>
             <span>End Meeting</span>
@@ -403,40 +403,40 @@ export default function TeacherMeetingRoom() {
       </header>
 
       {/* ── Main Workspace ── */}
-      <div className="flex-1 p-6 grid grid-cols-1 lg:grid-cols-3 gap-6 overflow-hidden">
+      <div className="flex-1 p-4 md:p-6 grid grid-cols-1 lg:grid-cols-3 gap-6 overflow-hidden max-w-7xl mx-auto w-full">
         {/* Left Column: Video Broadcast & Live Caption Preview (2 Cols) */}
         <div className="lg:col-span-2 flex flex-col gap-4 min-h-0">
           {/* Stage Controls & Layout Selector Toolbar */}
           <div className="flex items-center justify-between px-1 flex-wrap gap-2">
             <div className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-sky-400 text-sm">video_camera_front</span>
-              <span className="text-xs font-bold uppercase tracking-wider text-slate-200">
+              <span className="material-symbols-outlined text-[#0866F5] text-sm">video_camera_front</span>
+              <span className="text-xs font-extrabold uppercase tracking-wider text-[#10265C]">
                 Two-Way Meeting Visual Stage
               </span>
               {remoteStudentActive && remoteStudentStream ? (
-                <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-[10px] font-bold border border-emerald-500/30 flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                <span className="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-[10px] font-bold border border-emerald-200 flex items-center gap-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                   <span>Student Video Live</span>
                 </span>
               ) : studentParticipant ? (
-                <span className="px-2 py-0.5 rounded-full bg-sky-500/20 text-sky-300 text-[10px] font-bold border border-sky-500/30 flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-sky-400" />
+                <span className="px-2 py-0.5 rounded-full bg-sky-50 text-[#0284C7] text-[10px] font-bold border border-sky-200 flex items-center gap-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#0866F5]" />
                   <span>{studentParticipant.name} (Zero-Mic Mode)</span>
                 </span>
               ) : (
-                <span className="px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 text-[10px] font-bold border border-amber-500/30 flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-ping" />
+                <span className="px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 text-[10px] font-bold border border-amber-200 flex items-center gap-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-ping" />
                   <span>Waiting for Student</span>
                 </span>
               )}
             </div>
 
-            <div className="flex items-center gap-1 bg-slate-900/90 p-1 rounded-xl border border-slate-800">
+            <div className="flex items-center gap-1 bg-[#F1F6FC] p-1 rounded-xl border border-[#D5E3F2]">
               <button
                 type="button"
                 onClick={() => setVideoLayout("split")}
                 className={`px-2.5 py-1 rounded-lg text-[10px] font-bold transition-all cursor-pointer ${
-                  videoLayout === "split" ? "bg-sky-600 text-white shadow-xs" : "text-slate-400 hover:text-white"
+                  videoLayout === "split" ? "bg-[#0866F5] text-white shadow-xs" : "text-slate-600 hover:text-slate-900"
                 }`}
                 title="Side-by-Side View (Both Teacher and Student)"
               >
@@ -446,7 +446,7 @@ export default function TeacherMeetingRoom() {
                 type="button"
                 onClick={() => setVideoLayout("student_focus")}
                 className={`px-2.5 py-1 rounded-lg text-[10px] font-bold transition-all cursor-pointer ${
-                  videoLayout === "student_focus" ? "bg-emerald-600 text-white shadow-xs" : "text-slate-400 hover:text-white"
+                  videoLayout === "student_focus" ? "bg-emerald-600 text-white shadow-xs" : "text-slate-600 hover:text-slate-900"
                 }`}
                 title="Focus on Student Video"
               >
@@ -456,7 +456,7 @@ export default function TeacherMeetingRoom() {
                 type="button"
                 onClick={() => setVideoLayout("teacher_focus")}
                 className={`px-2.5 py-1 rounded-lg text-[10px] font-bold transition-all cursor-pointer ${
-                  videoLayout === "teacher_focus" ? "bg-indigo-600 text-white shadow-xs" : "text-slate-400 hover:text-white"
+                  videoLayout === "teacher_focus" ? "bg-indigo-600 text-white shadow-xs" : "text-slate-600 hover:text-slate-900"
                 }`}
                 title="Focus on Teacher Video"
               >
@@ -469,12 +469,12 @@ export default function TeacherMeetingRoom() {
           <div className={
             videoLayout === "split"
               ? "grid grid-cols-1 md:grid-cols-2 gap-4 shrink-0"
-              : "relative w-full aspect-video max-h-[460px] bg-black rounded-3xl overflow-hidden border border-slate-800/80 shadow-2xl flex items-center justify-center shrink-0"
+              : "relative w-full aspect-video max-h-[460px] bg-black rounded-3xl overflow-hidden border border-sky-100/90 shadow-[0_10px_35px_-10px_rgba(16,38,92,0.06)] flex items-center justify-center shrink-0"
           }>
             {/* ── Tile 1: Teacher (You) Broadcast Video Feed ── */}
             <div className={
               videoLayout === "split"
-                ? "relative w-full aspect-video max-h-[380px] bg-black rounded-2xl overflow-hidden border border-slate-800 shadow-xl flex items-center justify-center shrink-0"
+                ? "relative w-full aspect-video max-h-[380px] bg-black rounded-2xl overflow-hidden border border-sky-100/90 shadow-lg flex items-center justify-center shrink-0"
                 : videoLayout === "teacher_focus"
                 ? "w-full h-full relative flex items-center justify-center overflow-hidden"
                 : "absolute bottom-3 right-3 w-48 aspect-video rounded-xl overflow-hidden border-2 border-indigo-500/70 shadow-2xl z-30 flex items-center justify-center bg-black"
@@ -575,7 +575,7 @@ export default function TeacherMeetingRoom() {
                   <button
                     onClick={handleToggleCaptions}
                     className={`w-9 h-9 rounded-lg flex items-center justify-center transition-all cursor-pointer ${
-                      captionsActive ? "bg-sky-600 text-white hover:bg-sky-500" : "bg-slate-800 text-slate-400 hover:bg-slate-700"
+                      captionsActive ? "bg-[#0866F5] text-white hover:bg-blue-600" : "bg-slate-800 text-slate-400 hover:bg-slate-700"
                     }`}
                     title={captionsActive ? "Disable Live Captions" : "Enable Live Captions"}
                   >
@@ -598,7 +598,7 @@ export default function TeacherMeetingRoom() {
             {/* ── Tile 2: Student Live Video Feed & Presence Card ── */}
             <div className={
               videoLayout === "split"
-                ? "relative w-full aspect-video max-h-[380px] bg-slate-950 rounded-2xl overflow-hidden border border-slate-800 shadow-xl flex items-center justify-center shrink-0"
+                ? "relative w-full aspect-video max-h-[380px] bg-slate-950 rounded-2xl overflow-hidden border border-sky-100/90 shadow-lg flex items-center justify-center shrink-0"
                 : videoLayout === "student_focus"
                 ? "w-full h-full relative flex items-center justify-center overflow-hidden"
                 : "absolute bottom-3 right-3 w-48 aspect-video rounded-xl overflow-hidden border-2 border-emerald-500/70 shadow-2xl z-30 flex items-center justify-center bg-slate-950"
@@ -642,28 +642,28 @@ export default function TeacherMeetingRoom() {
 
               {/* If Student Video is NOT streaming: Show Accessible Presence Card or Waiting State */}
               {(!remoteStudentActive || !remoteStudentStream) && (
-                <div className="flex flex-col items-center justify-center p-6 text-center gap-3 w-full h-full bg-radial from-slate-900 to-slate-950">
+                <div className="flex flex-col items-center justify-center p-6 text-center gap-3 w-full h-full bg-gradient-to-b from-[#f8fafc] via-[#f0f6ff] to-[#e8f1fd]">
                   {studentParticipant ? (
                     <>
-                      <div className="w-14 h-14 rounded-2xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-3xl text-indigo-400 shadow-lg">
+                      <div className="w-14 h-14 rounded-2xl bg-white border border-sky-100 flex items-center justify-center text-3xl text-indigo-600 shadow-sm">
                         🤟
                       </div>
                       <div>
-                        <h4 className="text-sm font-bold text-white flex items-center justify-center gap-1.5">
+                        <h4 className="text-sm font-bold text-[#10265C] flex items-center justify-center gap-1.5">
                           <span>{studentParticipant.name}</span>
-                          <span className="px-2 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 text-[10px] uppercase font-mono">Connected</span>
+                          <span className="px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200 text-[10px] uppercase font-mono">Connected</span>
                         </h4>
-                        <p className="text-xs text-slate-400 mt-1 max-w-[260px]">
+                        <p className="text-xs text-slate-500 mt-1 max-w-[260px]">
                           Zero-Mic Accessibility Mode • Student camera currently off
                         </p>
                       </div>
 
                       {latestStudentMsg ? (
-                        <div className="w-full max-w-xs p-2 rounded-xl bg-slate-900/90 border border-slate-800 text-left flex items-start gap-2">
-                          <span className="material-symbols-outlined text-sm text-sky-400 mt-0.5">chat_bubble</span>
+                        <div className="w-full max-w-xs p-2.5 rounded-xl bg-white border border-sky-100 text-left flex items-start gap-2 shadow-2xs">
+                          <span className="material-symbols-outlined text-sm text-[#0866F5] mt-0.5">chat_bubble</span>
                           <div className="min-w-0 flex-1">
-                            <span className="text-[10px] font-bold text-slate-400 block truncate">Latest student response:</span>
-                            <span className="text-xs text-white font-medium block truncate">"{latestStudentMsg.text}"</span>
+                            <span className="text-[10px] font-bold text-slate-500 block truncate">Latest student response:</span>
+                            <span className="text-xs text-[#10265C] font-semibold block truncate">"{latestStudentMsg.text}"</span>
                           </div>
                         </div>
                       ) : (
@@ -674,19 +674,19 @@ export default function TeacherMeetingRoom() {
                     </>
                   ) : (
                     <>
-                      <div className="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-500">
-                        <span className="material-symbols-outlined !text-xl text-amber-400 animate-pulse">hourglass_top</span>
+                      <div className="w-12 h-12 rounded-2xl bg-white border border-sky-100 flex items-center justify-center text-amber-500 shadow-sm">
+                        <span className="material-symbols-outlined !text-xl animate-pulse">hourglass_top</span>
                       </div>
                       <div>
-                        <h4 className="text-sm font-bold text-slate-200">Waiting for Student to Join</h4>
-                        <p className="text-xs text-slate-400 mt-1 max-w-[240px]">
+                        <h4 className="text-sm font-bold text-[#10265C]">Waiting for Student to Join</h4>
+                        <p className="text-xs text-slate-500 mt-1 max-w-[240px]">
                           Share this meeting room link with your student to start two-way video:
                         </p>
                       </div>
                       <button
                         type="button"
                         onClick={handleCopyInviteLink}
-                        className="px-3 py-1.5 rounded-xl bg-sky-600/20 hover:bg-sky-600/30 border border-sky-500/40 text-sky-300 text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer"
+                        className="px-3.5 py-1.5 rounded-xl bg-[#0866F5] hover:bg-blue-600 text-white text-xs font-bold shadow-md shadow-blue-500/20 transition-all flex items-center gap-1.5 cursor-pointer"
                       >
                         <span className="material-symbols-outlined !text-sm">content_copy</span>
                         <span>{copiedLink ? "Link Copied!" : "Copy Student Join Link"}</span>
@@ -725,7 +725,7 @@ export default function TeacherMeetingRoom() {
                 <button
                   onClick={handleToggleCaptions}
                   className={`w-9 h-9 rounded-lg flex items-center justify-center transition-all cursor-pointer ${
-                    captionsActive ? "bg-sky-600 text-white hover:bg-sky-500" : "bg-slate-800 text-slate-400 hover:bg-slate-700"
+                    captionsActive ? "bg-[#0866F5] text-white hover:bg-blue-600" : "bg-slate-800 text-slate-400 hover:bg-slate-700"
                   }`}
                   title={captionsActive ? "Disable Live Captions" : "Enable Live Captions"}
                 >
@@ -745,16 +745,16 @@ export default function TeacherMeetingRoom() {
           </div>
 
           {/* Teacher Real-Time Caption Bar */}
-          <div className="bg-[#0d162e] border border-slate-800 rounded-2xl p-4 flex flex-col gap-3 shadow-md">
-            <div className="flex items-center justify-between text-xs font-semibold text-slate-400 flex-wrap gap-2">
+          <div className="bg-white border border-sky-100/90 rounded-2xl p-4 flex flex-col gap-3 shadow-[0_10px_35px_-10px_rgba(16,38,92,0.06)]">
+            <div className="flex items-center justify-between text-xs font-semibold text-slate-600 flex-wrap gap-2">
               <div className="flex items-center gap-2">
-                <span className="material-symbols-outlined !text-base text-sky-400">record_voice_over</span>
-                <span>Live Speech-to-Text Transcription for Deaf Participants</span>
+                <span className="material-symbols-outlined !text-base text-[#0866F5]">record_voice_over</span>
+                <span className="text-[#10265C] font-bold">Live Speech-to-Text Transcription for Deaf Participants</span>
               </div>
 
               <div className="flex items-center gap-2">
                 {/* Language / Dialect Switcher */}
-                <div className="flex items-center gap-1 bg-slate-900 border border-slate-700/80 rounded-lg p-0.5 text-[10px]">
+                <div className="flex items-center gap-1 bg-[#F1F6FC] border border-[#D5E3F2] rounded-lg p-0.5 text-[10px]">
                   {[
                     { id: "en-IN", label: "English (India)" },
                     { id: "en-US", label: "English (US)" },
@@ -766,8 +766,8 @@ export default function TeacherMeetingRoom() {
                       onClick={() => handleLanguageChange(l.id)}
                       className={`px-2 py-0.5 rounded font-bold transition-all cursor-pointer ${
                         speechLanguage === l.id
-                          ? "bg-sky-600 text-white shadow-xs"
-                          : "text-slate-400 hover:text-white"
+                          ? "bg-[#0866F5] text-white shadow-xs"
+                          : "text-slate-600 hover:text-slate-900"
                       }`}
                     >
                       {l.label}
@@ -777,10 +777,10 @@ export default function TeacherMeetingRoom() {
 
                 <span className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider ${
                   transcriberStatus === "listening"
-                    ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30"
+                    ? "bg-emerald-50 text-emerald-700 border border-emerald-200"
                     : transcriberStatus === "error"
-                    ? "bg-rose-500/20 text-rose-400 border border-rose-500/30"
-                    : "bg-slate-800 text-slate-400"
+                    ? "bg-rose-50 text-rose-700 border border-rose-200"
+                    : "bg-slate-100 text-slate-600"
                 }`}>
                   {transcriberStatus === "listening" ? "Listening & Capturing" : transcriberStatus === "error" ? "Speech Error" : "Idle"}
                 </span>
@@ -788,7 +788,7 @@ export default function TeacherMeetingRoom() {
                 <button
                   type="button"
                   onClick={handleRestartTranscriber}
-                  className="p-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition-all cursor-pointer"
+                  className="p-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 shadow-2xs transition-all cursor-pointer"
                   title="Restart speech recognition engine"
                 >
                   <span className="material-symbols-outlined !text-sm">refresh</span>
@@ -798,15 +798,15 @@ export default function TeacherMeetingRoom() {
 
             {/* Error diagnostic warning if speech recognition service encounters issues */}
             {transcriberError && (
-              <div className="p-2.5 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs flex items-center justify-between gap-2">
+              <div className="p-2.5 rounded-xl bg-amber-50 border border-amber-200 text-amber-800 text-xs flex items-center justify-between gap-2">
                 <div className="flex items-center gap-2 min-w-0">
-                  <span className="material-symbols-outlined !text-base text-amber-400 shrink-0">warning</span>
+                  <span className="material-symbols-outlined !text-base text-amber-600 shrink-0">warning</span>
                   <span className="truncate">{transcriberError}</span>
                 </div>
                 <button
                   type="button"
                   onClick={handleRestartTranscriber}
-                  className="px-2.5 py-1 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 border border-amber-500/40 text-amber-200 text-xs font-bold transition-all cursor-pointer whitespace-nowrap shrink-0"
+                  className="px-2.5 py-1 rounded-lg bg-amber-100 hover:bg-amber-200 border border-amber-300 text-amber-900 text-xs font-bold transition-all cursor-pointer whitespace-nowrap shrink-0"
                 >
                   Reconnect Mic
                 </button>
@@ -814,11 +814,11 @@ export default function TeacherMeetingRoom() {
             )}
 
             {/* Live Caption Display */}
-            <div className="min-h-[44px] bg-slate-900/60 border border-slate-800/80 rounded-xl p-3 text-sm text-slate-200 font-medium leading-relaxed flex items-center justify-between gap-3">
+            <div className="min-h-[44px] bg-[#F8FAFD] border border-[#E2EDF8] rounded-xl p-3 text-sm text-[#10265C] font-medium leading-relaxed flex items-center justify-between gap-3">
               <div className="flex-1">
                 {currentCaption ? (
-                  <span className="text-white font-semibold flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-sky-400 animate-ping inline-block" />
+                  <span className="text-[#10265C] font-semibold flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-[#0866F5] animate-ping inline-block" />
                     <span>{currentCaption}</span>
                   </span>
                 ) : (
@@ -831,7 +831,7 @@ export default function TeacherMeetingRoom() {
                 <button
                   type="button"
                   onClick={() => setCurrentCaption("")}
-                  className="text-xs text-slate-500 hover:text-slate-300 cursor-pointer"
+                  className="text-xs text-slate-400 hover:text-slate-600 cursor-pointer"
                   title="Clear caption"
                 >
                   ✕
@@ -840,9 +840,9 @@ export default function TeacherMeetingRoom() {
             </div>
 
             {/* Quick Lecture Signs & Manual Caption Broadcaster */}
-            <div className="flex flex-col gap-2 pt-1 border-t border-slate-800/60">
+            <div className="flex flex-col gap-2 pt-1 border-t border-[#E2EDF8]">
               <div className="flex items-center gap-1.5 flex-wrap">
-                <span className="text-[10px] text-slate-400 uppercase tracking-wider font-bold">Quick Lecture Signs:</span>
+                <span className="text-[10px] text-slate-500 uppercase tracking-wider font-bold">Quick Lecture Signs:</span>
                 {[
                   { text: "Hello class, welcome!", sign: "wave" },
                   { text: "Yes, exactly right!", sign: "thumbs_up" },
@@ -855,7 +855,7 @@ export default function TeacherMeetingRoom() {
                     key={idx}
                     type="button"
                     onClick={() => handleBroadcastManualCaption(item.text)}
-                    className="px-2.5 py-1 rounded-lg bg-slate-800/80 hover:bg-sky-900/50 border border-slate-700/60 hover:border-sky-500/40 text-[11px] text-slate-300 hover:text-sky-200 transition-all cursor-pointer"
+                    className="px-2.5 py-1 rounded-lg bg-white hover:bg-sky-50 border border-slate-200 hover:border-sky-300 text-[11px] text-slate-700 hover:text-[#0866F5] shadow-2xs transition-all cursor-pointer"
                   >
                     {item.text}
                   </button>
@@ -874,12 +874,12 @@ export default function TeacherMeetingRoom() {
                   value={manualCaptionText}
                   onChange={(e) => setManualCaptionText(e.target.value)}
                   placeholder="Type speech or lecture words to broadcast as live captions to students..."
-                  className="flex-1 bg-slate-900/80 border border-slate-700/70 rounded-xl px-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-sky-500 transition-all"
+                  className="flex-1 bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-900 placeholder-slate-400 outline-none focus:border-[#0866F5] focus:ring-2 focus:ring-blue-100 shadow-2xs transition-all"
                 />
                 <button
                   type="submit"
                   disabled={!manualCaptionText.trim()}
-                  className="px-4 py-2 rounded-xl bg-sky-600 hover:bg-sky-500 disabled:opacity-30 disabled:cursor-not-allowed text-white text-xs font-bold shadow-md transition-all cursor-pointer flex items-center gap-1.5 whitespace-nowrap"
+                  className="px-4 py-2 rounded-xl bg-[#0866F5] hover:bg-blue-600 disabled:opacity-30 disabled:cursor-not-allowed text-white text-xs font-bold shadow-md shadow-blue-500/20 transition-all cursor-pointer flex items-center gap-1.5 whitespace-nowrap"
                 >
                   <span className="material-symbols-outlined !text-sm">send</span>
                   <span>Broadcast Caption</span>
@@ -892,28 +892,28 @@ export default function TeacherMeetingRoom() {
         {/* Right Column: Student Presence & Interaction Stream */}
         <div className="flex flex-col gap-4 min-h-0">
           {/* Participants Card */}
-          <div className="bg-[#0d162e] border border-slate-800 rounded-2xl p-4 flex flex-col gap-3 shadow-md">
+          <div className="bg-white border border-sky-100/90 rounded-2xl p-4 flex flex-col gap-3 shadow-[0_10px_35px_-10px_rgba(16,38,92,0.06)]">
             <div className="flex items-center justify-between">
-              <h2 className="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center gap-1.5">
-                <span className="material-symbols-outlined !text-base text-sky-400">group</span>
+              <h2 className="text-xs font-extrabold uppercase tracking-wider text-[#10265C] flex items-center gap-1.5">
+                <span className="material-symbols-outlined !text-base text-[#0866F5]">group</span>
                 <span>Connected Participants ({participants.length})</span>
               </h2>
-              <span className="text-[11px] text-slate-500">Live P2P</span>
+              <span className="text-[10px] font-bold uppercase tracking-wider bg-sky-50 text-[#0284C7] border border-sky-200 px-2 py-0.5 rounded-full">Live P2P</span>
             </div>
 
             <div className="space-y-1.5 max-h-36 overflow-y-auto pr-1">
               {participants.map((p) => (
                 <div
                   key={p.id}
-                  className="flex items-center justify-between p-2 rounded-xl bg-slate-900/50 border border-slate-800/60 text-xs"
+                  className="flex items-center justify-between p-2 rounded-xl bg-slate-50/70 border border-slate-200/60 text-xs"
                 >
                   <div className="flex items-center gap-2 min-w-0">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400 shrink-0" />
-                    <span className="font-semibold text-slate-200 truncate">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500 shrink-0" />
+                    <span className="font-semibold text-[#10265C] truncate">
                       {p.name} {p.isSelf && "(You)"}
                     </span>
                   </div>
-                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-slate-800 text-slate-400 font-medium">
+                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-sky-50 text-[#0284C7] border border-sky-200 font-bold">
                     {p.role || p.mode}
                   </span>
                 </div>
@@ -922,11 +922,11 @@ export default function TeacherMeetingRoom() {
           </div>
 
           {/* Student Incoming Responses & Chat Stream */}
-          <div className="flex-1 bg-[#0d162e] border border-slate-800 rounded-2xl p-4 flex flex-col gap-3 min-h-0 shadow-md">
-            <div className="flex items-center justify-between border-b border-slate-800/80 pb-2">
+          <div className="flex-1 bg-white border border-sky-100/90 rounded-2xl p-4 flex flex-col gap-3 min-h-0 shadow-[0_10px_35px_-10px_rgba(16,38,92,0.06)]">
+            <div className="flex items-center justify-between border-b border-[#E2EDF8] pb-2">
               <div className="flex items-center gap-1.5">
-                <span className="material-symbols-outlined !text-base text-emerald-400">chat</span>
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-300">
+                <span className="material-symbols-outlined !text-base text-emerald-600">chat</span>
+                <span className="text-xs font-extrabold uppercase tracking-wider text-[#10265C]">
                   Student Responses & Inquiries
                 </span>
               </div>
@@ -934,8 +934,8 @@ export default function TeacherMeetingRoom() {
                 onClick={() => setTtsStudentAudio(!ttsStudentAudio)}
                 className={`text-[10px] px-2 py-1 rounded-lg border font-semibold flex items-center gap-1 transition-all cursor-pointer ${
                   ttsStudentAudio
-                    ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-300"
-                    : "bg-slate-800 border-slate-700 text-slate-400"
+                    ? "bg-emerald-50 border-emerald-200 text-emerald-700 shadow-2xs"
+                    : "bg-slate-100 border-slate-200 text-slate-500"
                 }`}
                 title="Automatically speak incoming student text aloud"
               >
@@ -949,10 +949,10 @@ export default function TeacherMeetingRoom() {
             {/* Message Feed */}
             <div className="flex-1 overflow-y-auto space-y-2.5 pr-1 min-h-[160px]">
               {messages.length === 0 ? (
-                <div className="h-full flex flex-col items-center justify-center text-center p-4 text-slate-500">
-                  <span className="material-symbols-outlined !text-3xl mb-1 text-slate-600">forum</span>
-                  <p className="text-xs">No student messages yet.</p>
-                  <p className="text-[11px] text-slate-600">Student questions, quick replies, and sign detections will appear here.</p>
+                <div className="h-full flex flex-col items-center justify-center text-center p-4 text-slate-400">
+                  <span className="material-symbols-outlined !text-3xl mb-1 text-slate-300">forum</span>
+                  <p className="text-xs font-medium text-slate-500">No student messages yet.</p>
+                  <p className="text-[11px] text-slate-400">Student questions, quick replies, and sign detections will appear here.</p>
                 </div>
               ) : (
                 messages.map((msg, idx) => (
@@ -960,33 +960,33 @@ export default function TeacherMeetingRoom() {
                     key={msg.id || idx}
                     className={`p-2.5 rounded-xl border text-xs flex flex-col gap-1 ${
                       msg.senderId === user?.id || msg.senderId === user?.uid
-                        ? "bg-sky-950/40 border-sky-800/50 text-sky-200"
-                        : "bg-slate-900/80 border-slate-800 text-slate-200"
+                        ? "bg-sky-50 border-sky-200 text-sky-900 shadow-2xs"
+                        : "bg-slate-50 border-slate-200 text-slate-800 shadow-2xs"
                     }`}
                   >
-                    <div className="flex items-center justify-between text-[10px] text-slate-400">
-                      <span className="font-bold text-slate-300">{msg.senderName}</span>
+                    <div className="flex items-center justify-between text-[10px] text-slate-500">
+                      <span className="font-bold text-[#10265C]">{msg.senderName}</span>
                       <span>{new Date(msg.timestamp).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}</span>
                     </div>
-                    <p className="font-medium text-slate-100">{msg.text}</p>
+                    <p className="font-medium text-slate-800">{msg.text}</p>
                   </div>
                 ))
               )}
             </div>
 
             {/* Announcement Input */}
-            <form onSubmit={handleSendAnnouncement} className="flex gap-2 pt-2 border-t border-slate-800/80">
+            <form onSubmit={handleSendAnnouncement} className="flex gap-2 pt-2 border-t border-[#E2EDF8]">
               <input
                 type="text"
                 value={announcementText}
                 onChange={(e) => setAnnouncementText(e.target.value)}
                 placeholder="Broadcast note to student screens..."
-                className="flex-1 bg-slate-900 border border-slate-700/80 rounded-xl px-3 py-2 text-xs text-slate-200 placeholder-slate-500 outline-none focus:border-sky-500 transition-all"
+                className="flex-1 bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-900 placeholder-slate-400 outline-none focus:border-[#0866F5] focus:ring-2 focus:ring-blue-100 shadow-2xs transition-all"
               />
               <button
                 type="submit"
                 disabled={!announcementText.trim()}
-                className="px-3 py-2 rounded-xl bg-sky-600 hover:bg-sky-500 disabled:opacity-50 text-white text-xs font-bold flex items-center transition-all cursor-pointer"
+                className="px-3 py-2 rounded-xl bg-[#0866F5] hover:bg-blue-600 disabled:opacity-50 text-white text-xs font-bold flex items-center transition-all cursor-pointer shadow-md shadow-blue-500/20"
               >
                 <span className="material-symbols-outlined !text-sm">send</span>
               </button>
