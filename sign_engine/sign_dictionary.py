@@ -175,3 +175,4 @@ def get_sign_details(gesture_id: str) -> Optional[Dict[str, Any]]:
 def list_all_signs() -> List[Dict[str, Any]]:
     """Returns list of all active sign vocabulary definitions."""
     return list(MEETING_SIGN_VOCABULARY.values())
+
