@@ -1,4 +1,4 @@
-# AccessAI 🎙️
+
 > **Accessible Learning Platform Powered by Meko Shared Context Layer**  
 > *Built for hackCBS 9.0 — Track A: Open Project*
 
