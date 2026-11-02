@@ -12,174 +12,14 @@ import DegreeGraduationOffer from "../components/DegreeGraduationOffer";
 import RewardStoreModal from "../components/RewardStoreModal";
 import BackButton from "../components/BackButton";
 
-// ── MOCK DATA MATCHING PLATFORM ──
-const MOCK_COURSES = [
-  {
-    id: "course-1",
-    title: "Effective Communication & Interpersonal Skills",
-    description: "Master essential verbal clarity, active listening techniques, assertiveness, and empathetic dialogue tailored for accessible professional environments.",
-    video: "HAnw168huqA",
-    category: "communication",
-    instructor: "Dr. Julian Treasure, Sound & Communication Expert",
-    duration: "2h 15m",
-    level: "Beginner",
-    rating: 4.9,
-    badge: "Voice-Optimized",
-    lessons: [
-      { id: "les-1-1", title: "Active Listening & Mindful Presence", content: "Learn to listen not just to reply, but to understand. Practice identifying emotional undertones and summarizing speaker viewpoints before responding.", duration: "20 mins", video: "HAnw168huqA" },
-      { id: "les-1-2", title: "Verbal Clarity & Tone Modulation", content: "Control pace, pitch, and vocal timbre to convey confidence and warmth. Clear vocal modulation keeps conversations engaging and accessible.", duration: "30 mins", video: "HAnw168huqA" },
-      { id: "les-1-3", title: "Assertive Dialogue & Setting Boundaries", content: "Express your ideas, needs, and professional boundaries clearly and respectfully without aggression or passive withdrawal.", duration: "35 mins", video: "HAnw168huqA" },
-      { id: "les-1-4", title: "Storytelling & Expressive Delivery", content: "Use the classic narrative arc—situation, challenge, resolution—to structure anecdotes and professional updates memorably.", duration: "40 mins", video: "HAnw168huqA" }
-    ],
-    quiz: {
-      question: "What is the primary objective of active listening during a conversation?",
-      options: ["Waiting for your turn to speak", "Understanding the speaker's message, emotions, and intent fully", "Critiquing vocal imperfections", "Memorizing every single word verbatim"],
-      answer: "Understanding the speaker's message, emotions, and intent fully"
-    }
-  },
-  {
-    id: "course-2",
-    title: "Inclusive Leadership & Team Collaboration",
-    description: "Develop high-impact leadership capabilities: build trust, foster psychological safety, inspire diverse collaborators, and guide group consensus with empathy.",
-    video: "u4ZoJKF_VuA",
-    category: "leadership",
-    instructor: "Simon Sinek & Leadership Faculty",
-    duration: "2h 45m",
-    level: "Beginner",
-    rating: 4.9,
-    badge: "Leadership Track",
-    lessons: [
-      { id: "les-2-1", title: "Foundations of Empathetic Leadership", content: "True leadership begins with empathy. Explore how leading with service and deep understanding creates team loyalty and high performance.", duration: "25 mins", video: "u4ZoJKF_VuA" },
-      { id: "les-2-2", title: "Fostering Psychological Safety in Teams", content: "Encourage honest questions, admit mistakes early, and foster an environment where every team member feels safe to contribute their authentic perspective.", duration: "35 mins", video: "u4ZoJKF_VuA" },
-      { id: "les-2-3", title: "Constructive Conflict Resolution & Consensus", content: "De-escalate workplace disagreements through interest-based problem solving, turning friction into collaborative breakthroughs.", duration: "40 mins", video: "u4ZoJKF_VuA" },
-      { id: "les-2-4", title: "Empowering Delegation & Feedback Loops", content: "Delegate with clear outcomes and ownership while providing constructive, praise-oriented feedback that inspires growth.", duration: "35 mins", video: "u4ZoJKF_VuA" }
-    ],
-    quiz: {
-      question: "What is the cornerstone of psychological safety in high-performing teams?",
-      options: ["Strict hierarchical authority", "Freedom to ask questions, share perspectives, and learn from mistakes without fear", "Competing for individual recognition", "Avoiding all disagreements"],
-      answer: "Freedom to ask questions, share perspectives, and learn from mistakes without fear"
-    }
-  },
-  {
-    id: "course-3",
-    title: "Critical Thinking & Strategic Problem Solving",
-    description: "Develop cognitive analysis frameworks, deconstruct complex workplace challenges, and make sound, evidence-based strategic decisions.",
-    video: "dItUGF8GdTw",
-    category: "management",
-    instructor: "Prof. Michael Sandel, Strategic Reasoning",
-    duration: "2h 30m",
-    level: "Intermediate",
-    rating: 4.8,
-    badge: "Strategic Reasoning",
-    lessons: [
-      { id: "les-3-1", title: "Overcoming Cognitive Biases & Mental Models", duration: "30 mins", content: "Identify confirmation bias, anchoring, and groupthink. Learn first-principles thinking to analyze problems objectively.", video: "dItUGF8GdTw" },
-      { id: "les-3-2", title: "Root Cause Analysis & The 5-Whys Method", duration: "35 mins", content: "Drill down past superficial symptoms to uncover root systemic causes using the 5-Whys and Fishbone analytical methods.", video: "dItUGF8GdTw" },
-      { id: "les-3-3", title: "Decision Frameworks & Strategic Trade-offs", duration: "45 mins", content: "Weigh potential outcomes against constraints and risk factors to select optimal paths with measurable criteria.", video: "dItUGF8GdTw" }
-    ],
-    quiz: {
-      question: "What is the core principle of the '5-Whys' problem-solving technique?",
-      options: ["Asking five colleagues for advice", "Iteratively asking 'Why?' to peel away symptoms and identify the underlying root cause", "Setting a 5-minute timer for brainstorming", "Selecting from 5 predefined answers"],
-      answer: "Iteratively asking 'Why?' to peel away symptoms and identify the underlying root cause"
-    }
-  },
-  {
-    id: "course-4",
-    title: "Public Speaking & Persuasive Presentation",
-    description: "Deliver captivating verbal presentations, master vocal presence and purposeful pauses, and inspire audiences with authentic persuasion.",
-    video: "i0a61wFaQD8",
-    category: "communication",
-    instructor: "Sarah Jenkins, Executive Presentation Coach",
-    duration: "2h 40m",
-    level: "Intermediate",
-    rating: 4.8,
-    badge: "Oratory Excellence",
-    lessons: [
-      { id: "les-4-1", title: "Speech Structuring & The 30-Second Hook", duration: "40 mins", content: "Capture audience attention in the first 30 seconds with a provocative question, striking statistic, or compelling personal insight.", video: "i0a61wFaQD8" },
-      { id: "les-4-2", title: "Vocal Dynamics & The Power of Pauses", duration: "45 mins", content: "Use purposeful silence and deliberate pauses instead of filler words. Pacing creates suspense and allows points to resonate.", video: "i0a61wFaQD8" },
-      { id: "les-4-3", title: "Persuasive Rhetoric & Compelling Calls to Action", duration: "50 mins", content: "Synthesize ethos, pathos, and logos into an inspiring, actionable conclusion that motivates your listeners to take action.", video: "i0a61wFaQD8" }
-    ],
-    quiz: {
-      question: "Why are deliberate pauses effective in professional public speaking?",
-      options: ["They let the speaker check notes constantly", "They give listeners time to absorb key insights and eliminate verbal fillers like 'um'", "They signal that the presentation has ended abruptly", "They demonstrate hesitation"],
-      answer: "They give listeners time to absorb key insights and eliminate verbal fillers like 'um'"
-    }
-  },
-  {
-    id: "prem-course-ai",
-    title: "AI Literacy & Digital Leadership",
-    description: "Navigate modern AI assistants, ethical generative tools, voice intelligence, and workplace digital productivity without coding.",
-    video: "DBQINq0SsAw",
-    category: "digital_skills",
-    instructor: "Dr. Elena Rostova, Accessible AI Fellow",
-    duration: "3h 15m",
-    level: "Advanced",
-    rating: 4.95,
-    badge: "AI Leadership",
-    pointsCost: 100,
-    isPremium: true,
-    lessons: [
-      { id: "pai-1", title: "Understanding Generative AI & Voice Intelligence", duration: "45 mins", content: "Demystify modern artificial intelligence, conversational agents, and multi-modal voice interfaces.", video: "DBQINq0SsAw" },
-      { id: "pai-2", title: "Prompt Crafting for Research & Communication", duration: "50 mins", content: "Formulate clear, contextual, multi-turn prompts to summarize documents, draft emails, and brainstorm solutions.", video: "DBQINq0SsAw" },
-      { id: "pai-3", title: "Ethical AI Principles & Bias Awareness", duration: "55 mins", content: "Analyze algorithmic bias, data privacy, and ethical guidelines for responsible AI adoption in institutions.", video: "DBQINq0SsAw" },
-      { id: "pai-4", title: "Assistive AI for Workplace Independence", duration: "1h", content: "Harness speech-to-text, computer vision descriptions, and cognitive assistants for streamlined workflows.", video: "DBQINq0SsAw" }
-    ],
-    quiz: {
-      question: "What is the primary role of prompt engineering when collaborating with AI assistants?",
-      options: ["Writing low-level machine code", "Crafting clear, contextual instructions to elicit optimal, accurate responses", "Configuring physical servers", "Installing device drivers"],
-      answer: "Crafting clear, contextual instructions to elicit optimal, accurate responses"
-    }
-  },
-  {
-    id: "prem-course-wcag",
-    title: "Workplace Inclusion & Universal Design Leadership",
-    description: "Champion disability inclusion, accessible communication standards, barrier-free team policies, and universal design principles.",
-    video: "rfscVS0vtbw",
-    category: "accessibility",
-    instructor: "Marcus Vance, Universal Design Advocate",
-    duration: "3h 30m",
-    level: "Advanced",
-    rating: 5.0,
-    badge: "Certified Masterclass",
-    pointsCost: 100,
-    isPremium: true,
-    lessons: [
-      { id: "pwc-1", title: "Universal Design: Architecture for Human Diversity", duration: "50 mins", content: "Understand the core philosophy of designing systems and physical spaces usable by everyone without specialized retrofits.", video: "rfscVS0vtbw" },
-      { id: "pwc-2", title: "Multi-Modal Communication & Plain Language Standards", duration: "1h", content: "Deliver information through multi-sensory channels: auditory summaries, clear typography, and simplified prose.", video: "rfscVS0vtbw" },
-      { id: "pwc-3", title: "Inclusive Meeting Facilitation & Etiquette", duration: "1h", content: "Lead meetings with automated transcription, audio descriptions, cognitive pauses, and equal contribution formats.", video: "rfscVS0vtbw" },
-      { id: "pwc-4", title: "Advocating for Institutional Inclusion Policies", duration: "1h 15m", content: "Build compelling business cases for accessibility investments and inclusive hiring initiatives.", video: "rfscVS0vtbw" }
-    ],
-    quiz: {
-      question: "What is the foundational philosophy behind Universal Design in workplaces and education?",
-      options: ["Designing products that only work for one specific group", "Creating environments and communications usable by all people to the greatest extent possible without specialized adaptation", "Eliminating technology from workplaces", "Requiring everyone to use identical hardware"],
-      answer: "Creating environments and communications usable by all people to the greatest extent possible without specialized adaptation"
-    }
-  },
-  {
-    id: "prem-course-web3",
-    title: "Strategic Negotiation & Professional Ethics",
-    description: "Master win-win negotiation frameworks, principled persuasion, emotional intelligence under pressure, and ethical corporate leadership.",
-    video: "71360000000",
-    category: "professional_skills",
-    instructor: "David Vance & Executive Ethics Faculty",
-    duration: "3h 45m",
-    level: "Advanced",
-    rating: 4.9,
-    badge: "Specialist Track",
-    pointsCost: 120,
-    isPremium: true,
-    lessons: [
-      { id: "pbc-1", title: "Principled Negotiation: Separating People from Problems", duration: "55 mins", content: "Focus on mutual interests rather than entrenched positions. Build sustainable working agreements.", video: "71360000000" },
-      { id: "pbc-2", title: "Discovering Underlying Interests & Mutual Value", duration: "1h", content: "Identify hidden stakeholder priorities and create collaborative options where both sides achieve their core objectives.", video: "71360000000" },
-      { id: "pbc-3", title: "Emotional Intelligence & Composure Under Pressure", duration: "1h 05m", content: "Manage stress responses, practice de-escalation, and preserve professional rapport during difficult negotiations.", video: "71360000000" },
-      { id: "pbc-4", title: "Ethical Governance & Long-Term Trust Building", duration: "1h 20m", content: "Maintain integrity, transparency, and accountability as core assets for enduring leadership credibility.", video: "71360000000" }
-    ],
-    quiz: {
-      question: "In principled negotiation, what should negotiators focus on instead of rigid positional demands?",
-      options: ["Underlying interests and options for mutual gain", "Dominating the opposing party at all costs", "Refusing all concessions", "Using intimidation tactics"],
-      answer: "Underlying interests and options for mutual gain"
-    }
-  }
-];
+// ── BLIND MODE PRACTICAL ACCESSIBLE CURRICULA & CAREER DATA ──
+import {
+  BLIND_MODE_COURSES,
+  BLIND_CATEGORIES,
+  BLIND_CAREER_OPPORTUNITIES,
+} from "../data/blindCoursesData";
+
+const MOCK_COURSES = BLIND_MODE_COURSES;
 
 // ── Text-to-Speech Engine ──
 function useTTS() {
@@ -308,10 +148,34 @@ export default function BlindDashboard() {
   const [category, setCategory] = useState("all");
   const [difficulty, setDifficulty] = useState("all");
   const [courses, setCourses] = useState(MOCK_COURSES);
-  const [purchasedIds, setPurchasedIds] = useState(["course-1", "course-2"]);
-  const [progress, setProgress] = useState({
-    "course-1": { completion: 75 },
-    "course-2": { completion: 25 }
+  const [purchasedIds, setPurchasedIds] = useState(() => {
+    try {
+      const uId = user?.uid || "blind_student";
+      const stored = localStorage.getItem(`accessai_purchased_courses_blind_${uId}`);
+      if (stored) return JSON.parse(stored);
+      return ["blind-course-1"];
+    } catch {
+      return ["blind-course-1"];
+    }
+  });
+  const [progress, setProgress] = useState(() => {
+    try {
+      const uId = user?.uid || "blind_student";
+      const stored = localStorage.getItem(`accessai_course_progress_blind_${uId}`);
+      if (stored) return JSON.parse(stored);
+      return {};
+    } catch {
+      return {};
+    }
+  });
+  const [exerciseDone, setExerciseDone] = useState(() => {
+    try {
+      const uId = user?.uid || "blind_student";
+      const stored = localStorage.getItem(`accessai_exercises_done_blind_${uId}`);
+      return stored ? JSON.parse(stored) : {};
+    } catch {
+      return {};
+    }
   });
 
   // AI Tutor chat states
@@ -426,12 +290,14 @@ export default function BlindDashboard() {
           API.get(`/progress/${user?.uid}`)
         ]);
         if (cRes.data?.courses?.length > 0) {
-          const progCourses = cRes.data.courses.filter(c => 
-            c.category === "programming" || 
-            c.category === "databases" || 
-            c.category === "development"
+          const blindDBCourses = cRes.data.courses.filter(c => 
+            c.category === "digital_literacy" || 
+            c.category === "office_skills" || 
+            c.category === "ai_writing" ||
+            c.category === "accessibility_qa" ||
+            c.category === "audio_production"
           );
-          if (progCourses.length > 0) setCourses(progCourses);
+          if (blindDBCourses.length > 0) setCourses(blindDBCourses);
         }
         if (pRes.data?.progress) {
           const pMap = {};
@@ -464,18 +330,45 @@ export default function BlindDashboard() {
 
   const handleBuyCourse = (courseId) => {
     if (purchasedIds.includes(courseId)) return;
-    setPurchasedIds(prev => [...prev, courseId]);
-    setProgress(prev => ({ ...prev, [courseId]: { completion: 0 } }));
-    speak("Course enrolled. You can now start listening to lessons.");
+    const uId = user?.uid || "blind_student";
+    const updated = [...purchasedIds, courseId];
+    setPurchasedIds(updated);
+    try {
+      localStorage.setItem(`accessai_purchased_courses_blind_${uId}`, JSON.stringify(updated));
+    } catch {}
+
+    const updatedP = { ...progress, [courseId]: { completion: 0, completedLessons: [] } };
+    setProgress(updatedP);
+    try {
+      localStorage.setItem(`accessai_course_progress_blind_${uId}`, JSON.stringify(updatedP));
+    } catch {}
+
+    const cObj = courses.find(c => c.id === courseId);
+    speak(`Enrolled in ${cObj ? cObj.title : "course"}. You can now start learning.`, true);
   };
 
-  const updateProgress = async (courseId, pct) => {
-    setProgress(prev => ({
-      ...prev,
-      [courseId]: { ...prev[courseId], completion: pct }
-    }));
+  const updateProgress = async (courseId, pct, completedLessonId = null) => {
+    const uId = user?.uid || "blind_student";
+    setProgress(prev => {
+      const existing = prev[courseId] || { completion: 0, completedLessons: [] };
+      const completedLessons = completedLessonId 
+        ? Array.from(new Set([...(existing.completedLessons || []), completedLessonId]))
+        : (existing.completedLessons || []);
+      const updated = {
+        ...prev,
+        [courseId]: {
+          ...existing,
+          completion: Math.max(existing.completion || 0, pct),
+          completedLessons
+        }
+      };
+      try {
+        localStorage.setItem(`accessai_course_progress_blind_${uId}`, JSON.stringify(updated));
+      } catch {}
+      return updated;
+    });
 
-    if (pct === 100) {
+    if (pct >= 100) {
       const cObj = courses.find(c => c.id === courseId) || {};
       const activeWallet = walletAccount || localStorage.getItem("accessai_wallet_address");
       const studentName = getEffectiveStudentName(user, "blind");
@@ -508,6 +401,7 @@ export default function BlindDashboard() {
         }));
         refreshPoints?.();
         setEarnedCertData(certInfo);
+        speak(`Congratulations ${studentName}! You have successfully completed ${cObj.title || "the course"} with 100% completion!`, true);
       } catch (err) {
         console.error("Failed to persist progress:", err);
         setProgress(prev => ({
@@ -515,15 +409,17 @@ export default function BlindDashboard() {
           [courseId]: { ...prev[courseId], completion: 100, blockchain: fallbackCert }
         }));
         setEarnedCertData(fallbackCert);
+        speak(`Congratulations ${studentName}! You have completed ${cObj.title || "the course"}!`, true);
       }
     }
   };
 
   const handleTopicQuizSubmit = async (opt) => {
-    if (!activeCoursePlay) return;
+    if (!activeCoursePlay || !activeCoursePlay.quiz) return;
     const isCorrect = opt === activeCoursePlay.quiz.answer;
     if (isCorrect) {
-      speak("Correct answer! Minting your personalized NFT topic certificate on MST Testnet.", true);
+      const feedbackMsg = `Correct answer! ${activeCoursePlay.quiz.explanation || ""} Minting your topic certificate on MST Testnet.`;
+      speak(feedbackMsg, true);
       const currentLesson = activeCoursePlay.lessons[currentLessonIdx] || {
         id: `topic-${currentLessonIdx + 1}`,
         title: `Topic ${currentLessonIdx + 1}`,
@@ -572,10 +468,30 @@ export default function BlindDashboard() {
         setIssuingCert(false);
       }
 
-      const nextP = Math.round(((currentLessonIdx + 1) / activeCoursePlay.lessons.length) * 100);
-      updateProgress(activeCoursePlay.id, nextP);
+      const isLastLesson = currentLessonIdx === activeCoursePlay.lessons.length - 1;
+      const nextP = isLastLesson ? 100 : Math.round(((currentLessonIdx + 1) / activeCoursePlay.lessons.length) * 80);
+      updateProgress(activeCoursePlay.id, nextP, currentLesson.id);
     } else {
-      speak("Wrong answer. Try another option.", true);
+      speak("Incorrect answer. Please review the lesson material and select another option.", true);
+    }
+  };
+
+  const handlePracticalTaskSubmit = (opt) => {
+    if (!activeCoursePlay || !activeCoursePlay.practicalTask) return;
+    const isCorrect = opt === activeCoursePlay.practicalTask.answer;
+    if (isCorrect) {
+      speak(`Scenario challenge passed! ${activeCoursePlay.practicalTask.feedback}`, true);
+      const uId = user?.uid || "blind_student";
+      setExerciseDone(prev => {
+        const updated = { ...prev, [`${activeCoursePlay.id}_practical_task`]: true };
+        try {
+          localStorage.setItem(`accessai_exercises_done_blind_${uId}`, JSON.stringify(updated));
+        } catch {}
+        return updated;
+      });
+      updateProgress(activeCoursePlay.id, 100, "practical_task");
+    } else {
+      speak("Not quite the optimal accessible workflow. Consider the assistive tools available and try another choice.", true);
     }
   };
 
@@ -587,16 +503,20 @@ export default function BlindDashboard() {
     setChatInput("");
 
     setTimeout(() => {
-      let reply = "Understood. The audio tutor parses code syntax structures to give step-by-step programming advice.";
+      let reply = "Understood. The audio tutor provides step-by-step guidance on assistive digital skills, office tools, and accessibility.";
       const query = chatInput.toLowerCase();
-      if (query.includes("communication") || query.includes("speak") || query.includes("listening")) {
-        reply = "Effective communication is grounded in active listening, purposeful pauses, and vocal empathy.";
-      } else if (query.includes("leadership") || query.includes("team") || query.includes("lead")) {
-        reply = "Inclusive leadership builds psychological safety so all team members feel empowered to share authentic ideas.";
-      } else if (query.includes("critical thinking") || query.includes("problem") || query.includes("why")) {
-        reply = "The 5-Whys root cause analysis technique peels away symptoms to uncover fundamental systemic drivers.";
+      if (query.includes("screen reader") || query.includes("keyboard") || query.includes("nvda") || query.includes("jaws")) {
+        reply = "Screen readers like NVDA and JAWS navigate web elements with the Tab key for focus and 'H' key for headings.";
+      } else if (query.includes("office") || query.includes("email") || query.includes("document") || query.includes("spreadsheet")) {
+        reply = "In digital office work, built-in heading styles (Heading 1, 2) and designated table headers ensure full screen reader accessibility.";
+      } else if (query.includes("ai") || query.includes("writing") || query.includes("content") || query.includes("prompt")) {
+        reply = "When using AI for content writing, use the Context-Task-Audience-Constraints framework and always fact-check generated claims.";
+      } else if (query.includes("accessibility") || query.includes("testing") || query.includes("qa") || query.includes("wcag")) {
+        reply = "Accessibility testing checks keyboard focus visibility, screen reader labels, and documents defects with clear reproduction steps.";
+      } else if (query.includes("audio") || query.includes("podcast") || query.includes("editing") || query.includes("reaper")) {
+        reply = "Accessible audio editing is commonly done using REAPER with the OSARA extension or Audacity using custom keyboard shortcuts, targeting -16 LUFS loudness.";
       } else if (query.includes("quiz")) {
-        reply = "Auditory quiz generated: What is the primary objective of active listening? Options: waiting to talk, understanding the speaker's intent fully, or critiquing vocal tone.";
+        reply = "Auditory quiz check: Which key is used to advance focus across interactive controls? Options: Tab key, Escape key, or Backspace key.";
       }
       setChatMessages(prev => [...prev, { sender: "ai", text: reply }]);
       speak(reply, true);
@@ -619,10 +539,11 @@ export default function BlindDashboard() {
 
   // Global voice commands (low vision/blind friendly navigation)
   const { listening, transcript } = useVoiceCommands({
-    "course 1": () => { setSelectedCourse(courses[0]); speak("Opening details for Effective Communication and Interpersonal Skills."); },
-    "course 2": () => { setSelectedCourse(courses[1]); speak("Opening details for Inclusive Leadership and Team Collaboration."); },
-    "course 3": () => { setSelectedCourse(courses[2]); speak("Opening details for Critical Thinking and Strategic Problem Solving."); },
-    "course 4": () => { setSelectedCourse(courses[3]); speak("Opening details for Public Speaking and Persuasive Presentation."); },
+    "course 1": () => { if (courses[0]) { setSelectedCourse(courses[0]); speak(`Opening details for ${courses[0].title}.`); } },
+    "course 2": () => { if (courses[1]) { setSelectedCourse(courses[1]); speak(`Opening details for ${courses[1].title}.`); } },
+    "course 3": () => { if (courses[2]) { setSelectedCourse(courses[2]); speak(`Opening details for ${courses[2].title}.`); } },
+    "course 4": () => { if (courses[3]) { setSelectedCourse(courses[3]); speak(`Opening details for ${courses[3].title}.`); } },
+    "course 5": () => { if (courses[4]) { setSelectedCourse(courses[4]); speak(`Opening details for ${courses[4].title}.`); } },
     "list courses": () => {
       const list = courses.map((c, i) => `Course ${i + 1}: ${c.title}`).join(". ");
       speak(`Here are the courses: ${list}. Say open course 1 to start.`, true);
@@ -1043,18 +964,13 @@ export default function BlindDashboard() {
             />
 
             {/* Keyboard-accessible categories */}
-            <div className={`grid grid-cols-1 sm:grid-cols-4 gap-3 p-3 rounded-xl border-2 ${cardClass}`}>
-              {[
-                { id: "all", label: "📚 All Classes" },
-                { id: "communication", label: "🗣️ Communication Skills" },
-                { id: "leadership", label: "🤝 Inclusive Leadership" },
-                { id: "management", label: "💡 Critical Thinking & Strategy" }
-              ].map(cat => (
+            <div className={`grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 p-3 rounded-xl border-2 ${cardClass}`}>
+              {BLIND_CATEGORIES.map(cat => (
                 <button
                   key={cat.id}
                   onClick={() => { setCategory(cat.id); speak(`Filtered catalog by ${cat.label}`); }}
-                  onFocus={() => speak(`Filter category: ${cat.label} button.`)}
-                  className={`py-3 px-4 rounded-xl text-xs font-black border-2 transition-all ${
+                  onFocus={() => speak(`Filter category: ${cat.label} button. ${cat.description}`)}
+                  className={`py-2.5 px-3 rounded-xl text-xs font-black border-2 transition-all ${
                     category === cat.id 
                       ? "bg-[#fbbf24] text-black border-[#fbbf24]" 
                       : isLight 
@@ -1073,34 +989,59 @@ export default function BlindDashboard() {
             <div className="flex flex-col gap-4">
               {filteredCourses.map((course, idx) => {
                 const isOwned = purchasedIds.includes(course.id);
+                const pct = progress[course.id]?.completion || 0;
                 return (
                   <div 
                     key={course.id}
-                    className={`p-6 rounded-xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 hover:border-yellow-400 transition-all border-2 ${cardClass}`}
+                    className={`p-6 rounded-xl flex flex-col md:flex-row justify-between items-start md:items-center gap-5 hover:border-yellow-400 transition-all border-2 ${cardClass}`}
                     tabIndex={0}
-                    onFocus={() => speak(`Course ${idx + 1}: ${course.title}. Instructor: ${course.instructor}. Level: ${course.level}. Duration: ${course.duration}. ${isOwned ? "Enrolled." : course.isPremium ? `Cost: ${course.pointsCost} reward points.` : "Click to view details and buy."}`)}
+                    onFocus={() => speak(`Course ${idx + 1}: ${course.title}. Outcome: ${course.learningOutcome}. Duration: ${course.duration}. ${isOwned ? `Enrolled. Current progress is ${pct} percent.` : "Not enrolled yet. Focus to enroll and start learning."}`)}
                   >
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-1">
+                    <div className="flex-1 space-y-2">
+                      <div className="flex flex-wrap items-center gap-2">
                         <h3 className={`text-lg font-bold ${textTitleClass}`}>{course.title}</h3>
-                        {course.isPremium && (
-                          <span className="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-800 border border-amber-400/40">
-                            ⭐ {course.pointsCost} PTS
+                        {course.badge && (
+                          <span className="text-[10px] font-extrabold uppercase px-2.5 py-0.5 rounded-full bg-amber-500/15 text-amber-700 dark:text-amber-400 border border-amber-400/30">
+                            {course.badge}
+                          </span>
+                        )}
+                        {pct > 0 && (
+                          <span className="text-[10px] font-bold font-mono px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-800 dark:text-emerald-300 border border-emerald-500/30">
+                            {pct}% Complete
                           </span>
                         )}
                       </div>
-                      <p className={`text-xs mt-1 ${isLight ? "text-slate-600" : isDark ? "text-slate-400" : "text-[#fbbf24]/85"}`}>{course.description}</p>
-                      <div className="flex gap-4 text-[10px] font-bold text-slate-500 mt-2 uppercase">
+
+                      <p className={`text-xs leading-relaxed ${isLight ? "text-slate-600" : isDark ? "text-slate-400" : "text-[#fbbf24]/85"}`}>
+                        {course.description}
+                      </p>
+
+                      <div className="flex flex-col gap-1 pt-1 text-xs">
+                        <div className="text-amber-700 dark:text-amber-400 font-semibold flex items-center gap-1.5">
+                          <span className="material-symbols-outlined !text-sm">verified_user</span>
+                          <span><strong>Learning Outcome:</strong> {course.learningOutcome}</span>
+                        </div>
+                        {course.careerPathways && (
+                          <div className="text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
+                            <span className="material-symbols-outlined !text-sm">work_history</span>
+                            <span><strong>Career Pathways:</strong> {course.careerPathways}</span>
+                          </div>
+                        )}
+                      </div>
+
+                      <div className="flex flex-wrap gap-4 text-[10px] font-bold text-slate-500 uppercase pt-1">
                         <span>Instructor: {course.instructor}</span>
                         <span>Level: {course.level}</span>
+                        <span>Duration: {course.duration}</span>
+                        <span>Lessons: {course.lessons?.length || 3} Modules</span>
                       </div>
                     </div>
 
-                    <div className="flex gap-2 w-full sm:w-auto">
+                    <div className="flex flex-col sm:flex-row gap-2 w-full md:w-auto shrink-0">
                       <button
                         onClick={() => setSelectedCourse(course)}
                         onFocus={() => speak(`View course details and lessons for ${course.title} button.`)}
-                        className={`px-4 py-3 border rounded-xl text-xs font-bold flex-1 sm:flex-none ${
+                        className={`px-4 py-3 border rounded-xl text-xs font-bold flex-1 sm:flex-none text-center ${
                           isLight 
                             ? "bg-slate-100 border-slate-200 text-slate-700 hover:bg-slate-200" 
                             : isDark
@@ -1110,27 +1051,36 @@ export default function BlindDashboard() {
                       >
                         Syllabus Details
                       </button>
+
                       {!isOwned ? (
                         <button
                           onClick={() => {
-                            if (course.isPremium) {
-                              openStore ? openStore() : navigateTo("rewards-store", `Opening rewards store to unlock ${course.title} for ${course.pointsCost} points.`);
-                            } else {
-                              handleBuyCourse(course.id);
-                            }
+                            handleBuyCourse(course.id);
+                            setActiveCoursePlay(course);
+                            setCurrentLessonIdx(0);
                           }}
-                          onFocus={() => speak(course.isPremium ? `Redeem ${course.title} for ${course.pointsCost} reward points button.` : `Enroll in ${course.title} button.`)}
-                          className="px-4 py-3 bg-[#fbbf24] text-black rounded-xl text-xs font-black flex-1 sm:flex-none"
+                          onFocus={() => speak(`Enroll and start learning ${course.title} button.`)}
+                          className="px-5 py-3 bg-[#fbbf24] text-black rounded-xl text-xs font-black flex-1 sm:flex-none text-center hover:brightness-105"
                         >
-                          {course.isPremium ? `⭐ Unlock for ${course.pointsCost} PTS` : "Enroll Now"}
+                          Start Learning
                         </button>
                       ) : (
                         <button
-                          onClick={() => { setActiveCoursePlay(course); setCurrentLessonIdx(0); speak(`Starting audio player for ${course.title}.`); }}
-                          onFocus={() => speak(`Start learning ${course.title} button.`)}
-                          className="px-4 py-3 bg-emerald-500 text-white rounded-xl text-xs font-black flex-1 sm:flex-none"
+                          onClick={() => {
+                            setActiveCoursePlay(course);
+                            setCurrentLessonIdx(0);
+                            speak(`Opening course player for ${course.title}. Progress is ${pct} percent.`, true);
+                          }}
+                          onFocus={() => speak(`Continue learning ${course.title} button. Current progress ${pct} percent.`)}
+                          className={`px-5 py-3 rounded-xl text-xs font-black flex-1 sm:flex-none text-center transition-all ${
+                            pct === 100
+                              ? "bg-emerald-600 text-white hover:bg-emerald-700"
+                              : pct > 0
+                                ? "bg-amber-500 text-slate-950 hover:bg-amber-400"
+                                : "bg-[#fbbf24] text-black hover:brightness-105"
+                          }`}
                         >
-                          Start Learning
+                          {pct === 100 ? "✓ Review Course (100%)" : pct > 0 ? `Continue Learning (${pct}%)` : "Start Learning"}
                         </button>
                       )}
                     </div>
@@ -1138,6 +1088,57 @@ export default function BlindDashboard() {
                 );
               })}
             </div>
+
+            {/* ── Career Opportunities: Learn Skills. Build Your Future. ── */}
+            <section
+              aria-labelledby="career-skills-heading"
+              className={`p-6 rounded-2xl border-2 ${cardClass} mt-6 flex flex-col gap-5`}
+            >
+              <div className="border-b pb-3 border-amber-400/30">
+                <div className="flex items-center gap-2">
+                  <span className="material-symbols-outlined text-amber-500 !text-2xl">work</span>
+                  <h2 id="career-skills-heading" className={`text-xl font-black ${textTitleClass}`}>
+                    Learn Skills. Build Your Future.
+                  </h2>
+                </div>
+                <p className={`text-xs mt-1 ${isLight ? "text-slate-600" : isDark ? "text-slate-400" : "text-[#fbbf24]/85"}`}>
+                  Practical pathways to translate your accessible digital skills into workplace independence and remote earning opportunities.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {BLIND_CAREER_OPPORTUNITIES.map((opp) => (
+                  <div
+                    key={opp.id}
+                    tabIndex={0}
+                    onFocus={() => speak(`Career Section: ${opp.title}. ${opp.description}`)}
+                    className={`p-5 rounded-xl border flex flex-col justify-between gap-3 ${innerCardClass}`}
+                  >
+                    <div>
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="material-symbols-outlined text-amber-500 !text-xl">{opp.icon}</span>
+                        <h3 className={`text-sm font-black ${textTitleClass}`}>{opp.title}</h3>
+                      </div>
+                      <p className={`text-xs leading-relaxed ${isLight ? "text-slate-700" : isDark ? "text-slate-300" : "text-[#fbbf24]/90"}`}>
+                        {opp.description}
+                      </p>
+                      {opp.paths && (
+                        <ul className={`text-[11px] list-disc list-inside mt-2 space-y-1 ${isLight ? "text-slate-600" : isDark ? "text-slate-400" : "text-[#fbbf24]/80"}`}>
+                          {opp.paths.map((p, pIdx) => (
+                            <li key={pIdx}><strong>{p.role}:</strong> {p.desc}</li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                    {opp.tip && (
+                      <div className="pt-2 border-t border-slate-200/40 dark:border-white/5 text-[11px] font-medium text-amber-700 dark:text-amber-400">
+                        {opp.tip}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </section>
           </div>
         )}
 
@@ -1191,10 +1192,20 @@ export default function BlindDashboard() {
             <div 
               className={`p-8 rounded-3xl border-2 ${cardClass}`}
               tabIndex={0}
-              onFocus={() => speak(`Syllabus overview. Course: ${selectedCourse.title}. Description: ${selectedCourse.description}. Level is ${selectedCourse.level}. Duration is ${selectedCourse.duration}.`)}
+              onFocus={() => speak(`Syllabus overview. Course: ${selectedCourse.title}. Description: ${selectedCourse.description}. Learning outcome: ${selectedCourse.learningOutcome}. Level is ${selectedCourse.level}. Duration is ${selectedCourse.duration}.`)}
             >
               <h1 className={`text-2xl font-black ${textTitleClass}`}>{selectedCourse.title}</h1>
               <p className={`text-xs mt-2 ${isLight ? "text-slate-600" : isDark ? "text-slate-400" : "text-[#fbbf24]/85"}`}>{selectedCourse.description}</p>
+              {selectedCourse.learningOutcome && (
+                <div className="mt-3 p-3 rounded-xl bg-amber-500/10 border border-amber-400/30 text-xs font-semibold text-amber-800 dark:text-amber-300">
+                  🎯 <strong>Learning Outcome:</strong> {selectedCourse.learningOutcome}
+                </div>
+              )}
+              {selectedCourse.careerPathways && (
+                <div className="mt-2 text-xs text-slate-500 dark:text-slate-400">
+                  💼 <strong>Employment Pathways:</strong> {selectedCourse.careerPathways}
+                </div>
+              )}
             </div>
 
             <div className="flex flex-col gap-3">
@@ -1234,8 +1245,11 @@ export default function BlindDashboard() {
           <div className="flex flex-col gap-6 animate-fadeIn max-w-4xl mx-auto w-full">
             <div className="flex justify-between items-center border-b border-[#fbbf24] pb-4">
               <button
-                onClick={() => setActiveCoursePlay(null)}
-                onFocus={() => speak("Close course player button.")}
+                onClick={() => {
+                  setActiveCoursePlay(null);
+                  speak("Exited course player. Returned to course library.");
+                }}
+                onFocus={() => speak("Close course player and return to dashboard button.")}
                 className={`px-4 py-2 font-bold text-xs rounded-lg border ${
                   isLight 
                     ? "bg-red-50 border-red-200 text-red-700 hover:bg-red-100" 
@@ -1244,28 +1258,125 @@ export default function BlindDashboard() {
                       : "bg-black border-red-500 text-red-500 hover:bg-red-500/10"
                 }`}
               >
-                ✕ Close Player
+                ✕ Close Player & Return
               </button>
+
               <div className="text-right text-xs">
-                <span className="text-slate-450">Lesson {currentLessonIdx + 1} of {activeCoursePlay.lessons.length}</span>
-                <p className={`font-black ${isLight || isDark ? "text-slate-900" : "text-[#fbbf24]"}`}>{activeCoursePlay.lessons[currentLessonIdx].title}</p>
+                <span className="text-slate-450">
+                  Lesson {currentLessonIdx + 1} of {activeCoursePlay.lessons?.length || 3}
+                </span>
+                <p className={`font-black ${isLight || isDark ? "text-slate-900" : "text-[#fbbf24]"}`}>
+                  {activeCoursePlay.lessons[currentLessonIdx]?.title}
+                </p>
+                <div 
+                  role="progressbar" 
+                  aria-label="Course completion progress"
+                  aria-valuenow={progress[activeCoursePlay.id]?.completion || 0}
+                  aria-valuemin="0" 
+                  aria-valuemax="100"
+                  className="w-32 h-2 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden mt-1 ml-auto"
+                >
+                  <div 
+                    className="h-full bg-emerald-500 transition-all duration-300" 
+                    style={{ width: `${progress[activeCoursePlay.id]?.completion || 0}%` }} 
+                  />
+                </div>
               </div>
             </div>
 
             {/* Speech Player controller triggers */}
-            <div className={`p-8 rounded-2xl flex flex-col gap-4 border-2 ${cardClass}`}>
-              <div className="flex items-center gap-3">
-                <span className={`material-symbols-outlined animate-bounce ${isLight || isDark ? "text-slate-800" : "text-[#fbbf24]"}`}>settings_voice</span>
-                <span className={`text-xs font-bold uppercase ${isLight || isDark ? "text-slate-700" : "text-[#fbbf24]"}`}>Narrator audio playback is active</span>
+            <div className={`p-8 rounded-2xl flex flex-col gap-5 border-2 ${cardClass}`}>
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <span className={`material-symbols-outlined animate-bounce ${isLight || isDark ? "text-slate-800" : "text-[#fbbf24]"}`}>settings_voice</span>
+                  <span className={`text-xs font-bold uppercase tracking-wider ${isLight || isDark ? "text-slate-700" : "text-[#fbbf24]"}`}>
+                    Screen Reader Voice Narrator Active
+                  </span>
+                </div>
+                <span className="text-xs font-bold text-slate-500 uppercase">
+                  {activeCoursePlay.lessons[currentLessonIdx]?.duration}
+                </span>
               </div>
+
+              <h2 className={`text-xl font-black ${textTitleClass}`}>
+                {activeCoursePlay.lessons[currentLessonIdx]?.title}
+              </h2>
+
               <p 
                 className={`text-base leading-relaxed font-semibold p-6 rounded-xl border ${innerCardClass}`}
                 tabIndex={0}
-                onFocus={() => speak(`Lesson text narrator. Content: ${activeCoursePlay.lessons[currentLessonIdx].content}. Focus down to repeat or step lessons.`)}
+                onFocus={() => speak(`Lesson text narrator. Content: ${activeCoursePlay.lessons[currentLessonIdx]?.content}. Focus down for practical exercise and navigation controls.`)}
               >
-                {activeCoursePlay.lessons[currentLessonIdx].content}
+                {activeCoursePlay.lessons[currentLessonIdx]?.content}
               </p>
 
+              {/* Interactive Practical Exercise */}
+              {activeCoursePlay.lessons[currentLessonIdx]?.practicalExercise && (
+                <div 
+                  className={`p-5 rounded-xl border flex flex-col gap-3 ${innerCardClass}`}
+                  tabIndex={0}
+                  onFocus={() => speak(`Practical Exercise: ${activeCoursePlay.lessons[currentLessonIdx].practicalExercise.title}. ${activeCoursePlay.lessons[currentLessonIdx].practicalExercise.instruction}`)}
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <span className="material-symbols-outlined text-amber-500 !text-lg">handyman</span>
+                      <h4 className={`text-xs font-black uppercase tracking-wider ${isLight || isDark ? "text-slate-800" : "text-[#fbbf24]"}`}>
+                        Hands-On Practical Exercise: {activeCoursePlay.lessons[currentLessonIdx].practicalExercise.title}
+                      </h4>
+                    </div>
+                    {exerciseDone[activeCoursePlay.lessons[currentLessonIdx].id] && (
+                      <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-800 dark:text-emerald-300 border border-emerald-500/40">
+                        ✓ Completed
+                      </span>
+                    )}
+                  </div>
+
+                  <p className={`text-xs leading-relaxed ${isLight ? "text-slate-700" : isDark ? "text-slate-300" : "text-[#fbbf24]/90"}`}>
+                    {activeCoursePlay.lessons[currentLessonIdx].practicalExercise.instruction}
+                  </p>
+
+                  <div className="flex flex-wrap items-center gap-3 mt-1">
+                    <button
+                      onClick={() => {
+                        const lessonId = activeCoursePlay.lessons[currentLessonIdx].id;
+                        const uId = user?.uid || "blind_student";
+                        setExerciseDone(prev => {
+                          const updated = { ...prev, [lessonId]: true };
+                          try {
+                            localStorage.setItem(`accessai_exercises_done_blind_${uId}`, JSON.stringify(updated));
+                          } catch {}
+                          return updated;
+                        });
+                        speak(activeCoursePlay.lessons[currentLessonIdx].practicalExercise.successMessage, true);
+                        const nextP = Math.min(80, Math.round(((currentLessonIdx + 1) / activeCoursePlay.lessons.length) * 80));
+                        updateProgress(activeCoursePlay.id, nextP, lessonId);
+                      }}
+                      onFocus={() => speak(`Interactive Exercise: ${activeCoursePlay.lessons[currentLessonIdx].practicalExercise.targetLabel} button.`)}
+                      className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all ${
+                        exerciseDone[activeCoursePlay.lessons[currentLessonIdx].id]
+                          ? "bg-emerald-600 text-white"
+                          : isLight
+                            ? "bg-amber-100 hover:bg-amber-200 text-amber-900 border border-amber-300"
+                            : isDark
+                              ? "bg-amber-950/40 hover:bg-amber-900/60 text-amber-300 border border-amber-500/40"
+                              : "bg-black hover:bg-[#fbbf24]/20 border border-[#fbbf24] text-[#fbbf24]"
+                      }`}
+                    >
+                      {exerciseDone[activeCoursePlay.lessons[currentLessonIdx].id]
+                        ? "✓ Practical Exercise Verified"
+                        : `▶ ${activeCoursePlay.lessons[currentLessonIdx].practicalExercise.targetLabel}`}
+                    </button>
+
+                    {exerciseDone[activeCoursePlay.lessons[currentLessonIdx].id] && (
+                      <span className="text-xs text-emerald-700 dark:text-emerald-300 font-semibold">
+                        {activeCoursePlay.lessons[currentLessonIdx].practicalExercise.successMessage}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              )}
+
+              {/* Navigation Controls */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <button
                   onClick={() => speak(activeCoursePlay.lessons[currentLessonIdx].content, true)}
@@ -1282,7 +1393,11 @@ export default function BlindDashboard() {
                 </button>
                 <button
                   disabled={currentLessonIdx === 0}
-                  onClick={() => setCurrentLessonIdx(i => i - 1)}
+                  onClick={() => {
+                    const prevIdx = currentLessonIdx - 1;
+                    setCurrentLessonIdx(prevIdx);
+                    speak(`Navigated to Lesson ${prevIdx + 1}: ${activeCoursePlay.lessons[prevIdx].title}.`, true);
+                  }}
                   onFocus={() => speak("Previous lesson button.")}
                   className={`py-3 border rounded-xl text-xs font-bold transition-all ${
                     isLight 
@@ -1297,9 +1412,11 @@ export default function BlindDashboard() {
                 <button
                   disabled={currentLessonIdx === activeCoursePlay.lessons.length - 1}
                   onClick={() => {
-                    setCurrentLessonIdx(i => i + 1);
-                    const nextP = Math.round(((currentLessonIdx + 1) / activeCoursePlay.lessons.length) * 100);
-                    updateProgress(activeCoursePlay.id, nextP);
+                    const nextIdx = currentLessonIdx + 1;
+                    setCurrentLessonIdx(nextIdx);
+                    const nextP = Math.min(80, Math.round(((nextIdx + 1) / activeCoursePlay.lessons.length) * 80));
+                    updateProgress(activeCoursePlay.id, nextP, activeCoursePlay.lessons[currentLessonIdx].id);
+                    speak(`Navigated to Lesson ${nextIdx + 1}: ${activeCoursePlay.lessons[nextIdx].title}.`, true);
                   }}
                   onFocus={() => speak("Next lesson button.")}
                   className="py-3 bg-[#fbbf24] text-black font-black text-xs rounded-xl disabled:opacity-30"
@@ -1309,30 +1426,87 @@ export default function BlindDashboard() {
               </div>
             </div>
 
-            {/* Auditory Quiz block */}
-            <div className={`p-6 rounded-xl flex flex-col gap-4 border-2 ${cardClass}`}>
-              <h3 className={`text-sm font-bold uppercase ${isLight || isDark ? "text-slate-800" : "text-[#fbbf24]"}`}>Auditory Quiz check</h3>
-              <p className={`text-xs font-bold leading-relaxed ${isLight || isDark ? "text-slate-700" : "text-slate-250"}`}>{activeCoursePlay.quiz.question}</p>
-              
-              <div className="flex flex-col gap-2">
-                {activeCoursePlay.quiz.options.map(opt => (
-                  <button
-                    key={opt}
-                    onClick={() => handleTopicQuizSubmit(opt)}
-                    onFocus={() => speak(`Option: ${opt} button.`)}
-                    disabled={issuingCert}
-                    className={`w-full py-3.5 px-4 border rounded-xl text-left text-xs font-bold transition-all cursor-pointer ${
-                      isLight 
-                        ? "bg-white hover:bg-slate-50 border-slate-200 text-slate-750 hover:border-yellow-500" 
-                        : isDark
-                          ? "bg-slate-950 hover:bg-slate-900 border-white/10 text-slate-300 hover:border-yellow-400"
-                          : "bg-black hover:bg-[#fbbf24]/10 border-[#fbbf24] text-[#fbbf24]"
-                    }`}
-                  >
-                    {opt}
-                  </button>
-                ))}
+            {/* Assessment Section: Auditory Knowledge Quiz & Scenario Challenge */}
+            <div className={`p-6 rounded-xl flex flex-col gap-6 border-2 ${cardClass}`}>
+              <div>
+                <div className="flex items-center gap-2">
+                  <span className="material-symbols-outlined text-amber-500 !text-xl">quiz</span>
+                  <h3 className={`text-sm font-bold uppercase tracking-wider ${isLight || isDark ? "text-slate-800" : "text-[#fbbf24]"}`}>
+                    Course Assessment & Certification Check
+                  </h3>
+                </div>
+                <p className={`text-xs mt-1 ${isLight ? "text-slate-600" : isDark ? "text-slate-400" : "text-[#fbbf24]/85"}`}>
+                  Pass the auditory knowledge check and practical challenge to earn 100% course completion and mint your on-chain certificate.
+                </p>
               </div>
+
+              {/* 1. Knowledge Quiz */}
+              <div className="flex flex-col gap-3">
+                <span className="text-xs font-black uppercase text-amber-700 dark:text-amber-400">
+                  Question 1: Foundational Principle
+                </span>
+                <p className={`text-xs font-bold leading-relaxed ${isLight || isDark ? "text-slate-700" : "text-slate-250"}`}>
+                  {activeCoursePlay.quiz?.question}
+                </p>
+
+                <div className="flex flex-col gap-2">
+                  {activeCoursePlay.quiz?.options.map(opt => (
+                    <button
+                      key={opt}
+                      onClick={() => handleTopicQuizSubmit(opt)}
+                      onFocus={() => speak(`Quiz Option: ${opt} button.`)}
+                      disabled={issuingCert}
+                      className={`w-full py-3.5 px-4 border rounded-xl text-left text-xs font-bold transition-all cursor-pointer ${
+                        isLight 
+                          ? "bg-white hover:bg-slate-50 border-slate-200 text-slate-750 hover:border-yellow-500" 
+                          : isDark
+                            ? "bg-slate-950 hover:bg-slate-900 border-white/10 text-slate-300 hover:border-yellow-400"
+                            : "bg-black hover:bg-[#fbbf24]/10 border-[#fbbf24] text-[#fbbf24]"
+                      }`}
+                    >
+                      {opt}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* 2. Practical Scenario Challenge */}
+              {activeCoursePlay.practicalTask && (
+                <div className="flex flex-col gap-3 pt-4 border-t border-slate-200/50 dark:border-white/10">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-black uppercase text-amber-700 dark:text-amber-400">
+                      Question 2: Practical Scenario Challenge
+                    </span>
+                    {exerciseDone[`${activeCoursePlay.id}_practical_task`] && (
+                      <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-800 dark:text-emerald-300 border border-emerald-500/40">
+                        ✓ Challenge Solved
+                      </span>
+                    )}
+                  </div>
+                  <p className={`text-xs font-bold leading-relaxed ${isLight || isDark ? "text-slate-700" : "text-slate-250"}`}>
+                    {activeCoursePlay.practicalTask.challenge}
+                  </p>
+
+                  <div className="flex flex-col gap-2">
+                    {activeCoursePlay.practicalTask.options.map(opt => (
+                      <button
+                        key={opt}
+                        onClick={() => handlePracticalTaskSubmit(opt)}
+                        onFocus={() => speak(`Scenario Option: ${opt} button.`)}
+                        className={`w-full py-3.5 px-4 border rounded-xl text-left text-xs font-bold transition-all cursor-pointer ${
+                          isLight 
+                            ? "bg-white hover:bg-slate-50 border-slate-200 text-slate-750 hover:border-yellow-500" 
+                            : isDark
+                              ? "bg-slate-950 hover:bg-slate-900 border-white/10 text-slate-300 hover:border-yellow-400"
+                              : "bg-black hover:bg-[#fbbf24]/10 border-[#fbbf24] text-[#fbbf24]"
+                        }`}
+                      >
+                        {opt}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         )}
@@ -1373,14 +1547,14 @@ export default function BlindDashboard() {
               <div className="flex-1 flex flex-col justify-between gap-4 overflow-hidden">
                 <div className={`grid grid-cols-1 sm:grid-cols-2 gap-2 pb-2 border-b ${isLight ? "border-slate-200" : isDark ? "border-white/10" : "border-[#fbbf24]/50"}`}>
                   <button
-                    onClick={() => handleQuickQuestion("Explain Active Listening and mindful presence techniques")}
+                    onClick={() => handleQuickQuestion("Explain screen reader shortcuts and keyboard landmarks")}
                     onFocus={() => speak("Ask prompt about Active Listening techniques button.")}
                     className={`p-3 rounded-xl text-xs text-left font-bold ${innerCardClass} ${isLight || isDark ? "text-slate-800" : "text-[#fbbf24]"}`}
                   >
-                    Prompt: Active Listening skills?
+                    Prompt: Screen reader shortcuts?
                   </button>
                   <button
-                    onClick={() => handleQuickQuestion("Generate auditory programming quiz")}
+                    onClick={() => handleQuickQuestion("Generate auditory digital skills quiz")}
                     onFocus={() => speak("Ask to generate custom quiz button.")}
                     className={`p-3 rounded-xl text-xs text-left font-bold ${innerCardClass} ${isLight || isDark ? "text-slate-800" : "text-[#fbbf24]"}`}
                   >
@@ -1511,7 +1685,7 @@ export default function BlindDashboard() {
                 {[
                   { title: "Quick Learner", desc: "First purchase completed", icon: "verified" },
                   { title: "Weekly Master", desc: "Maintained a 7-day streak", icon: "local_fire_department" },
-                  { title: "Leadership Master", desc: "Leadership quiz 100%", icon: "psychology" }
+                  { title: "Digital Independence", desc: "Screen reader quiz 100%", icon: "keyboard" }
                 ].map((badge, idx) => (
                   <div 
                     key={idx} 
