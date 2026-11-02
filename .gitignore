@@ -8,3 +8,10 @@ ENV/
 .idea/
 .vscode/
 *.log
+
+# Frontend dependencies and builds
+node_modules/
+build/
+dist/
+.DS_Store
+
