@@ -1,4 +1,4 @@
-# AccessAI Accessibility Backend Service 🎙️ 🤟 ♿
+# AccessAI Multilingual Platform for Abled and Disabled People 🎙️ 🤟 ♿
 
 Autonomous, low-latency Multi-Modal Accessibility microservice built specifically for **AccessAI** — an assistive education platform enabling hands-free, multilingual learning for deaf/mute, visually impaired, motor impaired, and neurodivergent learners.
 
