@@ -1,7 +1,7 @@
 """
-AccessAI Voice Agent REST Microservice
+AccessAI Multi-Modal Accessibility REST Microservice
 Lightweight, high-performance Flask API for speech processing, natural barge-in interruption,
-and Indic transliteration.
+Indic transliteration, and Deaf/Mute Sign Language recognition.
 """
 
 from flask import Flask, jsonify, request
@@ -21,13 +21,27 @@ from voice_engine.indic_transliterate import (
 )
 from voice_engine.meko_voice_memory import MekoVoiceMemory
 
+# Deaf/Mute Sign Language Engine & Meeting Bridge
+from sign_engine.gesture_recognizer import SignLanguageEngine
+from sign_engine.sign_dictionary import list_all_signs, get_sign_details
+from sign_engine.meeting_bridge import (
+    MeetingAccessController,
+    QUICK_RESPONSES,
+    validate_meeting_message
+)
+
 app = Flask(__name__)
 CORS(app)  # Enable Cross-Origin requests for AccessAI frontend
 
 # Initialize singletons
 agent_engine = VoiceAgentEngine()
 voice_memories = {}  # In-memory student cache
+sign_engine = SignLanguageEngine()
 
+
+# ======================================================================================
+# 1. VOICE AGENT ENDPOINTS (Visually Impaired & Motor Impaired Learners)
+# ======================================================================================
 
 @app.route("/api/voice/health", methods=["GET"])
 def health_check():
@@ -154,6 +168,99 @@ def get_supported_commands():
     }), 200
 
 
+# ======================================================================================
+# 2. SIGN LANGUAGE & DEAF/MUTE MEETING ENDPOINTS
+# ======================================================================================
+
+@app.route("/api/sign/health", methods=["GET"])
+def sign_health_check():
+    """Health check for Sign Language detection engine and vocabulary store."""
+    return jsonify({
+        "status": "healthy",
+        "service": "AccessAI Sign Language & Gesture Engine",
+        "version": "1.4.0",
+        "vocabulary_count": len(list_all_signs()),
+        "hold_window_ms": SignLanguageEngine.HOLD_WINDOW_MS,
+        "cooldown_ms": SignLanguageEngine.DEBOUNCE_COOLDOWN_MS,
+        "contracts": [
+            "Check T: Decision 1 (Two-Way Meeting Schema)",
+            "Check T: Decision 2 (Zero Mandatory Permissions)",
+            "Check T: Decision 4 (Sign Language Pipeline 650ms Hold)",
+            "Check T: Decision 7 (3D Avatar Action Sync)",
+            "Check T: Decision 9 (Mandatory Text & 8 Quick Responses)"
+        ]
+    }), 200
+
+
+@app.route("/api/sign/gestures", methods=["GET"])
+def get_supported_gestures():
+    """Returns complete catalog of supported sign gestures and avatar actions."""
+    return jsonify({
+        "total": len(list_all_signs()),
+        "gestures": list_all_signs()
+    }), 200
+
+
+@app.route("/api/sign/evaluate", methods=["POST"])
+def evaluate_sign_frame():
+    """
+    Evaluates 21 MediaPipe hand landmarks with 650ms hold stabilization.
+    Payload: { landmarks: [{x, y, z}, ...], handedness: 'Right' | 'Left' }
+    """
+    data = request.get_json(silent=True) or {}
+    landmarks = data.get("landmarks", [])
+    handedness = data.get("handedness", "Right")
+
+    if not landmarks or len(landmarks) < 21:
+        return jsonify({
+            "success": False,
+            "error": "At least 21 normalized 3D hand landmarks are required"
+        }), 400
+
+    result = sign_engine.evaluate_frame(landmarks, handedness)
+    return jsonify({
+        "success": True,
+        "evaluation": result
+    }), 200
+
+
+@app.route("/api/sign/meeting/join", methods=["POST"])
+def join_sign_meeting():
+    """
+    Role-based student join endpoint enforcing Zero Mandatory Permissions Contract:
+    - Microphone is NEVER mandatory or requested for Deaf/Mute participants.
+    - Camera is voluntary, default OFF on join, with text as primary fallback.
+    - Participant-level access only (isHost: false, cannot kick or end meeting).
+    """
+    data = request.get_json(silent=True) or {}
+    meeting_id = data.get("meeting_id") or data.get("meetingId") or "accessai-room-402"
+    student_id = data.get("student_id") or data.get("studentId") or "demo-deaf-001"
+    mode = data.get("mode", "deaf_mute")
+
+    session = MeetingAccessController.create_student_join_session(meeting_id, student_id, mode)
+    return jsonify(session), 200
+
+
+@app.route("/api/sign/quick-responses", methods=["GET"])
+def get_quick_responses():
+    """Returns 8 standardized 1-click responses for deaf/mute students without cameras."""
+    return jsonify({
+        "count": len(QUICK_RESPONSES),
+        "responses": QUICK_RESPONSES
+    }), 200
+
+
+@app.route("/api/sign/message/validate", methods=["POST"])
+def validate_message():
+    """Validates meeting message against Two-Way Meeting Message Schema (Decision 1)."""
+    data = request.get_json(silent=True) or {}
+    is_valid, msg = validate_meeting_message(data)
+    return jsonify({
+        "valid": is_valid,
+        "detail": msg
+    }), 200 if is_valid else 400
+
+
 if __name__ == "__main__":
-    print(f"Starting AccessAI Voice Agent Service on port {config.PORT}...")
+    print(f"Starting AccessAI Multi-Modal Accessibility Backend on port {config.PORT}...")
     app.run(host=config.HOST, port=config.PORT, debug=config.DEBUG)
